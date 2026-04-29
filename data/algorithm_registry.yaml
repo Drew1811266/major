@@ -1,0 +1,396 @@
+algorithms:
+  - name: intent_router
+    file: algorithms/intent_router.md
+    purpose: Identify user intent, entities, retrieval needs, profile needs, and recommended workflow.
+    inputs:
+      - user_input
+      - conversation_context
+      - data/country_terms.yaml
+      - data/major_aliases.yaml
+    outputs:
+      - schemas/intent_result.schema.json
+    dependencies: []
+    priority: 1
+    mvp_required: true
+
+  - name: workflow_orchestrator
+    file: algorithms/workflow_orchestrator.md
+    purpose: Select workflow, algorithm sequence, fallback behavior, and output format.
+    inputs:
+      - schemas/intent_result.schema.json
+      - user_profile
+      - data/algorithm_registry.yaml
+    outputs:
+      - schemas/algorithm_decision.schema.json
+    dependencies:
+      - intent_router
+    priority: 2
+    mvp_required: true
+
+  - name: time_aware_retrieval
+    file: algorithms/time_aware_retrieval.md
+    purpose: Retrieve current/next-cycle sources first, with 2025-01-01 as the minimum freshness floor.
+    inputs:
+      - query_target
+      - data/source_priority.yaml
+      - data/official_sources.yaml
+    outputs:
+      - schemas/retrieval_result.schema.json
+    dependencies:
+      - workflow_orchestrator
+    priority: 3
+    mvp_required: true
+
+  - name: hybrid_retrieval
+    file: algorithms/hybrid_retrieval.md
+    purpose: Expand multilingual and multi-channel search terms across six countries.
+    inputs:
+      - user_query
+      - data/major_aliases.yaml
+      - data/country_terms.yaml
+      - data/official_sources.yaml
+    outputs:
+      - schemas/retrieval_result.schema.json
+    dependencies:
+      - time_aware_retrieval
+    priority: 4
+    mvp_required: true
+
+  - name: source_scoring
+    file: algorithms/source_scoring.md
+    purpose: Score sources by authority, freshness, relevance, specificity, corroboration, and country match.
+    inputs:
+      - schemas/source_record.schema.json
+      - data/scoring_weights.yaml
+      - data/authority_source_rules.yaml
+    outputs:
+      - scored_sources
+    dependencies:
+      - time_aware_retrieval
+      - hybrid_retrieval
+    priority: 5
+    mvp_required: true
+
+  - name: active_profile_completion
+    file: algorithms/active_profile_completion.md
+    purpose: Select the highest-value user-profile questions, capped at 5 initial questions.
+    inputs:
+      - schemas/user_profile.schema.json
+      - data/question_bank.yaml
+      - data/scoring_weights.yaml
+      - data/major_task_profiles.yaml
+      - data/constraint_rules.yaml
+    outputs:
+      - missing_profile_fields
+      - clarifying_questions
+    dependencies:
+      - workflow_orchestrator
+    priority: 3
+    mvp_required: true
+
+  - name: major_fit_scoring
+    file: algorithms/major_fit_scoring.md
+    purpose: Score major-user fit using interest, ability, study process, career, country, and constraints.
+    inputs:
+      - schemas/user_profile.schema.json
+      - candidate_majors
+      - data/scoring_weights.yaml
+      - data/major_task_profiles.yaml
+    outputs:
+      - schemas/recommendation_score.schema.json
+    dependencies:
+      - active_profile_completion
+      - constraint_filtering
+    priority: 6
+    mvp_required: true
+
+  - name: constraint_filtering
+    file: algorithms/constraint_filtering.md
+    purpose: Filter or flag majors against hard and soft user constraints.
+    inputs:
+      - schemas/user_profile.schema.json
+      - schemas/recommendation_score.schema.json
+      - data/constraint_rules.yaml
+      - data/major_task_profiles.yaml
+    outputs:
+      - constraint_results
+    dependencies:
+      - active_profile_completion
+    priority: 7
+    mvp_required: true
+
+  - name: risk_scoring
+    file: algorithms/risk_scoring.md
+    purpose: Score skill, study pressure, admission, employment uncertainty, qualification, budget, and language risks.
+    inputs:
+      - schemas/user_profile.schema.json
+      - schemas/recommendation_score.schema.json
+      - data/scoring_weights.yaml
+      - data/major_task_profiles.yaml
+      - data/constraint_rules.yaml
+    outputs:
+      - risk_score
+      - risk_level
+      - top_risks
+      - mitigation_strategies
+      - verification_needed
+    dependencies:
+      - constraint_filtering
+      - major_fit_scoring
+    priority: 8
+    mvp_required: true
+
+  - name: preference_learning
+    file: algorithms/preference_learning.md
+    purpose: Convert multi-turn user feedback into lightweight preference and constraint updates.
+    inputs:
+      - user_input
+      - schemas/user_profile.schema.json
+      - data/preference_rules.yaml
+      - data/scoring_weights.yaml
+    outputs:
+      - schemas/user_preference_update.schema.json
+    dependencies:
+      - active_profile_completion
+    priority: 8
+    mvp_required: true
+
+  - name: recommendation_ranking
+    file: algorithms/recommendation_ranking.md
+    purpose: Rank and group recommendations using fit, risk, constraints, preferences, country match, source certainty, and diversity.
+    inputs:
+      - schemas/recommendation_score.schema.json
+      - schemas/user_profile.schema.json
+      - data/scoring_weights.yaml
+      - data/preference_rules.yaml
+    outputs:
+      - schemas/recommendation.schema.json
+    dependencies:
+      - constraint_filtering
+      - major_fit_scoring
+      - risk_scoring
+      - preference_learning
+    priority: 9
+    mvp_required: true
+
+  - name: major_similarity
+    file: algorithms/major_similarity.md
+    purpose: Discover similar, adjacent, pathway-related, skill-related, interest-related, and misleading major matches.
+    inputs:
+      - input_interest_or_major
+      - schemas/user_profile.schema.json
+      - data/major_taxonomy_seed.yaml
+      - data/major_aliases.yaml
+      - data/major_similarity_rules.yaml
+      - data/major_task_profiles.yaml
+      - data/country_terms.yaml
+    outputs:
+      - schemas/major_similarity_result.schema.json
+    dependencies:
+      - intent_router
+    priority: 10
+    mvp_required: false
+
+  - name: china_admissions_scope_resolver
+    file: algorithms/china_admissions_scope_resolver.md
+    purpose: Resolve China mainland admissions scope before current admissions, subject-selection, major-group, or provincial-plan claims.
+    inputs:
+      - user_query
+      - schemas/admissions_scope.schema.json
+      - schemas/user_profile.schema.json
+      - data/question_bank.yaml
+      - data/source_priority.yaml
+      - data/change_detection_rules.yaml
+    outputs:
+      - schemas/admissions_scope.schema.json
+      - missing_scope_fields
+      - china_official_search_terms
+    dependencies:
+      - intent_router
+    priority: 4
+    mvp_required: true
+
+  - name: china_major_repository_lookup
+    file: algorithms/china_major_repository_lookup.md
+    purpose: Look up China mainland university-major candidate records and ranking references from the local authorized repository.
+    inputs:
+      - user_query
+      - schemas/china_university_major_record.schema.json
+      - schemas/china_major_repository_dataset.schema.json
+      - data/china_major_repository/metadata.yaml
+      - data/china_major_repository/sample_records.yaml
+      - data/china_major_repository/sources.yaml
+      - data/major_aliases.yaml
+    outputs:
+      - schemas/china_major_repository_lookup_result.schema.json
+    dependencies:
+      - intent_router
+      - china_admissions_scope_resolver
+    priority: 5
+    mvp_required: true
+
+  - name: china_major_repository_import
+    file: algorithms/china_major_repository_import.md
+    purpose: Import authorized CSV/JSON China mainland university-major datasets into repository schemas without bundling unauthorized rankings.
+    inputs:
+      - authorized_csv_or_json
+      - data/china_major_repository/import_mapping.yaml
+      - schemas/china_major_repository_dataset.schema.json
+      - schemas/china_university_major_record.schema.json
+      - schemas/china_ranking_reference.schema.json
+    outputs:
+      - schemas/china_major_repository_dataset.schema.json
+      - import_report
+    dependencies:
+      - china_major_repository_validation
+    priority: 12
+    mvp_required: false
+
+  - name: china_major_repository_validation
+    file: algorithms/china_major_repository_validation.md
+    purpose: Validate China repository records, source IDs, ranking references, authorization status, and official-verification boundaries.
+    inputs:
+      - schemas/china_major_repository_dataset.schema.json
+      - schemas/china_university_major_record.schema.json
+      - schemas/china_ranking_reference.schema.json
+      - data/china_major_repository/metadata.yaml
+      - data/china_major_repository/sample_records.yaml
+      - data/china_major_repository/sources.yaml
+    outputs:
+      - validation_status
+      - invalid_records
+      - official_verification_required
+    dependencies: []
+    priority: 12
+    mvp_required: true
+
+  - name: china_major_repository_ranking_reference
+    file: algorithms/china_major_repository_ranking_reference.md
+    purpose: Use ShanghaiRanking-style references as third-party major-strength signals without treating them as admissions evidence.
+    inputs:
+      - schemas/china_ranking_reference.schema.json
+      - data/china_major_repository/sources.yaml
+      - data/source_priority.yaml
+      - data/authority_source_rules.yaml
+    outputs:
+      - ranking_reference_records
+      - official_verification_checklist
+      - ranking_limitations
+    dependencies:
+      - china_major_repository_lookup
+      - source_scoring
+    priority: 6
+    mvp_required: true
+
+  - name: knowledge_graph
+    file: algorithms/knowledge_graph.md
+    purpose: Organize majors, courses, skills, careers, countries, qualifications, and sources into relationships.
+    inputs:
+      - schemas/major_profile.schema.json
+      - schemas/source_record.schema.json
+      - schemas/claim_verification.schema.json
+      - schemas/user_profile.schema.json
+      - schemas/knowledge_graph_node.schema.json
+      - schemas/knowledge_graph_edge.schema.json
+      - data/country_terms.yaml
+      - data/professional_accreditation_rules.yaml
+      - data/major_task_profiles.yaml
+      - data/major_similarity_rules.yaml
+    outputs:
+      - schemas/knowledge_graph_node.schema.json
+      - schemas/knowledge_graph_edge.schema.json
+    dependencies:
+      - claim_verification
+      - major_similarity
+    priority: 10
+    mvp_required: false
+
+  - name: cross_country_alignment
+    file: algorithms/cross_country_alignment.md
+    purpose: Align major names, structures, courses, applications, and qualifications across six countries.
+    inputs:
+      - countries
+      - major_terms
+      - data/country_terms.yaml
+      - data/major_aliases.yaml
+      - data/country_alignment_rules.yaml
+      - data/professional_accreditation_rules.yaml
+      - schemas/cross_country_alignment.schema.json
+    outputs:
+      - schemas/cross_country_alignment.schema.json
+    dependencies:
+      - hybrid_retrieval
+      - source_scoring
+      - major_similarity
+    priority: 10
+    mvp_required: false
+
+  - name: claim_verification
+    file: algorithms/claim_verification.md
+    purpose: Verify key claims against scored sources before final answer.
+    inputs:
+      - claims
+      - scored_sources
+      - data/authority_source_rules.yaml
+    outputs:
+      - schemas/claim_verification.schema.json
+    dependencies:
+      - source_scoring
+    priority: 6
+    mvp_required: true
+
+  - name: change_detection
+    file: algorithms/change_detection.md
+    purpose: Compare professional, admissions, curriculum, or policy changes across years.
+    inputs:
+      - old_source_set
+      - new_source_set
+      - target_university
+      - target_major
+      - old_year
+      - new_year
+      - data/change_detection_rules.yaml
+    outputs:
+      - schemas/change_record.schema.json
+    dependencies:
+      - time_aware_retrieval
+      - source_scoring
+      - claim_verification
+    priority: 9
+    mvp_required: false
+
+  - name: report_generation
+    file: algorithms/report_generation.md
+    purpose: Turn major profiles, comparisons, recommendations, source verification, and change detection results into structured reports.
+    inputs:
+      - schemas/major_profile.schema.json
+      - schemas/recommendation.schema.json
+      - schemas/source_record.schema.json
+      - schemas/cross_country_alignment.schema.json
+      - schemas/change_record.schema.json
+      - schemas/uncertainty_record.schema.json
+      - schemas/knowledge_graph_node.schema.json
+      - schemas/knowledge_graph_edge.schema.json
+    outputs:
+      - structured_report
+    dependencies:
+      - knowledge_graph
+      - uncertainty_management
+    priority: 11
+    mvp_required: false
+
+  - name: uncertainty_management
+    file: algorithms/uncertainty_management.md
+    purpose: Assign certainty levels and surface limitations for claims and recommendations.
+    inputs:
+      - claim_verification_results
+      - source_scores
+      - profile_completeness
+      - data/scoring_weights.yaml
+    outputs:
+      - schemas/uncertainty_record.schema.json
+    dependencies:
+      - source_scoring
+      - claim_verification
+    priority: 99
+    mvp_required: true

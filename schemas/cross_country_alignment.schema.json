@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://major.skill/schemas/cross_country_alignment.schema.json",
+  "type": "object",
+  "title": "CrossCountryAlignment",
+  "description": "major 的跨国家本科专业对齐结果。",
+  "properties": {
+    "input_major": { "type": "string" },
+    "countries_compared": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["China", "South Korea", "Japan", "United Kingdom", "United States", "Australia"]
+      }
+    },
+    "local_names": {
+      "type": "object",
+      "additionalProperties": {
+        "type": ["string", "array", "object"]
+      }
+    },
+    "terminology_notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "alignment_dimensions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "dimension": { "type": "string" },
+          "comparison": { "type": "string" },
+          "equivalence_level": {
+            "type": "string",
+            "enum": ["exact", "close", "partial", "pathway_related", "not_equivalent", "unknown"]
+          },
+          "evidence_source_ids": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "evidence_claim_ids": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "limitations": { "type": "string" }
+        },
+        "required": ["dimension", "comparison", "equivalence_level"],
+        "additionalProperties": false
+      }
+    },
+    "equivalence_level": {
+      "type": "string",
+      "enum": ["exact", "close", "partial", "pathway_related", "not_equivalent", "unknown"]
+    },
+    "evidence_sources": {
+      "type": "array",
+      "items": { "$ref": "source_record.schema.json" }
+    },
+    "evidence_source_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "跨国对齐结论引用的 source_id 列表。"
+    },
+    "evidence_claim_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "跨国对齐结论引用的 claim_id 列表。"
+    },
+    "uncertainty_level": {
+      "type": "string",
+      "enum": ["high", "medium", "low", "unknown"]
+    },
+    "cautions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "user_visible_summary": { "type": "string" }
+  },
+  "required": [
+    "input_major",
+    "countries_compared",
+    "local_names",
+    "terminology_notes",
+    "alignment_dimensions",
+    "equivalence_level",
+    "evidence_sources",
+    "evidence_source_ids",
+    "uncertainty_level",
+    "cautions",
+    "user_visible_summary"
+  ],
+  "additionalProperties": false
+}

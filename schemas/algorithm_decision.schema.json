@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://major.skill/schemas/algorithm_decision.schema.json",
+  "type": "object",
+  "title": "MajorAlgorithmDecision",
+  "description": "major 的工作流编排和算法决策结果。",
+  "properties": {
+    "selected_workflow": {
+      "type": "string",
+      "enum": [
+        "major_explanation_workflow",
+        "major_recommendation_workflow",
+        "multi_country_comparison_workflow",
+        "source_verification_workflow",
+        "university_program_lookup_workflow",
+        "change_detection_workflow",
+        "clarify_scope"
+      ]
+    },
+    "algorithms_to_run": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "reason": { "type": "string" },
+    "required_inputs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "missing_inputs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "retrieval_required": { "type": "boolean" },
+    "user_profile_required": { "type": "boolean" },
+    "source_verification_required": { "type": "boolean" },
+    "fallback_behavior": {
+      "type": "string",
+      "enum": [
+        "ask_user",
+        "give_preliminary_answer_with_limits",
+        "state_no_current_sources_found",
+        "label_as_historical",
+        "mark_uncertain",
+        "refuse_guarantee_and_explain"
+      ]
+    },
+    "output_format": {
+      "type": "string",
+      "enum": ["structured_answer", "table", "report", "source_summary", "recommendation_table", "clarifying_questions"]
+    }
+  },
+  "required": [
+    "selected_workflow",
+    "algorithms_to_run",
+    "reason",
+    "required_inputs",
+    "missing_inputs",
+    "retrieval_required",
+    "user_profile_required",
+    "source_verification_required",
+    "fallback_behavior",
+    "output_format"
+  ],
+  "additionalProperties": false
+}

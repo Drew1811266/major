@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://major.skill/schemas/claim_verification.schema.json",
+  "type": "object",
+  "title": "ClaimVerification",
+  "description": "major 的关键声明验证结构。",
+  "properties": {
+    "claim_id": { "type": "string", "description": "claim 唯一标识。" },
+    "claim_text": { "type": "string", "description": "待验证声明。" },
+    "claim_type": {
+      "type": "string",
+      "enum": [
+        "programme_availability",
+        "admissions_requirement",
+        "course_structure",
+        "tuition_fee",
+        "deadline",
+        "accreditation",
+        "qualification_pathway",
+        "employment_data",
+        "country_system_rule",
+        "change_claim",
+        "recommendation_claim",
+        "ranking_reference",
+        "local_repository_candidate"
+      ],
+      "description": "claim 类型。"
+    },
+    "entities": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "claim 涉及的实体，例如大学、专业、项目、机构。"
+    },
+    "country": { "type": "string", "description": "claim 适用国家。" },
+    "year": { "type": "string", "description": "claim 适用年份、招生周期或学年。" },
+    "admissions_scope": {
+      "$ref": "admissions_scope.schema.json",
+      "description": "该 claim 的招生、地区、年份、选科、批次、专业组或来源口径范围。"
+    },
+    "required_source_type": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "university_official",
+          "department_official",
+          "course_catalog",
+          "admissions_official",
+          "government",
+          "exam_authority",
+          "official_application_platform",
+          "accreditation_body",
+          "labor_statistics",
+          "industry_association",
+          "education_platform",
+          "ranking_reference",
+          "local_repository_record",
+          "media",
+          "forum",
+          "blog",
+          "other"
+        ]
+      },
+      "description": "该 claim 所需的来源类型。"
+    },
+    "supporting_sources": {
+      "type": "array",
+      "items": { "$ref": "source_record.schema.json" },
+      "deprecated": true,
+      "description": "Deprecated. 支持该 claim 的来源快照；权威引用以 supporting_source_ids 为准。"
+    },
+    "supporting_source_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "支持该 claim 的 source_id 列表，用于跨来源表、claim 和知识图谱追踪。"
+    },
+    "conflicting_sources": {
+      "type": "array",
+      "items": { "$ref": "source_record.schema.json" },
+      "deprecated": true,
+      "description": "Deprecated. 与该 claim 冲突的来源快照；权威引用以 conflicting_source_ids 为准。"
+    },
+    "conflicting_source_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "与该 claim 冲突的 source_id 列表。"
+    },
+    "verification_status": {
+      "type": "string",
+      "enum": ["supported", "partially_supported", "conflicting", "not_found", "outdated", "uncertain"],
+      "description": "验证状态。"
+    },
+    "certainty_level": {
+      "type": "string",
+      "enum": ["high", "medium", "low", "unknown"],
+      "description": "确定性等级。"
+    },
+    "limitations": { "type": "string", "description": "验证局限。" },
+    "output_allowed": { "type": "boolean", "description": "是否允许作为最终回答结论输出。" },
+    "user_visible_note": { "type": "string", "description": "面向用户展示的核验说明。" }
+  },
+  "required": [
+    "claim_id",
+    "claim_text",
+    "claim_type",
+    "entities",
+    "country",
+    "year",
+    "admissions_scope",
+    "required_source_type",
+    "supporting_sources",
+    "supporting_source_ids",
+    "conflicting_sources",
+    "conflicting_source_ids",
+    "verification_status",
+    "certainty_level",
+    "limitations",
+    "output_allowed",
+    "user_visible_note"
+  ],
+  "additionalProperties": false
+}

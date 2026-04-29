@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://major.skill/schemas/major_similarity_result.schema.json",
+  "type": "object",
+  "title": "MajorSimilarityResult",
+  "description": "major 的相近专业和替代路径发现结果。",
+  "properties": {
+    "input_interest_or_major": { "type": "string" },
+    "matched_majors": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "similarity_type": {
+      "type": "string",
+      "enum": [
+        "direct_match",
+        "adjacent_major",
+        "pathway_related",
+        "skill_related",
+        "interest_related",
+        "misleading_match"
+      ]
+    },
+    "similarity_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "shared_courses": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "shared_skills": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "shared_career_paths": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "differences": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "user_fit_notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "caution_notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "required": [
+    "input_interest_or_major",
+    "matched_majors",
+    "similarity_type",
+    "similarity_score",
+    "shared_courses",
+    "shared_skills",
+    "shared_career_paths",
+    "differences",
+    "user_fit_notes",
+    "caution_notes"
+  ],
+  "additionalProperties": false
+}

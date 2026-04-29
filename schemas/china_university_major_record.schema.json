@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://major.skill/schemas/china_university_major_record.schema.json",
+  "type": "object",
+  "title": "ChinaUniversityMajorRecord",
+  "description": "中国大陆院校本科专业候选记录。该记录用于本地初筛，不等于当前招生事实。",
+  "properties": {
+    "record_id": {
+      "type": "string",
+      "pattern": "^cnmaj_[a-z0-9_]+_[0-9]{4}_[a-f0-9]{8,12}$",
+      "description": "中国专业库记录稳定 ID。"
+    },
+    "university_name_zh": { "type": "string", "description": "院校中文名称。" },
+    "university_name_en": { "type": "string", "description": "院校英文名称，若可得。" },
+    "province_or_region": { "type": "string", "description": "院校所在省份或地区。" },
+    "university_code": { "type": "string", "description": "院校代码，若可得。" },
+    "major_name_zh": { "type": "string", "description": "专业中文名称。" },
+    "major_name_en": { "type": "string", "description": "专业英文名称，若可得。" },
+    "major_code": { "type": "string", "description": "教育部本科专业代码，保留字符串。" },
+    "discipline_category": { "type": "string", "description": "学科门类。" },
+    "major_category": { "type": "string", "description": "专业类。" },
+    "education_level": {
+      "type": "string",
+      "enum": ["undergraduate"],
+      "description": "教育阶段，仅限本科。"
+    },
+    "data_year": { "type": "string", "description": "数据年份。" },
+    "repository_source_type": {
+      "type": "string",
+      "enum": [
+        "official_major_catalog",
+        "university_admissions_catalog",
+        "provincial_enrollment_plan",
+        "training_programme",
+        "ranking_reference",
+        "authorized_local_dataset",
+        "sample_only"
+      ],
+      "description": "记录来源口径。"
+    },
+    "record_usage": {
+      "type": "string",
+      "enum": [
+        "candidate_only",
+        "ranking_reference_only",
+        "official_verified_reference",
+        "historical_context",
+        "sample_only"
+      ],
+      "description": "该记录在回答中的可用方式。"
+    },
+    "currently_admitting": {
+      "type": "boolean",
+      "description": "是否有官方 current/next-cycle 来源证明当前招生。没有官方来源时不得为 true。"
+    },
+    "admissions_scope": {
+      "$ref": "admissions_scope.schema.json",
+      "description": "招生或来源适用范围。"
+    },
+    "ranking_reference": {
+      "$ref": "china_ranking_reference.schema.json",
+      "description": "第三方排名参考，若适用。"
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^src_[a-z0-9_]+_[0-9]{4}_[a-f0-9]{8,12}$"
+      },
+      "description": "支撑该记录的来源 ID。"
+    },
+    "claim_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^clm_[a-z0-9_]+_[a-f0-9]{8,12}$"
+      },
+      "description": "与该记录相关的 claim_id。"
+    },
+    "requires_official_verification": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "仍需官方核验的字段，例如 当前招生、专业组、选科要求、分省计划、培养方案。"
+    },
+    "limitations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "记录局限。"
+    }
+  },
+  "required": [
+    "record_id",
+    "university_name_zh",
+    "major_name_zh",
+    "education_level",
+    "data_year",
+    "repository_source_type",
+    "record_usage",
+    "currently_admitting",
+    "source_ids",
+    "requires_official_verification",
+    "limitations"
+  ],
+  "additionalProperties": false
+}

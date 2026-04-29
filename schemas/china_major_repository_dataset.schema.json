@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://major.skill/schemas/china_major_repository_dataset.schema.json",
+  "type": "object",
+  "title": "ChinaMajorRepositoryDataset",
+  "description": "中国大陆大学本科专业数据存储库数据集结构。",
+  "properties": {
+    "dataset_id": {
+      "type": "string",
+      "pattern": "^cnrepo_[a-z0-9_]+_[0-9]{4}_[a-f0-9]{8,12}$",
+      "description": "数据集稳定 ID。"
+    },
+    "name": { "type": "string", "description": "数据集名称。" },
+    "version": { "type": "string", "description": "数据集版本。" },
+    "language": { "type": "string", "description": "数据主要语言。" },
+    "data_year": { "type": "string", "description": "数据年份。" },
+    "updated_date": { "type": "string", "description": "数据集更新日期。" },
+    "authorization_status": {
+      "type": "string",
+      "enum": ["authorized", "sample_only", "unknown", "not_for_user_facing_use"],
+      "description": "数据授权状态。"
+    },
+    "source_statement": { "type": "string", "description": "来源和授权说明。" },
+    "usage_policy": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "使用规则。"
+    },
+    "sources": {
+      "type": "array",
+      "items": { "$ref": "source_record.schema.json" },
+      "description": "来源记录。"
+    },
+    "records": {
+      "type": "array",
+      "items": { "$ref": "china_university_major_record.schema.json" },
+      "description": "中国大陆院校本科专业记录。"
+    },
+    "limitations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "数据集局限。"
+    }
+  },
+  "required": [
+    "dataset_id",
+    "name",
+    "version",
+    "language",
+    "data_year",
+    "updated_date",
+    "authorization_status",
+    "source_statement",
+    "usage_policy",
+    "sources",
+    "records",
+    "limitations"
+  ],
+  "additionalProperties": false
+}

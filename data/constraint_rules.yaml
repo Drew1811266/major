@@ -1,0 +1,127 @@
+hard_constraints:
+  no_portfolio:
+    detection_examples:
+      - "完全不能接受作品集"
+      - "不想做作品集"
+      - "没有时间准备作品集"
+    affects_major_profiles:
+      - Architecture
+      - Design
+      - Animation
+      - Game Design
+      - Fashion Design
+    default_action: downgrade_or_filter
+    explanation: "作品集通常是申请或学习过程的关键组成，如果用户完全不能接受，需要降级或排除。"
+  no_heavy_programming:
+    detection_examples:
+      - "完全不想编程"
+      - "不能接受长期写代码"
+    affects_major_profiles:
+      - Computer Science
+      - Software Engineering
+      - Artificial Intelligence
+      - Data Science
+    default_action: downgrade_or_filter
+    explanation: "编程是这些方向的核心学习过程，不应只因行业热门而推荐。"
+  no_heavy_math:
+    detection_examples:
+      - "完全不能接受大量数学"
+      - "数学很弱而且不想补"
+    affects_major_profiles:
+      - Mathematics
+      - Statistics
+      - Economics
+      - Finance
+      - Data Science
+      - Engineering
+      - Artificial Intelligence
+    default_action: downgrade_or_filter
+    explanation: "数学强度直接影响本科课程和后续发展路径。"
+  budget_blocks_country:
+    detection_examples:
+      - "预算无法支持英美澳"
+      - "只能接受低预算"
+    affects_major_profiles: ["country_choice"]
+    default_action: filter_country_or_request_budget
+    explanation: "预算不足时，国家选择比专业名称更先决定可行性。"
+  no_long_qualification_path:
+    detection_examples:
+      - "不接受长期读研"
+      - "不想考执照"
+      - "只想本科毕业直接工作"
+    affects_major_profiles:
+      - Medicine-related Studies
+      - Psychology
+      - Nursing
+      - Law
+      - Education
+      - Architecture
+    default_action: downgrade_regulated_path
+    explanation: "目标职业若依赖研究生、执照或临床训练，不能把本科专业包装成直接职业入口。"
+  missing_required_prerequisite:
+    detection_examples:
+      - "没有相关选科"
+      - "不满足先修课"
+    affects_major_profiles: ["admissions_sensitive"]
+    default_action: verify_and_filter_if_confirmed
+    explanation: "选科、先修课和语言要求必须优先用当前/下一招生周期官方来源核查；2025-01-01 只是最低时效底线。"
+
+soft_constraints:
+  high_income_preference:
+    detection_examples:
+      - "希望高收入"
+      - "收入重要"
+    ranking_effect:
+      income: 0.10
+      employment_uncertainty_risk: 0.05
+    explanation: "提高职业路径较清晰或市场化方向的优先级，但不得承诺薪资。"
+  stability_preference:
+    detection_examples:
+      - "想稳定"
+      - "不想太冒险"
+    ranking_effect:
+      stability: 0.10
+      risk_score: -0.05
+    explanation: "提高稳定路径和低风险选项权重。"
+  creativity_preference:
+    detection_examples:
+      - "想有创造性"
+      - "喜欢创作"
+    ranking_effect:
+      creativity: 0.10
+    explanation: "提高设计、传媒、产品、内容、研究型方向，但仍需看作品集和就业风险。"
+  lower_application_difficulty:
+    detection_examples:
+      - "希望申请难度低一些"
+      - "不想卷"
+    ranking_effect:
+      admission_risk: -0.10
+    explanation: "降低高度竞争或强先修要求方向优先级。"
+  undergraduate_employment_preference:
+    detection_examples:
+      - "希望本科毕业就能工作"
+      - "不想必须读研"
+    ranking_effect:
+      clear_employment_path: 0.15
+      qualification_dependency: -0.10
+    explanation: "提高本科就业路径较清晰的方向，对强读研路径加风险提示。"
+  less_writing_preference:
+    detection_examples:
+      - "不想写很多论文"
+      - "不喜欢大量写作"
+    ranking_effect:
+      reading_writing_intensity: -0.10
+    explanation: "降低法律、人文、部分社科、新闻等阅读写作密集方向。"
+  less_lab_preference:
+    detection_examples:
+      - "不喜欢实验"
+      - "不想做实验室"
+    ranking_effect:
+      lab_intensity: -0.10
+    explanation: "降低生物医学、化学、部分工程等实验密集方向。"
+
+resolution_rules:
+  hard_before_soft: true
+  ask_when_ambiguous: true
+  do_not_filter_on_soft_preference_only: true
+  verify_admissions_constraints_with_2025_plus_sources: true

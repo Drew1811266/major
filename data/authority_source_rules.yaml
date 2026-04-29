@@ -1,0 +1,284 @@
+description: >
+  Country-aware authority rules for major source scoring. Combine these rules
+  with current/next-cycle filtering and 2025-01-01 minimum-floor checks before citing any current fact.
+
+global_source_type_weights:
+  university_official:
+    authority_score: 1.00
+    description: "大学官网、项目页、官方 handbook 或 official course page。"
+  admissions_official:
+    authority_score: 0.98
+    description: "大学本科招生网、官方招生章程、招生简章、申请截止日期页面。"
+  course_catalog:
+    authority_score: 0.96
+    description: "官方课程目录、course catalog、course handbook、培养方案。"
+  government:
+    authority_score: 0.95
+    description: "教育部、政府教育部门、官方统计或政策页面。"
+  exam_authority:
+    authority_score: 0.95
+    description: "省级考试院、考试招生机构。"
+  official_application_platform:
+    authority_score: 0.92
+    description: "阳光高考、UCAS、CRICOS、Course Seeker 等官方平台。"
+  accreditation_body:
+    authority_score: 0.90
+    description: "专业认证机构、职业监管机构。"
+  department_official:
+    authority_score: 0.88
+    description: "院系官网、department/faculty/school 页面。"
+  labor_statistics:
+    authority_score: 0.82
+    description: "官方职业统计机构。"
+  industry_association:
+    authority_score: 0.70
+    description: "行业协会或专业组织，需交叉验证。"
+  education_platform:
+    authority_score: 0.45
+    description: "教育平台，只能辅助发现，不作为当前事实唯一依据。"
+  ranking_reference:
+    authority_score: 0.65
+    description: "第三方大学专业排名或评级，可作为专业实力参考和候选池扩展，不作为招生事实依据。"
+    allowed_for:
+      - major_strength_reference
+      - candidate_pool_expansion
+      - comparison_context
+    forbidden_for:
+      - current_admissions
+      - admissions_requirement
+      - provincial_enrollment_plan
+      - subject_selection_requirement
+      - major_group
+      - training_programme
+      - tuition_fee
+      - deadline
+  local_repository_record:
+    authority_score: 0.30
+    description: "本地中国专业库记录，只能作为候选或历史/结构化参考，除非有官方 current/next-cycle source_id 支持。"
+    allowed_for:
+      - candidate_pool_expansion
+      - internal_lookup
+      - historical_or_reference_context
+    forbidden_for:
+      - current_admissions
+      - admissions_requirement
+      - provincial_enrollment_plan
+      - subject_selection_requirement
+      - major_group
+      - training_programme
+  media:
+    authority_score: 0.35
+    description: "媒体报道，只能辅助背景或新闻线索。"
+  forum:
+    authority_score: 0.10
+    description: "论坛和用户评论，不作为事实依据。"
+  blog:
+    authority_score: 0.15
+    description: "博客，不作为当前事实依据。"
+  other:
+    authority_score: 0.20
+    description: "其他来源，默认低权威。"
+
+country_rules:
+  China:
+    preferred_sources:
+      - source_type: admissions_official
+        examples:
+          - "2025 本科招生章程"
+          - "2025 本科招生简章"
+          - "2025 招生专业目录"
+          - "2025 分省招生计划"
+      - source_type: exam_authority
+        examples:
+          - "省级考试院"
+          - "省教育考试院招生计划"
+      - source_type: official_application_platform
+        examples:
+          - "阳光高考"
+      - source_type: government
+        examples:
+          - "教育部"
+      - source_type: university_official
+        examples:
+          - "高校本科招生网"
+          - "高校教务处"
+      - source_type: department_official
+        examples:
+          - "院系官网"
+    must_prioritize_2025_plus: true
+    notes:
+      - "招生专业、招生计划、选科要求、专业组、培养方案必须优先使用当前/下一招生周期官方来源；2025-01-01 只是最低时效底线。"
+      - "第三方志愿填报平台不得作为唯一依据。"
+
+  South Korea:
+    preferred_sources:
+      - source_type: university_official
+        examples:
+          - "university admissions page"
+          - "학과 official page"
+      - source_type: department_official
+        examples:
+          - "학과"
+          - "전공"
+          - "학부"
+      - source_type: government
+        examples:
+          - "Ministry of Education"
+          - "Study in Korea"
+    must_prioritize_2025_plus: true
+    notes:
+      - "需要确认 모집단위、학과、전공、학부 层级。"
+
+  Japan:
+    preferred_sources:
+      - source_type: university_official
+        examples:
+          - "入試情報"
+          - "学部・学科 official page"
+      - source_type: department_official
+        examples:
+          - "学部"
+          - "学科"
+          - "専攻"
+          - "コース"
+      - source_type: government
+        examples:
+          - "MEXT"
+          - "JASSO Study in Japan"
+    must_prioritize_2025_plus: true
+    notes:
+      - "学部不应直接等同于 major。"
+
+  United Kingdom:
+    preferred_sources:
+      - source_type: university_official
+        examples:
+          - "current undergraduate course"
+          - "2025 entry"
+          - "2026 entry"
+      - source_type: course_catalog
+        examples:
+          - "course page"
+          - "module list"
+      - source_type: official_application_platform
+        examples:
+          - "UCAS"
+      - source_type: government
+        examples:
+          - "Discover Uni"
+    must_prioritize_2025_plus: true
+    notes:
+      - "course 通常指完整本科项目，不是单门课。"
+
+  United States:
+    preferred_sources:
+      - source_type: course_catalog
+        examples:
+          - "2025-2026 undergraduate catalog"
+          - "2026-2027 undergraduate catalog"
+      - source_type: university_official
+        examples:
+          - "major requirements"
+          - "department undergraduate program"
+      - source_type: government
+        examples:
+          - "NCES College Navigator"
+      - source_type: labor_statistics
+        examples:
+          - "BLS Occupational Outlook Handbook"
+    must_prioritize_2025_plus: true
+    notes:
+      - "major、minor、concentration 需要区分。"
+
+  Australia:
+    preferred_sources:
+      - source_type: university_official
+        examples:
+          - "current course page"
+          - "course handbook"
+      - source_type: official_application_platform
+        examples:
+          - "CRICOS"
+          - "Course Seeker"
+      - source_type: government
+        examples:
+          - "TEQSA"
+          - "QILT"
+      - source_type: accreditation_body
+        examples:
+          - "professional accreditation body"
+    must_prioritize_2025_plus: true
+    notes:
+      - "course、degree、major、specialisation 需要区分。"
+
+claim_minimum_source_rules:
+  programme_availability:
+    required_source_types:
+      - university_official
+      - admissions_official
+      - course_catalog
+      - official_application_platform
+    requires_2025_plus: true
+  admissions_requirement:
+    required_source_types:
+      - admissions_official
+      - university_official
+      - official_application_platform
+      - exam_authority
+    requires_2025_plus: true
+  course_structure:
+    required_source_types:
+      - course_catalog
+      - university_official
+      - department_official
+    requires_2025_plus: true
+  tuition_fee:
+    required_source_types:
+      - university_official
+      - admissions_official
+    requires_2025_plus: true
+  deadline:
+    required_source_types:
+      - admissions_official
+      - university_official
+      - official_application_platform
+    requires_2025_plus: true
+  accreditation:
+    required_source_types:
+      - accreditation_body
+      - university_official
+      - government
+    requires_2025_plus: true
+  qualification_pathway:
+    required_source_types:
+      - accreditation_body
+      - government
+      - university_official
+    requires_2025_plus: true
+  employment_data:
+    required_source_types:
+      - labor_statistics
+      - government
+      - industry_association
+    requires_2025_plus: true
+  country_system_rule:
+    required_source_types:
+      - government
+      - official_application_platform
+      - university_official
+    requires_2025_plus: true
+  change_claim:
+    required_source_types:
+      - government
+      - university_official
+      - admissions_official
+      - course_catalog
+    allows_historical_sources_if_user_requested: true
+  recommendation_claim:
+    required_source_types:
+      - university_official
+      - course_catalog
+      - admissions_official
+      - labor_statistics
+      - accreditation_body
+    requires_2025_plus_for_current_facts: true

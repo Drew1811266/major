@@ -1,0 +1,65 @@
+dataset_id: cnrepo_sample_records_2025_81c9e4a2
+name: China Major Repository Sample Records
+version: 0.1.0
+language: zh-CN
+data_year: "2025"
+updated_date: "2026-04-29"
+authorization_status: sample_only
+source_statement: "Only synthetic sample records for schema validation. Not real university data."
+usage_policy:
+  - 样例记录只用于验证 Schema、导入器和查询流程。
+  - 不得在用户回答中作为真实院校专业事实引用。
+  - 真实数据必须通过授权 CSV/JSON 导入。
+sources:
+  - source_id: src_china_sample_repository_2025_d4e5f6a7
+    title: "China Major Repository Synthetic Sample Source"
+    url: "local://major/data/china_major_repository/sample_records.yaml"
+    publisher: "major skill sample data"
+    source_type: local_repository_record
+    country: China
+    accessed_date: "2026-04-29"
+    applicable_year: "2025"
+    is_2025_or_later: true
+    freshness_basis: applicable_year
+    currentness_basis: minimum_2025_floor_only
+    source_score: 0.20
+    reliability_level: low
+    supports_claims: []
+    limitations: "Synthetic sample only; not user-facing factual evidence."
+    archive_or_current_status: historical
+records:
+  - record_id: cnmaj_sample_university_computer_science_2025_1a2b3c4d
+    university_name_zh: "示例大学"
+    university_name_en: "Example University"
+    province_or_region: "示例省"
+    university_code: "00000"
+    major_name_zh: "计算机科学与技术"
+    major_name_en: "Computer Science and Technology"
+    major_code: "080901"
+    discipline_category: "工学"
+    major_category: "计算机类"
+    education_level: undergraduate
+    data_year: "2025"
+    repository_source_type: sample_only
+    record_usage: sample_only
+    currently_admitting: false
+    admissions_scope:
+      country: China
+      intended_entry_year: "2025"
+      source_scope_type: other
+    source_ids:
+      - src_china_sample_repository_2025_d4e5f6a7
+    claim_ids: []
+    requires_official_verification:
+      - 当前招生
+      - 招生专业目录
+      - 分省招生计划
+      - 选科要求
+      - 专业组
+      - 培养方案
+    limitations:
+      - 合成样例，不能作为真实院校专业事实。
+      - 缺少官方 current/next-cycle 来源。
+limitations:
+  - This file intentionally contains no real ShanghaiRanking ranking entries.
+  - This file is only a validation fixture for repository structure.

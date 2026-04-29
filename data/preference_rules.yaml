@@ -1,0 +1,105 @@
+rules:
+  dislike_finance_too_utilitarian:
+    trigger_examples:
+      - "我不喜欢金融，感觉太功利"
+      - "不想只为了赚钱学商科"
+    inferred_preference: "偏好兴趣、创造性或社会影响，不偏好强功利导向的金融路径。"
+    affected_weights:
+      income: -0.10
+      business_prestige: -0.15
+      interest: 0.15
+      social_impact: 0.10
+      creativity: 0.10
+    affected_major_categories:
+      decrease: [Finance, Accounting, Business Administration]
+      increase: [Marketing, Communication, Education, International Relations, Design]
+    hard_or_soft_constraint: soft
+    confidence_default: 0.75
+  avoid_heavy_math:
+    trigger_examples:
+      - "我不想学太多数学"
+      - "数学不行，也不想补"
+    inferred_preference: "降低数学密集型方向优先级，除非用户后续表示愿意补足。"
+    affected_weights:
+      math_intensity: -0.20
+      ability_match: 0.05
+      study_process_match: 0.05
+    affected_major_categories:
+      decrease: [Data Science, Artificial Intelligence, Economics, Finance, Engineering, Statistics]
+      increase: [Information Systems, Media Studies, Education, Management, Design, Social Sciences]
+    hard_or_soft_constraint: soft_unless_absolute
+    confidence_default: 0.80
+  employment_first:
+    trigger_examples:
+      - "我更看重就业"
+      - "就业比兴趣更重要"
+    inferred_preference: "提高职业路径清晰、实习机会和市场需求相关权重。"
+    affected_weights:
+      employment: 0.20
+      clear_employment_path: 0.15
+      internship_opportunity: 0.10
+      employment_uncertainty_risk: 0.10
+    affected_major_categories:
+      increase: [Computer Science, Software Engineering, Accounting, Nursing, Engineering, Business Analytics]
+      caution: [Humanities, Media Studies, International Relations, Psychology]
+    hard_or_soft_constraint: preference
+    confidence_default: 0.80
+  avoid_programming:
+    trigger_examples:
+      - "我不想长期编程"
+      - "不喜欢调 bug"
+    inferred_preference: "降低编程密集型方向优先级，转向技术应用、产品、信息系统或非技术路径。"
+    affected_weights:
+      programming_intensity: -0.20
+      study_process_match: 0.10
+    affected_major_categories:
+      decrease: [Computer Science, Software Engineering, Artificial Intelligence, Data Science]
+      increase: [Information Systems, Business Analytics, Communication, Management, Design]
+    hard_or_soft_constraint: soft_unless_absolute
+    confidence_default: 0.80
+  wants_social_impact:
+    trigger_examples:
+      - "希望帮助别人"
+      - "想做有社会意义的事情"
+    inferred_preference: "提高公共服务、教育、健康、社会科学和公共政策方向的解释权重。"
+    affected_weights:
+      social_impact: 0.15
+      public_service: 0.10
+      income: -0.05
+    affected_major_categories:
+      increase: [Education, Public Health, Social Work, Public Policy, International Relations, Psychology]
+    hard_or_soft_constraint: preference
+    confidence_default: 0.70
+  wants_creative_work:
+    trigger_examples:
+      - "希望工作有创造性"
+      - "喜欢做内容和创意"
+    inferred_preference: "提高创意、内容、设计和表达型方向，但检查作品集、就业波动和项目压力。"
+    affected_weights:
+      creativity: 0.15
+      portfolio_requirement: -0.05
+      employment_uncertainty_risk: 0.05
+    affected_major_categories:
+      increase: [Design, Media Studies, Communication, Marketing, Game Design]
+    hard_or_soft_constraint: preference
+    confidence_default: 0.75
+  low_risk_preference:
+    trigger_examples:
+      - "我不想冒险"
+      - "希望稳一点"
+    inferred_preference: "降低高不确定性、高资格依赖或就业路径分散的方向。"
+    affected_weights:
+      stability: 0.15
+      risk_score: -0.10
+      qualification_dependency: -0.05
+    affected_major_categories:
+      increase: [Accounting, Education, Nursing, Information Systems]
+      caution: [Fine Arts, Media Studies, International Relations, Psychology]
+    hard_or_soft_constraint: preference
+    confidence_default: 0.80
+
+application_rules:
+  do_not_treat_soft_preference_as_absolute_exclusion: true
+  convert_to_hard_constraint_only_if_user_uses_absolute_language: true
+  record_updates_in_schema: schemas/user_preference_update.schema.json
+  revisit_preferences_when_user_corrects_assumption: true

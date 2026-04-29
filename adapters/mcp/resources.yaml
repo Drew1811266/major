@@ -1,0 +1,401 @@
+resources:
+  skill_metadata:
+    uri: major://skill.yaml
+    path: ../../skill.yaml
+    mime_type: text/yaml
+    description: Platform-neutral metadata for the major skill.
+  core_instructions:
+    uri: major://instructions/core
+    path: ../../instructions/core.md
+    mime_type: text/markdown
+    description: Core role, scope, intent detection, and output rules.
+  consultation_rules:
+    uri: major://instructions/consultation_rules
+    path: ../../instructions/consultation_rules.md
+    mime_type: text/markdown
+    description: User-profile collection and advising rules.
+  recommendation_rules:
+    uri: major://instructions/recommendation_rules
+    path: ../../instructions/recommendation_rules.md
+    mime_type: text/markdown
+    description: Major recommendation and fit assessment rules.
+  retrieval_rules:
+    uri: major://instructions/retrieval_rules
+    path: ../../instructions/retrieval_rules.md
+    mime_type: text/markdown
+    description: Source priority and citation requirements.
+  country_notes:
+    uri: major://instructions/country_notes
+    path: ../../instructions/country_notes.md
+    mime_type: text/markdown
+    description: Country-specific terminology and system differences.
+  safety_and_uncertainty:
+    uri: major://instructions/safety_and_uncertainty
+    path: ../../instructions/safety_and_uncertainty.md
+    mime_type: text/markdown
+    description: No-guarantee, regulated-field, and uncertainty rules.
+  privacy_and_profile_minimization:
+    uri: major://instructions/privacy_and_profile_minimization
+    path: ../../instructions/privacy_and_profile_minimization.md
+    mime_type: text/markdown
+    description: Privacy and data-minimization rules for profile collection.
+  user_profile_schema:
+    uri: major://schemas/user_profile
+    path: ../../schemas/user_profile.schema.json
+    mime_type: application/json
+    description: JSON schema for user profile.
+  major_profile_schema:
+    uri: major://schemas/major_profile
+    path: ../../schemas/major_profile.schema.json
+    mime_type: application/json
+    description: JSON schema for major profile.
+  recommendation_schema:
+    uri: major://schemas/recommendation
+    path: ../../schemas/recommendation.schema.json
+    mime_type: application/json
+    description: JSON schema for recommendation output.
+  source_record_schema:
+    uri: major://schemas/source_record
+    path: ../../schemas/source_record.schema.json
+    mime_type: application/json
+    description: JSON schema for source records.
+  admissions_scope_schema:
+    uri: major://schemas/admissions_scope
+    path: ../../schemas/admissions_scope.schema.json
+    mime_type: application/json
+    description: JSON schema for admissions scope, province, subject-selection, cycle, and source-scope constraints.
+  intent_result_schema:
+    uri: major://schemas/intent_result
+    path: ../../schemas/intent_result.schema.json
+    mime_type: application/json
+    description: JSON schema for intent router output.
+  algorithm_decision_schema:
+    uri: major://schemas/algorithm_decision
+    path: ../../schemas/algorithm_decision.schema.json
+    mime_type: application/json
+    description: JSON schema for workflow orchestrator decisions.
+  retrieval_result_schema:
+    uri: major://schemas/retrieval_result
+    path: ../../schemas/retrieval_result.schema.json
+    mime_type: application/json
+    description: JSON schema for retrieval results.
+  recommendation_score_schema:
+    uri: major://schemas/recommendation_score
+    path: ../../schemas/recommendation_score.schema.json
+    mime_type: application/json
+    description: JSON schema for major fit scoring output.
+  user_preference_update_schema:
+    uri: major://schemas/user_preference_update
+    path: ../../schemas/user_preference_update.schema.json
+    mime_type: application/json
+    description: JSON schema for preference updates inferred during advising.
+  claim_verification_schema:
+    uri: major://schemas/claim_verification
+    path: ../../schemas/claim_verification.schema.json
+    mime_type: application/json
+    description: JSON schema for claim verification records.
+  uncertainty_record_schema:
+    uri: major://schemas/uncertainty_record
+    path: ../../schemas/uncertainty_record.schema.json
+    mime_type: application/json
+    description: JSON schema for uncertainty records.
+  change_record_schema:
+    uri: major://schemas/change_record
+    path: ../../schemas/change_record.schema.json
+    mime_type: application/json
+    description: JSON schema for change detection records.
+  knowledge_graph_node_schema:
+    uri: major://schemas/knowledge_graph_node
+    path: ../../schemas/knowledge_graph_node.schema.json
+    mime_type: application/json
+    description: JSON schema for knowledge graph nodes.
+  knowledge_graph_edge_schema:
+    uri: major://schemas/knowledge_graph_edge
+    path: ../../schemas/knowledge_graph_edge.schema.json
+    mime_type: application/json
+    description: JSON schema for knowledge graph edges.
+  cross_country_alignment_schema:
+    uri: major://schemas/cross_country_alignment
+    path: ../../schemas/cross_country_alignment.schema.json
+    mime_type: application/json
+    description: JSON schema for cross-country major alignment.
+  major_similarity_result_schema:
+    uri: major://schemas/major_similarity_result
+    path: ../../schemas/major_similarity_result.schema.json
+    mime_type: application/json
+    description: JSON schema for similar-major discovery results.
+  china_university_major_record_schema:
+    uri: major://schemas/china_university_major_record
+    path: ../../schemas/china_university_major_record.schema.json
+    mime_type: application/json
+    description: JSON schema for China mainland university-major repository records.
+  china_major_repository_dataset_schema:
+    uri: major://schemas/china_major_repository_dataset
+    path: ../../schemas/china_major_repository_dataset.schema.json
+    mime_type: application/json
+    description: JSON schema for China mainland major repository datasets.
+  china_ranking_reference_schema:
+    uri: major://schemas/china_ranking_reference
+    path: ../../schemas/china_ranking_reference.schema.json
+    mime_type: application/json
+    description: JSON schema for China third-party ranking reference records.
+  china_major_repository_lookup_result_schema:
+    uri: major://schemas/china_major_repository_lookup_result
+    path: ../../schemas/china_major_repository_lookup_result.schema.json
+    mime_type: application/json
+    description: JSON schema for China major repository lookup results.
+  source_priority:
+    uri: major://data/source_priority
+    path: ../../data/source_priority.yaml
+    mime_type: text/yaml
+    description: Source priority and freshness policy data.
+  official_sources:
+    uri: major://data/official_sources
+    path: ../../data/official_sources.yaml
+    mime_type: text/yaml
+    description: Official source entry points for six-country undergraduate major research.
+  major_aliases:
+    uri: major://data/major_aliases
+    path: ../../data/major_aliases.yaml
+    mime_type: text/yaml
+    description: Multilingual major alias seed for search expansion and terminology normalization.
+  regulated_fields:
+    uri: major://data/regulated_fields
+    path: ../../data/regulated_fields.yaml
+    mime_type: text/yaml
+    description: Regulated-field verification guide for qualification and accreditation paths.
+  country_terms:
+    uri: major://data/country_terms
+    path: ../../data/country_terms.yaml
+    mime_type: text/yaml
+    description: Country-specific terminology for majors, courses, departments, and programs.
+  scoring_weights:
+    uri: major://data/scoring_weights
+    path: ../../data/scoring_weights.yaml
+    mime_type: text/yaml
+    description: Algorithm scoring weights for sources, fit, risk, questions, and certainty.
+  question_bank:
+    uri: major://data/question_bank
+    path: ../../data/question_bank.yaml
+    mime_type: text/yaml
+    description: Dynamic profile-completion question bank.
+  major_task_profiles:
+    uri: major://data/major_task_profiles
+    path: ../../data/major_task_profiles.yaml
+    mime_type: text/yaml
+    description: Learning-task profiles for major families used in fit and risk scoring.
+  constraint_rules:
+    uri: major://data/constraint_rules
+    path: ../../data/constraint_rules.yaml
+    mime_type: text/yaml
+    description: Hard and soft constraint rules for recommendation filtering.
+  preference_rules:
+    uri: major://data/preference_rules
+    path: ../../data/preference_rules.yaml
+    mime_type: text/yaml
+    description: Lightweight preference learning rules.
+  major_similarity_rules:
+    uri: major://data/major_similarity_rules
+    path: ../../data/major_similarity_rules.yaml
+    mime_type: text/yaml
+    description: Rules for similar-major expansion and misleading matches.
+  country_alignment_rules:
+    uri: major://data/country_alignment_rules
+    path: ../../data/country_alignment_rules.yaml
+    mime_type: text/yaml
+    description: Cross-country terminology and equivalence rules.
+  professional_accreditation_rules:
+    uri: major://data/professional_accreditation_rules
+    path: ../../data/professional_accreditation_rules.yaml
+    mime_type: text/yaml
+    description: Professional accreditation and qualification warning rules.
+  change_detection_rules:
+    uri: major://data/change_detection_rules
+    path: ../../data/change_detection_rules.yaml
+    mime_type: text/yaml
+    description: Year-over-year change detection rules.
+  authority_source_rules:
+    uri: major://data/authority_source_rules
+    path: ../../data/authority_source_rules.yaml
+    mime_type: text/yaml
+    description: Source authority and minimum evidence rules.
+  id_rules:
+    uri: major://data/id_rules
+    path: ../../data/id_rules.yaml
+    mime_type: text/yaml
+    description: Stable ID generation and traceability rules for sources, claims, graph records, and changes.
+  algorithm_registry:
+    uri: major://data/algorithm_registry
+    path: ../../data/algorithm_registry.yaml
+    mime_type: text/yaml
+    description: Registry of major algorithms and dependencies.
+  china_major_repository_metadata:
+    uri: major://data/china_major_repository/metadata
+    path: ../../data/china_major_repository/metadata.yaml
+    mime_type: text/yaml
+    description: Metadata and usage policy for the China mainland major repository.
+  china_major_repository_sources:
+    uri: major://data/china_major_repository/sources
+    path: ../../data/china_major_repository/sources.yaml
+    mime_type: text/yaml
+    description: Source records and usage boundaries for China repository and ranking references.
+  china_major_repository_sample_records:
+    uri: major://data/china_major_repository/sample_records
+    path: ../../data/china_major_repository/sample_records.yaml
+    mime_type: text/yaml
+    description: Synthetic sample records for China major repository validation.
+  china_major_repository_import_mapping:
+    uri: major://data/china_major_repository/import_mapping
+    path: ../../data/china_major_repository/import_mapping.yaml
+    mime_type: text/yaml
+    description: Field mapping for authorized China major repository imports.
+  china_major_repository_readme:
+    uri: major://data/china_major_repository/readme
+    path: ../../data/china_major_repository/README.md
+    mime_type: text/markdown
+    description: Usage rules and boundaries for the China major repository.
+  algorithms_readme:
+    uri: major://algorithms/readme
+    path: ../../algorithms/README.md
+    mime_type: text/markdown
+    description: Overview of major algorithm modules and decision flow.
+  intent_router_algorithm:
+    uri: major://algorithms/intent_router
+    path: ../../algorithms/intent_router.md
+    mime_type: text/markdown
+    description: Intent routing algorithm.
+  workflow_orchestrator_algorithm:
+    uri: major://algorithms/workflow_orchestrator
+    path: ../../algorithms/workflow_orchestrator.md
+    mime_type: text/markdown
+    description: Workflow orchestration algorithm.
+  time_aware_retrieval_algorithm:
+    uri: major://algorithms/time_aware_retrieval
+    path: ../../algorithms/time_aware_retrieval.md
+    mime_type: text/markdown
+    description: Time-aware retrieval algorithm.
+  hybrid_retrieval_algorithm:
+    uri: major://algorithms/hybrid_retrieval
+    path: ../../algorithms/hybrid_retrieval.md
+    mime_type: text/markdown
+    description: Hybrid multilingual retrieval algorithm.
+  source_scoring_algorithm:
+    uri: major://algorithms/source_scoring
+    path: ../../algorithms/source_scoring.md
+    mime_type: text/markdown
+    description: Source scoring algorithm.
+  active_profile_completion_algorithm:
+    uri: major://algorithms/active_profile_completion
+    path: ../../algorithms/active_profile_completion.md
+    mime_type: text/markdown
+    description: Active user-profile completion algorithm.
+  constraint_filtering_algorithm:
+    uri: major://algorithms/constraint_filtering
+    path: ../../algorithms/constraint_filtering.md
+    mime_type: text/markdown
+    description: Hard and soft constraint filtering algorithm.
+  major_fit_scoring_algorithm:
+    uri: major://algorithms/major_fit_scoring
+    path: ../../algorithms/major_fit_scoring.md
+    mime_type: text/markdown
+    description: Major fit scoring algorithm.
+  risk_scoring_algorithm:
+    uri: major://algorithms/risk_scoring
+    path: ../../algorithms/risk_scoring.md
+    mime_type: text/markdown
+    description: Recommendation risk scoring algorithm.
+  preference_learning_algorithm:
+    uri: major://algorithms/preference_learning
+    path: ../../algorithms/preference_learning.md
+    mime_type: text/markdown
+    description: Lightweight preference learning algorithm.
+  recommendation_ranking_algorithm:
+    uri: major://algorithms/recommendation_ranking
+    path: ../../algorithms/recommendation_ranking.md
+    mime_type: text/markdown
+    description: Recommendation grouping and ranking algorithm.
+  china_admissions_scope_resolver_algorithm:
+    uri: major://algorithms/china_admissions_scope_resolver
+    path: ../../algorithms/china_admissions_scope_resolver.md
+    mime_type: text/markdown
+    description: China mainland admissions scope resolver algorithm.
+  china_major_repository_lookup_algorithm:
+    uri: major://algorithms/china_major_repository_lookup
+    path: ../../algorithms/china_major_repository_lookup.md
+    mime_type: text/markdown
+    description: China mainland major repository lookup algorithm.
+  china_major_repository_import_algorithm:
+    uri: major://algorithms/china_major_repository_import
+    path: ../../algorithms/china_major_repository_import.md
+    mime_type: text/markdown
+    description: Authorized China major repository import algorithm.
+  china_major_repository_validation_algorithm:
+    uri: major://algorithms/china_major_repository_validation
+    path: ../../algorithms/china_major_repository_validation.md
+    mime_type: text/markdown
+    description: China major repository validation algorithm.
+  china_major_repository_ranking_reference_algorithm:
+    uri: major://algorithms/china_major_repository_ranking_reference
+    path: ../../algorithms/china_major_repository_ranking_reference.md
+    mime_type: text/markdown
+    description: Third-party China major ranking reference algorithm.
+  major_similarity_algorithm:
+    uri: major://algorithms/major_similarity
+    path: ../../algorithms/major_similarity.md
+    mime_type: text/markdown
+    description: Similar-major discovery algorithm.
+  knowledge_graph_algorithm:
+    uri: major://algorithms/knowledge_graph
+    path: ../../algorithms/knowledge_graph.md
+    mime_type: text/markdown
+    description: Major knowledge graph algorithm.
+  cross_country_alignment_algorithm:
+    uri: major://algorithms/cross_country_alignment
+    path: ../../algorithms/cross_country_alignment.md
+    mime_type: text/markdown
+    description: Cross-country major alignment algorithm.
+  change_detection_algorithm:
+    uri: major://algorithms/change_detection
+    path: ../../algorithms/change_detection.md
+    mime_type: text/markdown
+    description: Major and programme change detection algorithm.
+  report_generation_algorithm:
+    uri: major://algorithms/report_generation
+    path: ../../algorithms/report_generation.md
+    mime_type: text/markdown
+    description: Structured report generation algorithm.
+  claim_verification_algorithm:
+    uri: major://algorithms/claim_verification
+    path: ../../algorithms/claim_verification.md
+    mime_type: text/markdown
+    description: Claim verification algorithm.
+  uncertainty_management_algorithm:
+    uri: major://algorithms/uncertainty_management
+    path: ../../algorithms/uncertainty_management.md
+    mime_type: text/markdown
+    description: Uncertainty management algorithm.
+  algorithm_utils_script:
+    uri: major://scripts/algorithm_utils
+    path: ../../scripts/algorithm_utils.py
+    mime_type: text/x-python
+    description: Deterministic helper functions for scoring, certainty classification, similarity classification, and change diffing.
+  china_major_repository_import_script:
+    uri: major://scripts/china_major_repository_import
+    path: ../../scripts/china_major_repository_import.py
+    mime_type: text/x-python
+    description: Import and validate authorized China mainland university-major repository data.
+  eval_runner_script:
+    uri: major://scripts/eval_runner
+    path: ../../scripts/eval_runner.py
+    mime_type: text/x-python
+    description: Structural eval consistency runner for major test cases.
+  validate_records_script:
+    uri: major://scripts/validate_records
+    path: ../../scripts/validate_records.py
+    mime_type: text/x-python
+    description: Traceability validator for source, claim, graph, change, and recommendation records.
+  validate_skill_script:
+    uri: major://scripts/validate_skill
+    path: ../../scripts/validate_skill.py
+    mime_type: text/x-python
+    description: Skill package validation script.

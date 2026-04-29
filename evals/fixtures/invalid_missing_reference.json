@@ -1,0 +1,30 @@
+{
+  "sources": [],
+  "claims": [
+    {
+      "claim_id": "clm_programme_availability_missing_2026_a1b2c3d4",
+      "claim_text": "Missing source reference should fail.",
+      "claim_type": "programme_availability",
+      "entities": ["Example University"],
+      "country": "China",
+      "year": "2026",
+      "admissions_scope": {
+        "country": "China",
+        "source_scope_type": "university_admissions_catalog"
+      },
+      "required_source_type": ["admissions_official"],
+      "supporting_sources": [],
+      "supporting_source_ids": ["src_china_missing_2026_deadbeef"],
+      "conflicting_sources": [],
+      "conflicting_source_ids": [],
+      "verification_status": "supported",
+      "certainty_level": "high",
+      "limitations": "Invalid fixture.",
+      "output_allowed": true,
+      "user_visible_note": "Invalid fixture."
+    }
+  ],
+  "nodes": [],
+  "edges": [],
+  "changes": []
+}

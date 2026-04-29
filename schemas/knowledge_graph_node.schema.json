@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://major.skill/schemas/knowledge_graph_node.schema.json",
+  "type": "object",
+  "title": "KnowledgeGraphNode",
+  "description": "major 专业知识图谱节点。",
+  "properties": {
+    "node_id": { "type": "string" },
+    "node_type": {
+      "type": "string",
+      "enum": [
+        "Major",
+        "CourseModule",
+        "Skill",
+        "CareerPath",
+        "GraduatePath",
+        "Country",
+        "UniversityProgram",
+        "AdmissionRequirement",
+        "ProfessionalAccreditation",
+        "QualificationPathway",
+        "Source",
+        "UserProfileAttribute"
+      ]
+    },
+    "label": { "type": "string" },
+    "aliases": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "country": { "type": "string" },
+    "description": { "type": "string" },
+    "attributes": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "source_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "引用 source_record.source_id。"
+    },
+    "certainty_level": {
+      "type": "string",
+      "enum": ["high", "medium", "low", "unknown"]
+    },
+    "limitations": { "type": "string" }
+  },
+  "required": ["node_id", "node_type", "label"],
+  "additionalProperties": false
+}

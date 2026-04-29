@@ -1,0 +1,131 @@
+metadata:
+  purpose: 作为 major 发现相近专业、替代路径和误导匹配的规则种子。
+  caution:
+    - 本文件不是官方专业数据库。
+    - 具体国家、大学、课程和招生事实必须优先使用当前/下一周期官方来源核查；2025-01-01 只是最低时效底线。
+
+similarity_weights:
+  taxonomy: 0.15
+  courses: 0.25
+  skills: 0.20
+  career_paths: 0.15
+  graduate_paths: 0.10
+  country_terms: 0.05
+  semantic: 0.05
+  user_fit: 0.05
+
+similarity_types:
+  direct_match: "输入专业或兴趣与候选专业高度一致。"
+  adjacent_major: "课程和技能高度重叠，但专业定位不同。"
+  pathway_related: "职业路径相近，但本科训练可能不同。"
+  skill_related: "共享技能较多，但课程结构和职业路径不一定相同。"
+  interest_related: "共享兴趣主题，但专业训练可能差异明显。"
+  misleading_match: "名称、行业光环或兴趣表面相关，但学习内容差异大。"
+
+interest_expansions:
+  AI:
+    direct_match:
+      - Artificial Intelligence
+      - Computer Science
+    adjacent_major:
+      - Data Science
+      - Software Engineering
+      - Statistics
+      - Mathematics
+      - Electrical Engineering
+      - Robotics
+      - Cognitive Science
+    pathway_related:
+      - Information Systems
+      - Business Analytics
+      - Human-Computer Interaction
+      - Digital Media
+    differences:
+      Computer Science: "更偏底层、算法、系统和软件基础。"
+      Artificial Intelligence: "更偏算法、模型、数据、实验和统计。"
+      Data Science: "更偏统计、数据处理、建模和解释。"
+      Information Systems: "更偏技术与商业管理结合。"
+      Human-Computer Interaction: "更偏用户体验、产品、交互和用户研究。"
+      Business Analytics: "更偏商业问题和数据决策。"
+      Digital Media: "可能使用 AI 工具或交互技术，但不等于 AI 技术专业。"
+    caution_notes:
+      - "喜欢 AI 工具不等于适合高数学和高编程的 AI 或 CS。"
+      - "如果排斥编程和统计，应优先考虑技术应用、信息系统、商业分析、交互或传媒方向。"
+  Psychology:
+    direct_match:
+      - Psychology
+    adjacent_major:
+      - Neuroscience
+      - Cognitive Science
+      - Education
+      - Sociology
+      - Human-Computer Interaction
+      - Public Health
+    pathway_related:
+      - Social Work
+      - Communication
+      - Business Administration
+    misleading_match:
+      - Counseling
+      - Clinical Psychology
+    caution_notes:
+      - "本科心理学通常包含统计、实验设计和论文阅读。"
+      - "心理咨询或临床资格通常不是本科毕业自动获得。"
+  Business:
+    direct_match:
+      - Business Administration
+      - Management
+    adjacent_major:
+      - Economics
+      - Finance
+      - Accounting
+      - Marketing
+      - Business Analytics
+      - International Business
+      - Supply Chain Management
+    caution_notes:
+      - "商科内部差异很大，不应只按高薪或热门选择。"
+  Media:
+    direct_match:
+      - Media Studies
+      - Communication
+    adjacent_major:
+      - Journalism
+      - Public Relations
+      - Digital Media
+      - Film
+      - Marketing
+      - Design
+    caution_notes:
+      - "传媒可指理论研究、新闻、影视、数字媒体、公关、广告或传播策略。"
+  Design:
+    direct_match:
+      - Design
+    adjacent_major:
+      - Architecture
+      - Graphic Design
+      - Industrial Design
+      - Human-Computer Interaction
+      - Digital Media
+      - Animation
+      - Game Design
+    caution_notes:
+      - "设计和建筑常涉及作品集、studio 和长期项目迭代。"
+
+misleading_matches:
+  AI_to_Digital_Media:
+    input: AI
+    candidate: Digital Media
+    reason: "可在项目中使用 AI 工具，但本科核心通常不是算法、模型或系统训练。"
+  Psychology_to_Counseling:
+    input: Psychology
+    candidate: Counseling
+    reason: "本科心理学不等同于心理咨询资格，需查国家监管路径。"
+  Law_to_Lawyer:
+    input: Law
+    candidate: Lawyer qualification
+    reason: "法律本科或法律研究不等同于自动取得律师资格。"
+  Medicine_to_Doctor:
+    input: Medicine-related Studies
+    candidate: Doctor qualification
+    reason: "医学相关本科或生物医学不等同于医生执业资格。"

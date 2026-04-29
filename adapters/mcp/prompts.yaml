@@ -1,0 +1,25 @@
+prompts:
+  ask_user_profile:
+    name: ask_user_profile
+    description: Ask at most 5 key questions to complete a user profile for major recommendation.
+    file: ../../prompts/ask_user_profile.md
+  explain_major:
+    name: explain_major
+    description: Explain one undergraduate major with curriculum, fit, country differences, careers, graduate pathways, certification notes, misconceptions, and sources.
+    file: ../../prompts/explain_major.md
+  compare_majors:
+    name: compare_majors
+    description: Compare majors or country systems, prioritizing tables and explanatory analysis.
+    file: ../../prompts/compare_majors.md
+  recommend_majors:
+    name: recommend_majors
+    description: Recommend undergraduate majors from interests or user profile with reasons, risks, alternatives, and next steps.
+    file: ../../prompts/recommend_majors.md
+  summarize_sources:
+    name: summarize_sources
+    description: Summarize and evaluate sources for undergraduate major research.
+    file: ../../prompts/summarize_sources.md
+  country_specific_research:
+    name: country_specific_research
+    description: Research major terminology, structure, curriculum, and official examples in target countries.
+    file: ../../prompts/country_specific_research.md

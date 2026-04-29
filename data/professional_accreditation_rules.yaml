@@ -1,0 +1,279 @@
+metadata:
+  purpose: 为 major 提供专业认证、执照和资格路径核查规则。
+  freshness_rule: "具体资格、认证、注册、临床、签证或执业路径必须优先使用当前/下一周期官方来源；2025-01-01 只是最低时效底线。"
+  global_rules:
+    - "不同国家和司法辖区资格路径不同。"
+    - "本科专业不等于自动获得执业资格。"
+    - "涉及临床、法律、医学、心理咨询、教师、建筑师、工程师、会计师、兽医、社工等方向时，必须提示用户查官方监管机构。"
+    - "不得承诺职业资格、执业资格、签证、移民、就业或薪资结果。"
+
+regulated_fields:
+  Medicine-related:
+    undergraduate_not_equal_license_warning: "医学相关本科、生物医学或健康科学不等于医生执业资格。"
+    pathway_fields_to_verify: [degree_type, accreditation_status, clinical_training, licensing_exam, supervised_practice, jurisdiction_rule]
+    current_cycle_claims: [entry_requirement, accreditation_status, clinical_training, registration_pathway, visa_or_work_policy]
+    countries:
+      China:
+        official_bodies_or_regulators: ["国家卫生健康委员会", "教育部", "目标大学医学院/本科招生网"]
+        official_source_keywords: ["医师资格", "临床医学 本科招生", "医学教育认证", "国家卫生健康委员会"]
+      South Korea:
+        official_bodies_or_regulators: ["Ministry of Health and Welfare", "Korea Health Personnel Licensing Examination Institute", "目标大学医学院"]
+        official_source_keywords: ["KHPLEI medical license", "의사 국가시험", "medical school admissions"]
+      Japan:
+        official_bodies_or_regulators: ["Ministry of Health, Labour and Welfare", "Ministry of Education, Culture, Sports, Science and Technology", "目标大学医学部"]
+        official_source_keywords: ["医師国家試験", "医学部 入試", "MHLW medical license"]
+      United Kingdom:
+        official_bodies_or_regulators: ["General Medical Council", "Medical Schools Council", "UCAS", "目标大学医学院"]
+        official_source_keywords: ["GMC approved medical education", "Medicine MBBS entry requirements", "Medical Schools Council"]
+      United States:
+        official_bodies_or_regulators: ["state medical board", "Liaison Committee on Medical Education", "AAMC", "目标大学 pre-health advising"]
+        official_source_keywords: ["LCME accredited medical education", "state medical board physician license", "pre-med requirements"]
+      Australia:
+        official_bodies_or_regulators: ["Medical Board of Australia", "Australian Medical Council", "AHPRA", "目标大学医学课程页"]
+        official_source_keywords: ["Medical Board of Australia registration", "AMC accredited medical school", "AHPRA medical registration"]
+
+  Nursing:
+    undergraduate_not_equal_license_warning: "护理本科通常涉及认证、临床实习和注册要求，国家之间差异很大。"
+    pathway_fields_to_verify: [approved_programme, clinical_placement, clinical_hours, registration, language_requirement]
+    current_cycle_claims: [accreditation_status, clinical_hours, registration_requirement, language_requirement]
+    countries:
+      China:
+        official_bodies_or_regulators: ["国家卫生健康委员会", "教育部", "目标大学护理学院/招生网"]
+        official_source_keywords: ["护理学 本科招生", "护士执业资格考试", "护理专业认证"]
+      South Korea:
+        official_bodies_or_regulators: ["Korea Health Personnel Licensing Examination Institute", "Ministry of Health and Welfare", "目标大学护理学院"]
+        official_source_keywords: ["간호사 국가시험", "nursing license Korea", "간호학과 admissions"]
+      Japan:
+        official_bodies_or_regulators: ["Ministry of Health, Labour and Welfare", "目标大学看護学部"]
+        official_source_keywords: ["看護師国家試験", "看護学部 入試", "nursing license Japan"]
+      United Kingdom:
+        official_bodies_or_regulators: ["Nursing and Midwifery Council", "UCAS", "目标大学护理课程页"]
+        official_source_keywords: ["NMC approved programme", "nursing registration UK", "BSc Nursing entry requirements"]
+      United States:
+        official_bodies_or_regulators: ["state board of nursing", "CCNE or ACEN", "目标大学护理学院"]
+        official_source_keywords: ["state board of nursing", "CCNE accredited BSN", "NCLEX RN requirements"]
+      Australia:
+        official_bodies_or_regulators: ["Nursing and Midwifery Board of Australia", "AHPRA", "Australian Nursing and Midwifery Accreditation Council"]
+        official_source_keywords: ["NMBA registration", "ANMAC accredited nursing program", "AHPRA nursing registration"]
+
+  Pharmacy:
+    undergraduate_not_equal_license_warning: "药学本科不自动等于药师执业资格，通常涉及认证课程、实习、考试或注册。"
+    pathway_fields_to_verify: [recognized_degree, accreditation_status, internship_or_practice, licensing_exam, registration]
+    current_cycle_claims: [accreditation_status, internship_requirement, registration_pathway]
+    countries:
+      China:
+        official_bodies_or_regulators: ["国家药品监督管理局", "人力资源和社会保障相关考试机构", "目标大学药学院"]
+        official_source_keywords: ["执业药师", "药学 本科招生", "国家药监局"]
+      South Korea:
+        official_bodies_or_regulators: ["Korea Health Personnel Licensing Examination Institute", "Ministry of Health and Welfare", "目标大学药学院"]
+        official_source_keywords: ["약사 국가시험", "pharmacy license Korea", "약학대학"]
+      Japan:
+        official_bodies_or_regulators: ["Ministry of Health, Labour and Welfare", "目标大学薬学部"]
+        official_source_keywords: ["薬剤師国家試験", "薬学部", "pharmacist license Japan"]
+      United Kingdom:
+        official_bodies_or_regulators: ["General Pharmaceutical Council", "目标大学 pharmacy course"]
+        official_source_keywords: ["GPhC accredited MPharm", "pharmacist registration UK"]
+      United States:
+        official_bodies_or_regulators: ["state board of pharmacy", "Accreditation Council for Pharmacy Education"]
+        official_source_keywords: ["ACPE accredited pharmacy", "state board of pharmacy", "NAPLEX requirements"]
+      Australia:
+        official_bodies_or_regulators: ["Pharmacy Board of Australia", "Australian Pharmacy Council", "AHPRA"]
+        official_source_keywords: ["Pharmacy Board of Australia registration", "Australian Pharmacy Council accredited", "AHPRA pharmacy"]
+
+  Psychology:
+    undergraduate_not_equal_license_warning: "本科心理学不等于心理咨询师、临床心理师或注册心理师资格。"
+    pathway_fields_to_verify: [accredited_sequence, protected_title, graduate_study, supervised_practice, registration_or_license]
+    current_cycle_claims: [accredited_sequence, registration_pathway, protected_title, supervised_practice]
+    countries:
+      China:
+        official_bodies_or_regulators: ["教育部", "目标大学心理学院", "国家或地方职业资格/行业主管机构"]
+        official_source_keywords: ["心理学 本科培养方案", "心理咨询 资格 官方", "应用心理学 本科招生"]
+      South Korea:
+        official_bodies_or_regulators: ["Ministry of Education", "Korean Psychological Association or relevant official body", "目标大学心理学系"]
+        official_source_keywords: ["심리학과", "clinical psychology Korea qualification", "counseling license Korea"]
+      Japan:
+        official_bodies_or_regulators: ["Ministry of Education", "公認心理師 official information", "目标大学心理学部/学科"]
+        official_source_keywords: ["公認心理師", "心理学部", "clinical psychology Japan"]
+      United Kingdom:
+        official_bodies_or_regulators: ["British Psychological Society", "Health and Care Professions Council", "目标大学课程页"]
+        official_source_keywords: ["BPS accredited psychology degree", "HCPC practitioner psychologist", "clinical psychology pathway UK"]
+      United States:
+        official_bodies_or_regulators: ["state psychology board", "American Psychological Association accreditation where relevant", "目标大学 psychology department"]
+        official_source_keywords: ["state psychology board licensure", "APA accredited clinical psychology", "psychology major requirements"]
+      Australia:
+        official_bodies_or_regulators: ["Psychology Board of Australia", "Australian Psychology Accreditation Council", "AHPRA"]
+        official_source_keywords: ["APAC accredited psychology", "Psychology Board of Australia registration", "AHPRA psychology"]
+
+  Law:
+    undergraduate_not_equal_license_warning: "法学或法律研究本科不等于自动取得律师资格；国家和司法辖区路径差异很大。"
+    pathway_fields_to_verify: [recognized_legal_education, jurisdiction, professional_training, exam_or_assessment, admission]
+    current_cycle_claims: [qualification_pathway, recognized_degree, exam_requirement, jurisdiction_rule]
+    countries:
+      China:
+        official_bodies_or_regulators: ["司法部", "国家统一法律职业资格考试官方发布", "目标大学法学院/招生网"]
+        official_source_keywords: ["法律职业资格考试", "法学 本科招生", "司法部"]
+      South Korea:
+        official_bodies_or_regulators: ["Ministry of Justice", "Korean Bar Association", "law school admissions bodies"]
+        official_source_keywords: ["Korean bar exam", "law school Korea", "법학전문대학원"]
+      Japan:
+        official_bodies_or_regulators: ["Ministry of Justice", "Japan Federation of Bar Associations", "法科大学院 official"]
+        official_source_keywords: ["司法試験", "法科大学院", "弁護士資格"]
+      United Kingdom:
+        official_bodies_or_regulators: ["Solicitors Regulation Authority", "Bar Standards Board", "UCAS", "目标大学法学院"]
+        official_source_keywords: ["SRA SQE", "Bar Standards Board qualification", "LLB entry requirements"]
+      United States:
+        official_bodies_or_regulators: ["state bar admissions authority", "American Bar Association", "目标大学 pre-law advising"]
+        official_source_keywords: ["state bar admission", "ABA approved law school", "JD requirements"]
+      Australia:
+        official_bodies_or_regulators: ["Legal Admissions Board in relevant state", "Law Council or state law society", "目标大学法学院"]
+        official_source_keywords: ["legal admission Australia", "Priestley 11", "law degree accreditation"]
+
+  Education:
+    undergraduate_not_equal_license_warning: "教育学本科不等于自动获得教师资格，需查目标国家或地区教师注册/认证要求。"
+    pathway_fields_to_verify: [approved_teacher_education, practicum, subject_specialization, exam_or_assessment, registration]
+    current_cycle_claims: [teacher_registration, practicum_requirement, approved_programme]
+    countries:
+      China:
+        official_bodies_or_regulators: ["教育部", "中国教育考试网或教师资格考试官方渠道", "目标大学师范/教育学院"]
+        official_source_keywords: ["教师资格考试", "师范类专业认证", "教育学 本科招生"]
+      South Korea:
+        official_bodies_or_regulators: ["Ministry of Education", "teacher certification authority", "目标大学教育学院"]
+        official_source_keywords: ["teacher certificate Korea", "교원자격", "education department admissions"]
+      Japan:
+        official_bodies_or_regulators: ["Ministry of Education, Culture, Sports, Science and Technology", "teacher license authority", "目标大学教育学部"]
+        official_source_keywords: ["教員免許", "教育学部", "teacher license Japan"]
+      United Kingdom:
+        official_bodies_or_regulators: ["Department for Education", "Teaching Regulation Agency", "目标大学 teacher education course"]
+        official_source_keywords: ["QTS", "Teaching Regulation Agency", "initial teacher training"]
+      United States:
+        official_bodies_or_regulators: ["state education department", "teacher licensure board", "目标大学 education school"]
+        official_source_keywords: ["state teacher licensure", "approved teacher education program", "student teaching requirements"]
+      Australia:
+        official_bodies_or_regulators: ["state teacher registration board", "Australian Institute for Teaching and School Leadership", "目标大学 education course"]
+        official_source_keywords: ["teacher registration Australia", "AITSL accredited", "initial teacher education"]
+
+  Architecture:
+    undergraduate_not_equal_license_warning: "建筑本科或建筑学位不等于自动成为注册建筑师，通常涉及认证学位、实践经验和考试。"
+    pathway_fields_to_verify: [portfolio_requirement, accredited_degree, practical_experience, professional_exam, registration]
+    current_cycle_claims: [accreditation_status, registration_pathway, portfolio_requirement]
+    countries:
+      China:
+        official_bodies_or_regulators: ["住房和城乡建设部相关注册建筑师渠道", "教育部", "目标大学建筑学院"]
+        official_source_keywords: ["注册建筑师", "建筑学 本科招生", "建筑学专业评估"]
+      South Korea:
+        official_bodies_or_regulators: ["Korea Architectural Accrediting Board", "architect registration authority", "目标大学建筑学院"]
+        official_source_keywords: ["KAAB accredited architecture", "건축사", "architecture admissions Korea"]
+      Japan:
+        official_bodies_or_regulators: ["Ministry of Land, Infrastructure, Transport and Tourism", "建築士 official", "目标大学建築学科"]
+        official_source_keywords: ["建築士", "建築学科", "architecture license Japan"]
+      United Kingdom:
+        official_bodies_or_regulators: ["Architects Registration Board", "Royal Institute of British Architects", "目标大学 architecture course"]
+        official_source_keywords: ["ARB prescribed qualifications", "RIBA validation", "architecture portfolio requirement"]
+      United States:
+        official_bodies_or_regulators: ["National Architectural Accrediting Board", "National Council of Architectural Registration Boards", "state architecture board"]
+        official_source_keywords: ["NAAB accredited architecture", "NCARB licensure", "architecture board"]
+      Australia:
+        official_bodies_or_regulators: ["Architects Accreditation Council of Australia", "state architects registration board", "目标大学 architecture course"]
+        official_source_keywords: ["AACA accredited architecture", "architect registration Australia"]
+
+  Engineering:
+    undergraduate_not_equal_license_warning: "工程本科是否满足认证或注册工程师路径取决于国家、工程分支和认证机构。"
+    pathway_fields_to_verify: [engineering_discipline, accredited_degree, Washington_Accord_status, experience, registration_or_chartership]
+    current_cycle_claims: [accreditation_status, pathway_to_registration, discipline_scope]
+    countries:
+      China:
+        official_bodies_or_regulators: ["中国工程教育专业认证协会", "教育部", "目标大学工程学院"]
+        official_source_keywords: ["工程教育认证", "工程类 本科招生", "专业认证"]
+      South Korea:
+        official_bodies_or_regulators: ["Accreditation Board for Engineering Education of Korea", "目标大学工程学院"]
+        official_source_keywords: ["ABEEK accreditation", "engineering accreditation Korea"]
+      Japan:
+        official_bodies_or_regulators: ["Japan Accreditation Board for Engineering Education", "Professional Engineer Japan authority", "目标大学工学部"]
+        official_source_keywords: ["JABEE", "技術士", "工学部"]
+      United Kingdom:
+        official_bodies_or_regulators: ["Engineering Council", "relevant professional engineering institution", "目标大学 engineering course"]
+        official_source_keywords: ["Engineering Council accredited degree", "IET accredited", "IMechE accredited", "CEng pathway"]
+      United States:
+        official_bodies_or_regulators: ["ABET", "state engineering board", "目标大学 engineering school"]
+        official_source_keywords: ["ABET accredited engineering", "state PE board", "FE exam requirements"]
+      Australia:
+        official_bodies_or_regulators: ["Engineers Australia", "目标大学 engineering course"]
+        official_source_keywords: ["Engineers Australia accredited", "professional engineer Australia", "Washington Accord"]
+
+  Accounting:
+    undergraduate_not_equal_license_warning: "会计本科可能对职业资格有帮助，但不等于自动取得 CPA、CA、ACCA 或其他资格。"
+    pathway_fields_to_verify: [recognized_courses, professional_body_recognition, exam_exemption, work_experience, membership_or_license]
+    current_cycle_claims: [professional_body_recognition, exam_exemption, license_requirement]
+    countries:
+      China:
+        official_bodies_or_regulators: ["财政部", "中国注册会计师协会", "目标大学商学院/会计学院"]
+        official_source_keywords: ["注册会计师", "会计学 本科招生", "财政部会计资格"]
+      South Korea:
+        official_bodies_or_regulators: ["Financial Services Commission or exam authority", "Korean Institute of Certified Public Accountants"]
+        official_source_keywords: ["KICPA", "CPA Korea requirements", "accounting major Korea"]
+      Japan:
+        official_bodies_or_regulators: ["Certified Public Accountants and Auditing Oversight Board", "Japanese Institute of Certified Public Accountants"]
+        official_source_keywords: ["公認会計士", "JICPA", "accounting major Japan"]
+      United Kingdom:
+        official_bodies_or_regulators: ["ACCA", "ICAEW", "CIMA", "目标大学 accounting course"]
+        official_source_keywords: ["ACCA exemptions", "ICAEW credits", "accounting degree accreditation UK"]
+      United States:
+        official_bodies_or_regulators: ["state board of accountancy", "NASBA", "目标大学 accounting department"]
+        official_source_keywords: ["state board of accountancy CPA", "NASBA CPA requirements", "accounting credits"]
+      Australia:
+        official_bodies_or_regulators: ["CPA Australia", "Chartered Accountants Australia and New Zealand", "目标大学 accounting course"]
+        official_source_keywords: ["CPA Australia accredited", "CA ANZ accredited", "accounting professional recognition"]
+
+  Veterinary:
+    undergraduate_not_equal_license_warning: "兽医路径通常严格受认证和注册监管，本科/专业学位结构因国家不同。"
+    pathway_fields_to_verify: [accredited_programme, clinical_training, licensing_exam, registration, jurisdiction_rule]
+    current_cycle_claims: [accreditation_status, registration_pathway, clinical_training]
+    countries:
+      China:
+        official_bodies_or_regulators: ["农业农村部", "兽医资格考试官方渠道", "目标大学动物医学学院"]
+        official_source_keywords: ["执业兽医资格", "动物医学 本科招生", "农业农村部兽医"]
+      South Korea:
+        official_bodies_or_regulators: ["Ministry of Agriculture, Food and Rural Affairs", "veterinary licensing authority", "目标大学兽医学院"]
+        official_source_keywords: ["veterinary license Korea", "수의사 국가시험", "veterinary college Korea"]
+      Japan:
+        official_bodies_or_regulators: ["Ministry of Agriculture, Forestry and Fisheries", "veterinary license authority", "目标大学獣医学部"]
+        official_source_keywords: ["獣医師国家試験", "獣医学部", "veterinary license Japan"]
+      United Kingdom:
+        official_bodies_or_regulators: ["Royal College of Veterinary Surgeons", "目标大学 veterinary course"]
+        official_source_keywords: ["RCVS accredited veterinary degree", "veterinary registration UK"]
+      United States:
+        official_bodies_or_regulators: ["American Veterinary Medical Association COE", "state veterinary board"]
+        official_source_keywords: ["AVMA accredited veterinary", "NAVLE", "state veterinary board"]
+      Australia:
+        official_bodies_or_regulators: ["Australasian Veterinary Boards Council", "state veterinary board", "目标大学 veterinary course"]
+        official_source_keywords: ["AVBC accredited veterinary", "veterinary registration Australia"]
+
+  Social Work:
+    undergraduate_not_equal_license_warning: "社工职业资格、注册和实习要求因国家和地区不同，需查官方社工协会或监管机构。"
+    pathway_fields_to_verify: [approved_degree, field_placement, registration_or_certification, protected_title, jurisdiction_rule]
+    current_cycle_claims: [approved_programme, field_placement, registration_requirement]
+    countries:
+      China:
+        official_bodies_or_regulators: ["民政部", "社会工作者职业资格考试官方渠道", "目标大学社会工作系"]
+        official_source_keywords: ["社会工作者职业资格", "社会工作 本科招生", "民政部"]
+      South Korea:
+        official_bodies_or_regulators: ["social worker certification authority", "Ministry of Health and Welfare", "目标大学社会福祉学科"]
+        official_source_keywords: ["사회복지사 자격증", "social work Korea", "사회복지학과"]
+      Japan:
+        official_bodies_or_regulators: ["social welfare certification authority", "Ministry of Health, Labour and Welfare", "目标大学社会福祉学科"]
+        official_source_keywords: ["社会福祉士", "social worker Japan", "社会福祉学科"]
+      United Kingdom:
+        official_bodies_or_regulators: ["Social Work England", "Scottish Social Services Council", "Social Care Wales", "Northern Ireland Social Care Council"]
+        official_source_keywords: ["Social Work England approved course", "social work registration UK"]
+      United States:
+        official_bodies_or_regulators: ["Council on Social Work Education", "state social work board"]
+        official_source_keywords: ["CSWE accredited BSW", "state social work board licensure"]
+      Australia:
+        official_bodies_or_regulators: ["Australian Association of Social Workers", "目标大学 social work course"]
+        official_source_keywords: ["AASW accredited social work", "social work field education Australia"]
+
+answer_requirements:
+  - "明确区分本科专业学习、认证课程、执业注册、签证/移民和就业。"
+  - "受监管路径必须输出官方核查清单：机构、认证状态、临床/实习、考试/注册路径、适用年份。"
+  - "把未核查路径标注为不确定。"
+  - "不得承诺职业资格、执业资格、就业、薪资、签证或移民结果。"

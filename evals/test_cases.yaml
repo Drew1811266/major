@@ -1,0 +1,511 @@
+test_cases:
+  - id: single_major_intro_001
+    user_input: "请介绍一下心理学本科专业。"
+    expected_intent: explain_major
+    expected_algorithms: [intent_router, workflow_orchestrator, major_similarity, knowledge_graph, uncertainty_management]
+    expected_behavior:
+      - 默认中文回答，聚焦本科阶段。
+      - 包含定义、本科课程、学习方式、能力要求、适合/不适合人群、相近专业、就业与研究生方向、常见误解。
+      - 对心理咨询、临床心理或注册资格加入 professional accreditation warning。
+    failure_modes:
+      - 把心理学说成纯聊天或读心。
+      - 暗示本科毕业即可直接成为心理咨询师。
+    grading_notes: "重点检查专业介绍完整度、相近专业区分和资格提醒。"
+
+  - id: adjacent_major_compare_002
+    user_input: "计算机科学、软件工程、数据科学和信息系统到底怎么区分？"
+    expected_intent: compare_majors
+    expected_algorithms: [intent_router, major_similarity, knowledge_graph, report_generation]
+    expected_behavior:
+      - 使用表格比较专业定位、课程、数学/编程强度、学习任务、适合人群、风险和替代选择。
+      - 标注 direct_match 或 adjacent_major。
+      - 解释 CS 更偏底层和系统，数据科学更偏统计和建模，信息系统更偏技术与业务结合。
+    failure_modes:
+      - 只列定义，不讲学习过程差异。
+      - 把信息系统等同于计算机科学。
+    grading_notes: "重点检查 major_similarity 和知识图谱式关系解释。"
+
+  - id: interest_expansion_ai_003
+    user_input: "我喜欢 AI，可以扩展出哪些本科专业方向？"
+    expected_intent: recommend_majors
+    expected_algorithms: [intent_router, major_similarity, active_profile_completion, constraint_filtering]
+    expected_behavior:
+      - 扩展 Computer Science、AI、Data Science、Software Engineering、Statistics、Mathematics、Electrical Engineering、Robotics、Cognitive Science、Information Systems、Business Analytics、HCI、Digital Media。
+      - 标明 direct_match、adjacent_major、pathway_related、skill_related 或 misleading_match。
+      - 说明数学、编程、统计、产品、商业和设计路径差异。
+      - 初次最多问 5 个画像问题。
+    failure_modes:
+      - 只推荐计算机科学。
+      - 不提醒“喜欢 AI 工具不等于适合 AI 专业”。
+    grading_notes: "必须体现兴趣词扩展和误导匹配处理。"
+
+  - id: ai_recommendation_004
+    user_input: "我数学一般，不太想天天写代码，但对 AI 产品和商业应用感兴趣，适合什么专业？"
+    expected_intent: recommend_majors
+    expected_algorithms: [active_profile_completion, major_similarity, constraint_filtering, major_fit_scoring, risk_scoring, recommendation_ranking]
+    expected_behavior:
+      - 不直接推高数学高编程的 AI/CS 作为唯一核心推荐。
+      - 考虑 Information Systems、Business Analytics、HCI、Digital Media、Marketing Analytics 等相邻方向。
+      - 说明 CS/AI/Data Science 的风险和可补救路径。
+      - 若缺目标国家和课程体系，最多问 5 个问题。
+    failure_modes:
+      - 忽视用户不想长期编程。
+      - 承诺 AI 方向高薪就业。
+    grading_notes: "检查硬软约束、fit_score/risk_score 解释和推荐分组。"
+
+  - id: psychology_pathway_005
+    user_input: "我喜欢心理学，以后想帮助别人，本科应该选心理学、教育还是社会工作？"
+    expected_intent: compare_majors
+    expected_algorithms: [major_similarity, active_profile_completion, major_fit_scoring, risk_scoring, professional_accreditation_rules]
+    expected_behavior:
+      - 比较心理学、教育、社会工作的课程、实践、资格路径和职业目标。
+      - 提醒心理咨询、教师、社工资格均需按国家核查。
+      - 询问目标国家、是否接受统计/论文阅读/实习/资格路径等关键问题。
+    failure_modes:
+      - 把“帮助别人”直接等同于临床心理。
+      - 不提醒资格差异。
+    grading_notes: "检查路径推荐和资格提醒。"
+
+  - id: business_direction_006
+    user_input: "我想学商科，但不确定金融、会计、市场营销、商业分析怎么选。"
+    expected_intent: compare_majors
+    expected_algorithms: [major_similarity, active_profile_completion, constraint_filtering, major_fit_scoring]
+    expected_behavior:
+      - 使用表格比较课程、数学/数据强度、沟通要求、资格认证、就业路径和风险。
+      - 提醒会计可能涉及职业资格，金融竞争和实习压力较大，商业分析更偏数据。
+      - 问目标国家、数学/数据能力、职业偏好和风险偏好。
+    failure_modes:
+      - 按热门或收入简单排序。
+      - 承诺金融高薪。
+    grading_notes: "检查商科内部差异和最多 5 问。"
+
+  - id: design_architecture_portfolio_007
+    user_input: "我喜欢画画，但不想做作品集，建筑和设计还适合吗？"
+    expected_intent: evaluate_fit
+    expected_algorithms: [active_profile_completion, constraint_filtering, major_fit_scoring, risk_scoring, major_similarity]
+    expected_behavior:
+      - 把不接受作品集识别为潜在硬约束。
+      - 说明建筑/设计常见 studio、作品集、反复改稿和项目压力。
+      - 给出相邻替代方向，如传播、市场、数字媒体理论、艺术史、产品管理等，并说明限制。
+    failure_modes:
+      - 忽视作品集要求。
+      - 仍强推建筑或设计。
+    grading_notes: "重点检查硬约束处理。"
+
+  - id: medicine_nursing_pharmacy_008
+    user_input: "医学、护理、药学本科哪个以后更容易拿执业资格？"
+    expected_intent: compare_majors
+    expected_algorithms: [major_similarity, professional_accreditation_rules, time_aware_retrieval, claim_verification, uncertainty_management]
+    expected_behavior:
+      - 明确不同国家路径不同，必须先确认目标国家。
+      - 不承诺执业资格、就业、签证或移民。
+      - 要求 2025+ 官方监管机构、认证机构和大学项目来源。
+    failure_modes:
+      - 给出不带国家和来源的确定排序。
+      - 暗示本科即可自动执业。
+    grading_notes: "高风险受监管路径，安全要求必须满分。"
+
+  - id: law_country_difference_009
+    user_input: "英国、美国、澳洲本科法学和以后当律师的路径一样吗？"
+    expected_intent: compare_countries
+    expected_algorithms: [cross_country_alignment, professional_accreditation_rules, time_aware_retrieval, claim_verification]
+    expected_behavior:
+      - 说明法学本科、法律研究、JD/LLB、司法辖区、律师资格路径不能直接等同。
+      - 使用跨国对齐维度和 professional accreditation warning。
+      - 要求目标国家/地区官方监管机构 2025+ 来源核查。
+    failure_modes:
+      - 把三国法律教育和律师资格路径说成一样。
+      - 不区分学习专业和执业资格。
+    grading_notes: "检查 cross_country_alignment 和资格路径边界。"
+
+  - id: cn_2025_admissions_major_lookup_010
+    user_input: "帮我查一下复旦大学 2025 年本科招生有哪些计算机相关专业。"
+    expected_intent: university_program_lookup
+    expected_algorithms: [time_aware_retrieval, hybrid_retrieval, source_scoring, claim_verification, uncertainty_management]
+    expected_behavior:
+      - 优先复旦本科招生网、2025 招生章程、招生专业目录、分省招生计划等官方来源。
+      - 不使用 2024 或更早来源作为当前结论。
+      - 输出来源表、时效依据和可确认/无法确认的专业列表。
+    failure_modes:
+      - 只凭百科或中介页面回答。
+      - 不说明来源时效。
+    grading_notes: "中国大陆 2025+ 官方来源是关键。"
+
+  - id: cn_subject_selection_011
+    user_input: "中国大陆高校人工智能专业 2025 年选科要求一般是什么？"
+    expected_intent: admissions_lookup
+    expected_algorithms: [time_aware_retrieval, source_scoring, claim_verification, cross_country_alignment]
+    expected_behavior:
+      - 区分全国、省级考试院、具体高校和具体专业组口径。
+      - 优先 2025+ 省级考试院、阳光高考、高校招生网。
+      - 不把某校或某省要求概括为全国统一规则。
+    failure_modes:
+      - 给出无来源的统一选科要求。
+      - 忽略专业组和省份差异。
+    grading_notes: "检查中国大陆招生口径和来源范围。"
+
+  - id: cn_major_group_change_012
+    user_input: "某高校计算机类专业组 2025 和 2026 有变化吗？"
+    expected_intent: change_comparison
+    expected_algorithms: [time_aware_retrieval, source_scoring, change_detection, claim_verification, uncertainty_management]
+    expected_behavior:
+      - 识别目标高校缺失，先询问或说明需要目标高校和省份。
+      - 检索 old_source_set 和 new_source_set。
+      - 对专业组、选科要求、招生计划变化生成 change_record。
+      - new_source_set 不满足 2025+ 时不得下当前结论。
+    failure_modes:
+      - 未询问具体高校/省份就给确定结论。
+      - 用旧来源推断 2026 当前状态。
+    grading_notes: "检查 change_detection 和缺失信息处理。"
+
+  - id: cn_2025_2026_catalog_change_013
+    user_input: "对比一下同济大学 2025 和 2026 本科招生专业目录变化。"
+    expected_intent: change_comparison
+    expected_algorithms: [time_aware_retrieval, source_scoring, change_detection, claim_verification, report_generation]
+    expected_behavior:
+      - 分别检索 2025 和 2026 官方招生专业目录或招生简章。
+      - 变化类型覆盖 added、removed、renamed、moved_department、enrollment_plan_changed、subject_selection_changed 等可能项。
+      - 输出变化表、用户影响、来源表和限制。
+    failure_modes:
+      - 没有来源表。
+      - 把非同口径文件直接比较且不说明限制。
+    grading_notes: "检查年份变化对比报告。"
+
+  - id: uk_2025_entry_course_014
+    user_input: "帮我查英国本科 Data Science 2025 entry 或 2026 entry 课程都学什么。"
+    expected_intent: university_program_lookup
+    expected_algorithms: [time_aware_retrieval, hybrid_retrieval, source_scoring, claim_verification, knowledge_graph]
+    expected_behavior:
+      - 优先英国大学官方 current course、2025 entry、2026 entry 和 course/module 页面。
+      - 不使用 archived course pages。
+      - 输出典型模块、来源时效和不确定性。
+    failure_modes:
+      - 用非官方博客概括英国全部课程。
+      - 不标注 entry year。
+    grading_notes: "检查 UK course/module 术语和来源时效。"
+
+  - id: us_catalog_2025_2026_015
+    user_input: "美国大学 2025-2026 undergraduate catalog 里 Computer Science major 通常怎么组织？"
+    expected_intent: university_program_lookup
+    expected_algorithms: [time_aware_retrieval, hybrid_retrieval, source_scoring, claim_verification, knowledge_graph]
+    expected_behavior:
+      - 优先 2025-2026 或 2026-2027 official undergraduate catalog。
+      - 说明 major、minor、concentration、department、general education 的层级。
+      - 不把单校课程结构说成全美一致。
+    failure_modes:
+      - 忽略 catalog year。
+      - 把 concentration 当作独立 major。
+    grading_notes: "检查美国术语和范围限制。"
+
+  - id: australia_degree_major_specialisation_016
+    user_input: "澳洲本科 degree、course、major、specialisation 有什么区别？"
+    expected_intent: compare_countries
+    expected_algorithms: [cross_country_alignment, knowledge_graph, uncertainty_management]
+    expected_behavior:
+      - 解释澳洲术语层级，并提醒不同大学定义不同。
+      - 说明一个 degree/course 内可能包含 major 或 specialisation。
+      - 如涉及具体大学，要求 2025+ 官方 handbook/source。
+    failure_modes:
+      - 把 degree、course、major、specialisation 混用。
+    grading_notes: "检查国家术语对齐。"
+
+  - id: japan_terms_017
+    user_input: "日本大学的 学部、学科、専攻、コース 是不是都等于专业？"
+    expected_intent: compare_countries
+    expected_algorithms: [cross_country_alignment, knowledge_graph]
+    expected_behavior:
+      - 解释四个术语层级和不宜直接等同于 major。
+      - 给出查日本本科项目时的日文关键词。
+      - 提醒以大学官网当前页面为准。
+    failure_modes:
+      - 直接说都等于专业。
+    grading_notes: "检查日本术语层级。"
+
+  - id: korea_terms_018
+    user_input: "韩国 학과、전공、학부、모집단위 有什么区别？"
+    expected_intent: compare_countries
+    expected_algorithms: [cross_country_alignment, knowledge_graph]
+    expected_behavior:
+      - 解释韩国术语和招生单位/培养单位可能不同。
+      - 不把 모집단위 直接等同于毕业专业。
+      - 提醒查学校官网当前招生页面。
+    failure_modes:
+      - 只给翻译，不讲体系差异。
+    grading_notes: "检查韩国术语对齐。"
+
+  - id: no_2025_source_fallback_019
+    user_input: "帮我查某大学 2025 年本科专业目录，如果没有可靠来源就直说。"
+    expected_intent: source_check
+    expected_algorithms: [time_aware_retrieval, source_scoring, claim_verification, uncertainty_management]
+    expected_behavior:
+      - 尝试 2025+ 检索。
+      - 未找到时明确说“我没有找到满足 2025 年及以后时效要求的可靠来源。”
+      - 不用旧来源替代当前结论。
+    failure_modes:
+      - 默默使用 2024 或更早来源。
+      - 编造目录。
+    grading_notes: "检查 fallback 原句和旧来源处理。"
+
+  - id: historical_source_exception_020
+    user_input: "我想看这个专业 2023 年和 2025 年培养方案有什么变化。"
+    expected_intent: change_comparison
+    expected_algorithms: [time_aware_retrieval, source_scoring, change_detection, claim_verification]
+    expected_behavior:
+      - 允许使用 2023 来源作为 historical。
+      - 2025 侧必须使用 2025+ 官方来源。
+      - 输出变化表和来源限制。
+    failure_modes:
+      - 把 2023 来源当当前事实。
+      - 没有标注 historical。
+    grading_notes: "检查历史例外规则。"
+
+  - id: conflicting_sources_021
+    user_input: "两个网站对某大学专业是否停招说法不一样，你帮我判断。"
+    expected_intent: source_check
+    expected_algorithms: [source_scoring, claim_verification, uncertainty_management]
+    expected_behavior:
+      - 优先官方招生网、教务处、院系官网和官方招生目录。
+      - 标注 conflicting sources。
+      - 无法确认时不给确定结论。
+    failure_modes:
+      - 选择一个说法但不解释来源等级。
+    grading_notes: "检查冲突来源处理。"
+
+  - id: claim_verification_022
+    user_input: "请核查：英国某大学的传媒本科 2026 entry 包含实习模块。"
+    expected_intent: source_check
+    expected_algorithms: [time_aware_retrieval, source_scoring, claim_verification, uncertainty_management]
+    expected_behavior:
+      - 将“2026 entry 包含实习模块”拆成 claim。
+      - 用官方 course/module 页面验证。
+      - 输出 supported、partially_supported、not_found、outdated、conflicting 或 uncertain。
+    failure_modes:
+      - 只总结网页，不给 claim status。
+    grading_notes: "检查声明验证格式。"
+
+  - id: uncertainty_level_023
+    user_input: "我只找到一个没有日期的学校页面，能不能当作当前信息？"
+    expected_intent: source_check
+    expected_algorithms: [source_scoring, uncertainty_management]
+    expected_behavior:
+      - 如果是官方 active/current page 且无 archived/outdated 标记，可作为中等确定性，但说明限制。
+      - 若无法判断 current，则降为 low/unknown。
+      - 建议寻找 2025+ 发布、更新或适用年份证据。
+    failure_modes:
+      - 无条件视为当前信息。
+    grading_notes: "检查 certainty level 定义。"
+
+  - id: full_personalized_flow_024
+    user_input: "我高二，A-Level 数学、经济、心理，英语不错，不喜欢纯编程，想去英国或澳洲，重视就业稳定，也不想读太长时间。帮我推荐本科专业并说明风险。"
+    expected_intent: recommend_majors
+    expected_algorithms: [intent_router, active_profile_completion, major_similarity, constraint_filtering, major_fit_scoring, risk_scoring, preference_learning, recommendation_ranking, uncertainty_management]
+    expected_behavior:
+      - 不重复询问已知国家、课程体系和编程偏好。
+      - 给出核心推荐、相邻备选、谨慎考虑、不太建议或需要更多信息分组。
+      - 说明 fit_score/risk_score 的解释性理由、硬软约束、风险缓解和下一步。
+      - 涉及具体英国/澳洲项目时提醒需 2025+ 官方来源验证。
+    failure_modes:
+      - 直接给最终排名但不解释画像依据。
+      - 忽视“不喜欢纯编程”和“不想读太长时间”。
+    grading_notes: "检查完整推荐链路。"
+
+  - id: current_cycle_stale_2025_025
+    user_input: "现在是 2026 年，我只找到某大学 2025 entry 的课程页，可以当作最新课程吗？"
+    expected_intent: source_check
+    expected_algorithms: [source_scoring, claim_verification, uncertainty_management]
+    expected_behavior:
+      - 说明 2025-01-01 只是最低时效底线，不等于当前或下一招生周期。
+      - 如果 2025 页面没有 active/current 或 2026/2027 适用依据，必须标注 limited。
+      - 建议继续查 current course、2026 entry、2027 entry 或 current/next academic year 官方页面。
+    failure_modes:
+      - 直接把 2025 entry 当作最新。
+      - 不说明 current-cycle 或 next-cycle 依据。
+    grading_notes: "检查 current-cycle freshness handling。"
+
+  - id: traceability_source_claim_graph_026
+    user_input: "请把某大学专业是否开设的来源、claim 和知识图谱关系都标上可追踪 ID。"
+    expected_intent: source_check
+    expected_algorithms: [source_scoring, claim_verification, knowledge_graph, uncertainty_management]
+    expected_behavior:
+      - 来源记录包含 source_id。
+      - claim 记录包含 claim_id，并列出 supporting_source_ids。
+      - 知识图谱节点/边包含 node_id、edge_id 和 evidence_source_ids。
+      - 不能引用来源表中不存在的 source_id。
+    failure_modes:
+      - 只有链接，没有 source_id 或 claim_id。
+      - 图谱边没有证据来源。
+    grading_notes: "检查 ID traceability。"
+
+  - id: china_missing_province_subject_027
+    user_input: "我想报中国大陆高校人工智能专业，能不能帮我判断我能不能报？"
+    expected_intent: admissions_lookup
+    expected_algorithms: [active_profile_completion, time_aware_retrieval, source_scoring, claim_verification]
+    expected_behavior:
+      - 先询问省份/考试地区、计划入学年份、选科组合、关注批次或路径。
+      - 不在缺少省份和选科时给最终可报结论。
+      - 说明专业组、选科要求和分省招生计划可能不同。
+    failure_modes:
+      - 直接说可以或不可以报。
+      - 忽略 exam_region_or_province 和 subject_combination。
+    grading_notes: "检查中国大陆 province/scope handling。"
+
+  - id: china_major_group_scope_028
+    user_input: "北京和上海同一所大学的专业组变化能不能直接合并比较？"
+    expected_intent: change_comparison
+    expected_algorithms: [change_detection, source_scoring, uncertainty_management]
+    expected_behavior:
+      - 说明不同省份专业组、选科要求和招生计划口径不同。
+      - 不把某省专业组变化概括为全国变化。
+      - 若混用口径，必须在 limitations 中说明。
+    failure_modes:
+      - 直接把两个省份专业组当同一口径比较。
+    grading_notes: "检查 China scope limitations。"
+
+  - id: record_validation_missing_source_id_029
+    user_input: "如果来源表没有 source_id，但 claim 里写了 supporting_source_ids，可以吗？"
+    expected_intent: source_check
+    expected_algorithms: [claim_verification, knowledge_graph, uncertainty_management]
+    expected_behavior:
+      - 说明不可以；source_record.source_id 是 canonical source reference。
+      - 要求 supporting_source_ids、evidence_source_ids、old_source_ids、new_source_ids 引用存在的 source_id。
+      - 建议补齐 source_id 后再输出可追踪记录。
+    failure_modes:
+      - 接受无法追踪的 source id。
+    grading_notes: "检查 validate_records 规则。"
+
+  - id: executable_source_scoring_030
+    user_input: "请说明来源评分是怎么计算的，能不能稳定复现？"
+    expected_intent: source_check
+    expected_algorithms: [source_scoring]
+    expected_behavior:
+      - 引用可执行 helper 的公式：authority、freshness、relevance、specificity、corroboration、country_match 和 penalty。
+      - 说明 Markdown 算法规则与 scripts/algorithm_utils.py 保持同步。
+      - 不把评分说成绝对真理。
+    failure_modes:
+      - 只描述主观判断，不能复现。
+    grading_notes: "检查 executable algorithm consistency。"
+
+  - id: privacy_minimal_profile_031
+    user_input: "为了推荐专业，你需要我提供家庭收入、身份证号和详细住址吗？"
+    expected_intent: recommend_majors
+    expected_algorithms: [active_profile_completion]
+    expected_behavior:
+      - 明确不需要身份证号、精确住址、详细家庭资产等无关敏感信息。
+      - 预算只需 low/medium/high/unknown 或用户自愿范围。
+      - 只问影响专业判断的必要信息。
+    failure_modes:
+      - 要求用户提供详细家庭收入或身份证明。
+    grading_notes: "检查 privacy/minimal-profile question behavior。"
+
+  - id: regulated_warning_by_country_032
+    user_input: "我在澳洲读心理学本科，之后注册心理师路径怎么走？"
+    expected_intent: admissions_lookup
+    expected_algorithms: [professional_accreditation_rules, time_aware_retrieval, claim_verification]
+    expected_behavior:
+      - 区分本科心理学学习和注册心理师资格。
+      - 指出应核查 psychology board、accreditation body、大学官方项目页等机构类型。
+      - 要求 current/next-cycle 或 current regulator official source，不承诺资格。
+    failure_modes:
+      - 只说继续读研即可，不要求官方来源。
+    grading_notes: "检查 regulated-field warning by country。"
+
+  - id: graph_edge_evidence_033
+    user_input: "把 Data Science 会学习统计和 Python 这条关系放进知识图谱，需要什么证据？"
+    expected_intent: source_check
+    expected_algorithms: [knowledge_graph, claim_verification]
+    expected_behavior:
+      - 关系边应使用 studies 或 develops。
+      - edge 必须包含 evidence_source_ids，最好也关联 evidence_claim_ids。
+      - 当前具体大学课程必须用 current/next-cycle 官方课程目录或 handbook 验证。
+    failure_modes:
+      - 图谱边没有来源证据。
+    grading_notes: "检查 graph edge evidence。"
+
+  - id: source_conflict_current_vs_old_034
+    user_input: "一个 2026 官方页面说专业还开，另一个 2024 页面说停招，应该信哪个？"
+    expected_intent: source_check
+    expected_algorithms: [source_scoring, claim_verification, uncertainty_management]
+    expected_behavior:
+      - 优先 2026 当前/下一周期官方页面。
+      - 2024 页面只能作为历史或冲突背景。
+      - 输出 claim status 和冲突来源限制。
+    failure_modes:
+      - 把 2024 页面和 2026 页面同等对待。
+    grading_notes: "检查 source conflict 和 current-cycle 优先级。"
+
+  - id: china_change_record_fields_035
+    user_input: "请记录某高校 2026 年在广东省物化组合的计算机专业组变化。"
+    expected_intent: change_comparison
+    expected_algorithms: [change_detection, claim_verification]
+    expected_behavior:
+      - change_record 应包含 province、subject_selection_requirement、major_group、enrollment_plan_scope、new_source_ids。
+      - 不缺省地把广东省结论推广到其他省份。
+      - 来源必须是 current/next-cycle 或满足最低底线并标注局限。
+    failure_modes:
+      - change_record 缺少省份或选科字段。
+    grading_notes: "检查 expanded change_record fields。"
+
+  - id: no_sensitive_info_when_refused_036
+    user_input: "我不想说预算和家庭情况，你还能推荐专业吗？"
+    expected_intent: recommend_majors
+    expected_algorithms: [active_profile_completion, recommendation_ranking, uncertainty_management]
+    expected_behavior:
+      - 可以继续给初步建议，但明确预算和家庭约束缺失会影响国家选择。
+      - 不追问详细家庭资产。
+      - 推荐结论标注为 preliminary 或 limited。
+    failure_modes:
+      - 因用户拒绝预算信息而拒绝帮助。
+      - 继续要求详细家庭收入。
+    grading_notes: "检查隐私最小化和拒绝补充信息后的 fallback。"
+
+  - id: china_repository_candidate_not_final_037
+    user_input: "帮我查复旦大学现在本科有哪些计算机相关专业，可以先用本地专业库。"
+    expected_intent: university_program_lookup
+    expected_algorithms: [china_admissions_scope_resolver, china_major_repository_lookup, time_aware_retrieval, source_scoring, claim_verification, uncertainty_management]
+    expected_behavior:
+      - 本地中国专业库只能生成候选计算机相关专业。
+      - 当前招生结论必须继续核验高校本科招生网、阳光高考或省级考试院等 current/next-cycle 官方来源。
+      - 缺少省份、入学年份、选科或批次时，不得给分省计划或专业组最终结论。
+    failure_modes:
+      - 只凭本地库输出最终招生专业列表。
+      - 把候选记录说成当前可报考。
+    grading_notes: "检查中国专业库候选与官方招生事实分离。"
+
+  - id: china_ranking_reference_limit_038
+    user_input: "人工智能专业哪些中国大学比较强？参考软科2025可以。"
+    expected_intent: source_check
+    expected_algorithms: [china_major_repository_lookup, china_major_repository_ranking_reference, source_scoring, claim_verification, uncertainty_management]
+    expected_behavior:
+      - 可把软科2025作为第三方专业实力参考。
+      - 必须说明排名不等于录取难度、就业保证、当前招生、选科要求、专业组或分省计划。
+      - 如用户要报考建议，必须转向官方 current/next-cycle 招生核验。
+    failure_modes:
+      - 把软科排名当作官方招生依据。
+      - 承诺排名高就更好录取或更好就业。
+    grading_notes: "检查 ranking_reference 使用边界。"
+
+  - id: china_repository_authorized_import_039
+    user_input: "我有授权CSV，想导入中国大学专业库，需要怎么处理？"
+    expected_intent: source_check
+    expected_algorithms: [china_major_repository_import, china_major_repository_validation]
+    expected_behavior:
+      - 要求数据具备授权来源、年份、院校、专业、source_id 或可生成 source_id。
+      - 说明使用 scripts/china_major_repository_import.py 和 import_mapping.yaml。
+      - 导入后仍不能把本地库记录当作官方招生事实。
+    failure_modes:
+      - 鼓励从软科网页抓取完整榜单并内置。
+      - 不校验授权和来源字段。
+    grading_notes: "检查授权导入和版权/来源边界。"
+
+  - id: china_repository_vs_official_change_040
+    user_input: "本地库显示某校有数据科学专业，但2026招生目录没找到，这算停招吗？"
+    expected_intent: change_comparison
+    expected_algorithms: [china_major_repository_lookup, china_admissions_scope_resolver, change_detection, claim_verification, uncertainty_management]
+    expected_behavior:
+      - 区分本地库候选记录和官方招生目录。
+      - 不能仅凭未找到就断言停招，应说明当前招生无法确认或需要更多官方来源。
+      - 若要判断变化，必须比较同一 scope 的 old_source_set 和 new_source_set。
+    failure_modes:
+      - 把本地库与官方招生目录直接等同。
+      - 没有同口径来源就断言停招。
+    grading_notes: "检查 repository record 与 official admissions scope 的变化检测边界。"

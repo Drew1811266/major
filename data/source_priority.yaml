@@ -1,0 +1,136 @@
+freshness_policy:
+  default_min_date: "2025-01-01"
+  default_min_year: 2025
+  minimum_freshness_floor: "2025-01-01"
+  rule: >
+    For current university major, admissions, course, tuition, deadline,
+    accreditation, employment, visa, work-policy, and policy information, major
+    must first seek current-cycle, next-cycle, current academic-year, or next
+    academic-year official sources. 2025-01-01 is only the minimum freshness
+    floor, not proof that a source is current.
+  currentness_priority:
+    - current_calendar_year_official_source
+    - current_admissions_cycle
+    - next_admissions_cycle
+    - current_academic_year
+    - next_academic_year
+    - active_current_official_programme_page
+    - 2025_or_later_source_with_explicit_applicability
+  acceptable_freshness_conditions:
+    - published_on_or_after_2025_01_01
+    - updated_on_or_after_2025_01_01
+    - applicable_to_2025_or_later_admissions_cycle
+    - applicable_to_2025_or_later_entry_year
+    - applicable_to_2025_2026_or_later_academic_year
+    - current_official_page_active_not_archived
+  fallback_policy:
+    no_current_or_next_cycle_sources_found: >
+      Say that current or next-cycle sources were not found. If 2025-or-later
+      sources exist but are not clearly current, label them as limited and do not
+      present them as latest.
+    no_2025_plus_sources_found: >
+      Say "我没有找到满足 2025 年及以后时效要求的可靠来源。"
+      Do not use pre-2025 sources as current evidence unless the user explicitly
+      accepts historical background.
+    historical_sources:
+      label_as: historical_or_outdated
+      never_present_as_current: true
+  stale_2025_source_handling:
+    rule: >
+      If the current date is later than the 2025 admissions cycle and a newer
+      current/next-cycle official source should exist, a 2025 source must be
+      marked as limited or historical context unless it explicitly remains the
+      active/current official page.
+    user_visible_note: "目前只找到 2025 年及以后但未明确适用于当前/下一招生周期的来源，因此不能直接视为最新结论。"
+
+source_priority:
+  high:
+    - university_official
+    - admissions_official
+    - course_catalog
+    - government
+    - exam_authority
+    - official_application_platform
+    - accreditation_body
+  medium_high:
+    - department_official
+    - labor_statistics
+    - industry_association
+  medium:
+    - education_platform
+    - ranking_reference
+    - local_repository_record
+    - media
+  low:
+    - forum
+    - blog
+    - other
+
+china_priority_sources:
+  - university_undergraduate_admissions_office
+  - university_official_admissions_site
+  - university_academic_affairs_office
+  - college_or_department_official_site
+  - Ministry_of_Education
+  - provincial_exam_authority
+  - Sunshine_College_Entrance_Examination_Platform
+  - official_2025_admissions_regulations
+  - official_2025_admissions_brochure
+  - official_2025_major_catalog
+  - official_2025_enrollment_plan
+  - official_2025_subject_selection_requirements
+  - official_2025_professional_group
+  - official_2025_training_programme
+
+china_default_keywords:
+  - "2026 本科招生章程"
+  - "2026 本科招生简章"
+  - "2026 招生专业目录"
+  - "2026 分省招生计划"
+  - "2026 选考科目要求"
+  - "2026 专业组"
+  - "2026 培养方案"
+  - "2025 本科招生章程"
+  - "2025 本科招生简章"
+  - "2025 招生专业目录"
+  - "2025 分省招生计划"
+  - "2025 选考科目要求"
+  - "2025 专业组"
+  - "2025 培养方案"
+  - "2025 普通本科招生"
+  - "高校本科招生网"
+  - "教育部"
+  - "阳光高考"
+  - "省级考试院"
+  - "高校教务处"
+  - "院系官网"
+  - "current 本科招生"
+  - "最新 本科招生"
+
+international_default_keywords:
+  - "2026 entry"
+  - "2027 entry"
+  - "current undergraduate course"
+  - "current undergraduate programme"
+  - "2026-2027 undergraduate catalog"
+  - "2027-2028 undergraduate catalog"
+  - "2025 entry"
+  - "2025-2026 undergraduate catalog"
+  - "latest admissions requirements"
+  - "latest tuition fees"
+  - "latest course handbook"
+  - "current course catalog"
+  - "current course handbook"
+
+rejection_reasons:
+  - pre_2025_without_2025_applicability
+  - archived_page
+  - outdated_page
+  - old_admissions_page
+  - no_publication_or_update_date_and_not_current
+  - unofficial_without_cross_validation
+  - not_relevant_to_target_country
+  - not_relevant_to_target_university
+  - not_relevant_to_target_major
+  - ranking_reference_used_as_admissions_evidence
+  - local_repository_record_without_official_verification

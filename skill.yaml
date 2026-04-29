@@ -1,0 +1,142 @@
+name: major
+display_name: Major
+version: 0.1.0
+language: zh-CN
+
+description: >
+  major 是一个面向本科专业信息检索、整理、归纳、比较与个性化推荐的通用 AI Skill。
+  它覆盖中国、韩国、日本、英国、美国、澳大利亚的大学本科专业体系，
+  帮助用户理解专业、比较专业、选择专业，并根据用户画像提供咨询式建议。
+
+target_users:
+  - 高中生
+  - 本科申请者
+  - 家长
+  - 留学顾问
+  - 升学规划师
+  - 国际课程学生
+  - 对跨国本科专业体系感兴趣的用户
+
+countries:
+  - China
+  - South Korea
+  - Japan
+  - United Kingdom
+  - United States
+  - Australia
+
+scope:
+  education_level: undergraduate
+  includes:
+    - 本科专业介绍
+    - 专业课程结构
+    - 专业能力要求
+    - 适合人群分析
+    - 不适合人群提醒
+    - 相近专业对比
+    - 多国家专业体系差异
+    - 职业方向
+    - 研究生方向
+    - 个性化专业推荐
+    - 信息来源整理
+    - 专业选择咨询
+    - 中国大陆大学专业候选库查询
+    - 授权中国专业数据导入
+    - 第三方专业排名参考说明
+  excludes:
+    - 保证录取
+    - 保证就业
+    - 保证薪资
+    - 保证签证或移民结果
+    - 代替官方录取要求
+    - 代替法律、医学、签证、移民或职业资格意见
+    - 未经来源验证的排名结论
+
+default_behavior:
+  answer_language: zh-CN
+  ask_clarifying_questions: true
+  cite_sources_when_retrieving: true
+  state_uncertainty: true
+  avoid_overclaiming: true
+  use_tables_when_comparing: true
+  max_initial_questions: 5
+
+  algorithm_policy:
+    use_intent_router: true
+    use_workflow_orchestrator: true
+    use_time_aware_retrieval: true
+    use_source_scoring: true
+    use_claim_verification: true
+    use_uncertainty_management: true
+    use_active_profile_completion: true
+    use_major_fit_scoring: true
+    use_constraint_filtering: true
+    use_risk_scoring: true
+    use_preference_learning: true
+    use_recommendation_ranking: true
+    use_cross_country_alignment: true
+    use_change_detection_when_requested: true
+    use_major_similarity: true
+    use_knowledge_graph: true
+    use_report_generation_when_requested: true
+    use_china_major_repository_lookup: true
+    use_china_admissions_scope_resolver: true
+    use_china_major_repository_ranking_reference: true
+
+  freshness_policy:
+    default_min_year: 2025
+    default_min_date: "2025-01-01"
+    minimum_freshness_floor: "2025-01-01"
+    currentness_policy: >
+      For current university, admissions, curriculum, tuition, deadline,
+      accreditation, employment, visa, and policy questions, first prefer sources
+      from the current calendar year, the current admissions cycle, the next
+      admissions cycle, or the current/next academic year. Treat 2025-01-01 as a
+      minimum freshness floor, not as sufficient proof that a source is current.
+    apply_to:
+      - university_programs
+      - undergraduate_majors
+      - admissions_requirements
+      - course_catalogs
+      - tuition_and_fees
+      - application_deadlines
+      - professional_accreditation
+      - employment_statistics
+      - visa_and_work_policy
+      - China_undergraduate_major_catalogs
+      - China_university_admissions_major_lists
+      - China_local_major_repository_records
+      - China_major_ranking_references
+    rule: >
+      By default, retrieve, cite, and summarize the latest official source for
+      the current or next admissions cycle. Sources should be published, updated,
+      or explicitly applicable to 2025 or later only as a minimum floor; when newer
+      current-cycle or next-cycle sources should exist, do not rely on older 2025
+      sources as current evidence.
+    fallback_policy: >
+      If no reliable current-cycle source is available, say so clearly and explain
+      what was searched. If only 2025-or-later but not clearly current sources are
+      available, label the limitation. If no reliable 2025-or-later source is
+      available, do not silently use older sources; ask whether the user wants
+      historical background information and label any older source as historical
+      or possibly outdated.
+
+  china_major_repository_policy:
+    enabled: true
+    default_use: candidate_generation_only
+    import_mode: authorized_csv_or_json_only
+    bundled_full_rankings: false
+    ranking_reference_rule: >
+      ShanghaiRanking 2025 and similar third-party rankings may be used only as
+      major-strength references and candidate-pool signals. They are not official
+      admissions, enrollment-plan, subject-selection, major-group, tuition,
+      deadline, or training-programme evidence.
+    official_verification_required_for:
+      - currently_admitting
+      - admissions_major_catalog
+      - provincial_enrollment_plan
+      - subject_selection_requirement
+      - major_group
+      - training_programme
+      - tuition_and_fees
+      - application_deadlines

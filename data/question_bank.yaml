@@ -1,0 +1,345 @@
+general_recommendation:
+  - id: general_country_001
+    question: "你主要考虑哪些国家？中国、韩国、日本、英国、美国、澳大利亚里有没有优先级？"
+    target_profile_field: target_countries
+    applicable_intents: [recommend_majors, evaluate_fit, compare_majors]
+    decision_impact: high
+    burden_level: low
+    examples_of_when_to_ask:
+      - "用户要求推荐专业但没有目标国家。"
+    examples_of_when_not_to_ask:
+      - "用户已经明确只看英国或只看中国大陆。"
+  - id: general_stage_002
+    question: "你现在是什么年级或课程体系？例如国内普高、IB、A-Level、AP、国际学校、日本高中、韩国高中等。"
+    target_profile_field: education_stage
+    applicable_intents: [recommend_majors, evaluate_fit, admissions_lookup]
+    decision_impact: high
+    burden_level: low
+    examples_of_when_to_ask:
+      - "用户没有说明申请阶段或课程体系。"
+    examples_of_when_not_to_ask:
+      - "用户已经说明是高二 A-Level 或高三普高。"
+  - id: general_strengths_003
+    question: "你比较擅长和不擅长哪些科目或能力？尤其是数学、英语/写作、理科、编程、艺术表达。"
+    target_profile_field: academic_strengths
+    applicable_intents: [recommend_majors, evaluate_fit, compare_majors]
+    decision_impact: high
+    burden_level: medium
+    examples_of_when_to_ask:
+      - "用户只给兴趣，没有能力信息。"
+    examples_of_when_not_to_ask:
+      - "用户已经说明数学强、写作弱、不会编程。"
+  - id: general_priority_004
+    question: "你选专业最看重什么？兴趣、就业、收入、稳定、科研、移民、申请难度、学习压力还是家庭意见？"
+    target_profile_field: priority_factors
+    applicable_intents: [recommend_majors, evaluate_fit, compare_majors]
+    decision_impact: high
+    burden_level: low
+    examples_of_when_to_ask:
+      - "多个方向都可行，但排序标准不明。"
+    examples_of_when_not_to_ask:
+      - "用户已经明确就业第一、预算第二。"
+  - id: general_dislikes_005
+    question: "有没有你明确不想接受的学习任务？比如大量数学、长期编程、实验、论文阅读、写作、作品集、临床训练或大量沟通。"
+    target_profile_field: disliked_tasks
+    applicable_intents: [recommend_majors, evaluate_fit]
+    decision_impact: high
+    burden_level: medium
+    examples_of_when_to_ask:
+      - "推荐候选包含高数学、作品集、临床或实验方向。"
+    examples_of_when_not_to_ask:
+      - "用户已经明确排斥大量编程和作品集。"
+
+ai_and_computer_related:
+  - id: ai_interest_detail_001
+    question: "你喜欢 AI 的哪一部分：算法研究、编程实现、机器人/硬件、产品应用、商业分析、游戏、医学应用，还是只是觉得热门？"
+    target_profile_field: interests
+    applicable_intents: [recommend_majors, evaluate_fit]
+    decision_impact: high
+    burden_level: medium
+    examples_of_when_to_ask:
+      - "用户说喜欢 AI、计算机或数据但没有说明具体任务。"
+    examples_of_when_not_to_ask:
+      - "用户已说明喜欢模型训练和算法推导。"
+  - id: ai_math_programming_002
+    question: "你能接受本科阶段较多数学和持续编程调试吗？如果只能接受其中一部分，也请说明。"
+    target_profile_field: disliked_tasks
+    applicable_intents: [recommend_majors, evaluate_fit]
+    decision_impact: high
+    burden_level: medium
+    examples_of_when_to_ask:
+      - "候选方向包括计算机科学、人工智能、数据科学或软件工程。"
+    examples_of_when_not_to_ask:
+      - "用户已说明数学和编程都很强。"
+
+business_related:
+  - id: business_preference_001
+    question: "你对商科更感兴趣的是金融投资、会计审计、市场营销、公司管理、商业分析、创业，还是国际商务？"
+    target_profile_field: interests
+    applicable_intents: [recommend_majors, compare_majors]
+    decision_impact: high
+    burden_level: low
+    examples_of_when_to_ask:
+      - "用户只说想学商科。"
+    examples_of_when_not_to_ask:
+      - "用户已明确想比较金融和会计。"
+  - id: business_quant_002
+    question: "你对数学、统计、Excel/数据分析、编程和案例展示的接受度分别如何？"
+    target_profile_field: preferred_tasks
+    applicable_intents: [recommend_majors, evaluate_fit]
+    decision_impact: medium
+    burden_level: medium
+    examples_of_when_to_ask:
+      - "需要区分金融、经济学、商业分析、市场营销和管理。"
+    examples_of_when_not_to_ask:
+      - "用户已说明偏文科表达且排斥数据分析。"
+
+psychology_related:
+  - id: psychology_goal_001
+    question: "你喜欢心理学是因为想做科研、理解人、做咨询助人、教育儿童、用户研究，还是组织管理？"
+    target_profile_field: interests
+    applicable_intents: [recommend_majors, evaluate_fit]
+    decision_impact: high
+    burden_level: medium
+    examples_of_when_to_ask:
+      - "用户说喜欢心理学但没有说明动机。"
+    examples_of_when_not_to_ask:
+      - "用户已明确想做认知科学或用户研究。"
+  - id: psychology_stats_002
+    question: "你能接受心理学本科里的统计、实验设计和英文论文阅读吗？"
+    target_profile_field: disliked_tasks
+    applicable_intents: [recommend_majors, evaluate_fit]
+    decision_impact: high
+    burden_level: medium
+    examples_of_when_to_ask:
+      - "用户把心理学理解为纯聊天或咨询。"
+    examples_of_when_not_to_ask:
+      - "用户已说明统计和论文阅读都能接受。"
+
+medicine_health_related:
+  - id: health_training_001
+    question: "你是否能接受长期学习、较强生物/化学基础、实验或临床训练，以及可能的资格认证路径？"
+    target_profile_field: risk_tolerance
+    applicable_intents: [recommend_majors, evaluate_fit]
+    decision_impact: high
+    burden_level: high
+    examples_of_when_to_ask:
+      - "候选方向包括医学、护理、药学、营养、公共卫生、生物医学。"
+    examples_of_when_not_to_ask:
+      - "用户明确只想了解公共卫生的通识路径。"
+  - id: health_goal_002
+    question: "你更想直接接触病人、做实验研究、做公共健康政策，还是做健康数据/管理？"
+    target_profile_field: career_preferences
+    applicable_intents: [recommend_majors, compare_majors]
+    decision_impact: high
+    burden_level: medium
+    examples_of_when_to_ask:
+      - "需要区分护理、生物医学、公共卫生、营养等方向。"
+    examples_of_when_not_to_ask:
+      - "用户已明确只考虑实验研究。"
+
+design_architecture_related:
+  - id: design_portfolio_001
+    question: "你是否愿意长期做作品集、studio 项目、反复改稿和视觉表达训练？"
+    target_profile_field: disliked_tasks
+    applicable_intents: [recommend_majors, evaluate_fit]
+    decision_impact: high
+    burden_level: medium
+    examples_of_when_to_ask:
+      - "候选方向包括建筑、设计、动画、游戏设计。"
+    examples_of_when_not_to_ask:
+      - "用户已经有作品集且喜欢 studio。"
+  - id: design_focus_002
+    question: "你更偏视觉创作、空间建筑、产品交互、服装、游戏/动画，还是数字媒体？"
+    target_profile_field: interests
+    applicable_intents: [recommend_majors, compare_majors]
+    decision_impact: medium
+    burden_level: low
+    examples_of_when_to_ask:
+      - "用户只说喜欢画画或设计。"
+    examples_of_when_not_to_ask:
+      - "用户已明确是建筑或交互设计。"
+
+law_public_affairs_related:
+  - id: law_system_001
+    question: "你是想学习法律思维/公共事务，还是未来想取得律师等职业资格？目标国家是哪一个？"
+    target_profile_field: career_preferences
+    applicable_intents: [recommend_majors, evaluate_fit, compare_countries]
+    decision_impact: high
+    burden_level: medium
+    examples_of_when_to_ask:
+      - "用户问法律、法学、公共政策或国际关系。"
+    examples_of_when_not_to_ask:
+      - "用户只想做通识了解且不涉及职业资格。"
+  - id: law_reading_002
+    question: "你能接受大量阅读、写作、案例分析和逻辑论证吗？"
+    target_profile_field: disliked_tasks
+    applicable_intents: [recommend_majors, evaluate_fit]
+    decision_impact: medium
+    burden_level: low
+    examples_of_when_to_ask:
+      - "用户考虑法学、法律研究、公共政策。"
+    examples_of_when_not_to_ask:
+      - "用户已说明阅读写作是强项。"
+
+media_communication_related:
+  - id: media_focus_001
+    question: "你对传媒更感兴趣的是新闻写作、影视制作、社交媒体运营、公共关系、广告策略、数据传播还是学术研究？"
+    target_profile_field: interests
+    applicable_intents: [recommend_majors, compare_majors]
+    decision_impact: high
+    burden_level: low
+    examples_of_when_to_ask:
+      - "用户只说传媒或媒体。"
+    examples_of_when_not_to_ask:
+      - "用户已经明确想做新闻或 PR。"
+  - id: media_output_002
+    question: "你更喜欢写作表达、拍摄剪辑、公开沟通、数据分析，还是策划项目？"
+    target_profile_field: preferred_tasks
+    applicable_intents: [recommend_majors, evaluate_fit]
+    decision_impact: medium
+    burden_level: low
+    examples_of_when_to_ask:
+      - "需要区分 Communication、Journalism、Media Studies、Digital Media。"
+    examples_of_when_not_to_ask:
+      - "用户已列出喜欢的具体媒体任务。"
+
+engineering_related:
+  - id: engineering_math_physics_001
+    question: "你对数学、物理、建模、实验和工程项目的接受度如何？"
+    target_profile_field: academic_strengths
+    applicable_intents: [recommend_majors, evaluate_fit]
+    decision_impact: high
+    burden_level: medium
+    examples_of_when_to_ask:
+      - "候选方向包括工程类。"
+    examples_of_when_not_to_ask:
+      - "用户已说明物理数学强且喜欢动手项目。"
+  - id: engineering_branch_002
+    question: "你更关心电子/计算、机械制造、土木建筑、化工材料、航空航天、环境能源，还是机器人系统？"
+    target_profile_field: interests
+    applicable_intents: [recommend_majors, compare_majors]
+    decision_impact: medium
+    burden_level: low
+    examples_of_when_to_ask:
+      - "用户只说想学工程。"
+    examples_of_when_not_to_ask:
+      - "用户已明确电子工程或机械工程。"
+
+humanities_social_science_related:
+  - id: humanities_tasks_001
+    question: "你更喜欢阅读写作、社会调研、语言文化、历史分析、公共议题，还是教育和人际沟通？"
+    target_profile_field: preferred_tasks
+    applicable_intents: [recommend_majors, compare_majors]
+    decision_impact: medium
+    burden_level: low
+    examples_of_when_to_ask:
+      - "用户偏人文社科但没有具体方向。"
+    examples_of_when_not_to_ask:
+      - "用户已明确语言学、历史或社会学。"
+  - id: humanities_career_002
+    question: "你是否接受本科毕业后职业路径需要实习、研究生、资格证或跨领域能力来增强竞争力？"
+    target_profile_field: risk_tolerance
+    applicable_intents: [recommend_majors, evaluate_fit]
+    decision_impact: medium
+    burden_level: medium
+    examples_of_when_to_ask:
+      - "用户担心人文社科就业但没有风险偏好。"
+    examples_of_when_not_to_ask:
+      - "用户明确以学术兴趣为主且接受读研。"
+
+country_selection:
+  - id: country_budget_language_001
+    question: "你的语言能力和预算大致如何？英语、日语、韩语是否有考试成绩或学习计划？"
+    target_profile_field: language_profile
+    applicable_intents: [recommend_majors, compare_countries]
+    decision_impact: high
+    burden_level: medium
+    examples_of_when_to_ask:
+      - "用户考虑多个国家但没有语言和预算信息。"
+    examples_of_when_not_to_ask:
+      - "用户已明确只考虑国内或已有目标语言成绩。"
+  - id: country_system_preference_002
+    question: "你更偏好入学前就定专业，还是接受美国式入学后探索 major/minor/concentration？"
+    target_profile_field: priority_factors
+    applicable_intents: [recommend_majors, compare_countries]
+    decision_impact: medium
+    burden_level: low
+    examples_of_when_to_ask:
+      - "用户在英美澳或多国体系中纠结。"
+    examples_of_when_not_to_ask:
+      - "用户已经明确只申请英国 course。"
+
+risk_and_constraints:
+  - id: risk_hard_no_001
+    question: "有没有绝对不能接受的硬限制？例如不能出国、不能做作品集、不能大量编程、不能大量数学、不能长期读研或预算上限很明确。"
+    target_profile_field: inferred_hard_constraints
+    applicable_intents: [recommend_majors, evaluate_fit, compare_majors]
+    decision_impact: high
+    burden_level: medium
+    examples_of_when_to_ask:
+      - "候选专业存在明显硬约束风险。"
+    examples_of_when_not_to_ask:
+      - "用户已经清楚列出限制条件。"
+  - id: risk_qualification_002
+    question: "如果目标职业需要执照、资格认证、临床训练、教师资格、法律资格或心理咨询资质，你能接受较长路径和不确定性吗？"
+    target_profile_field: risk_tolerance
+    applicable_intents: [recommend_majors, evaluate_fit]
+    decision_impact: high
+    burden_level: high
+    examples_of_when_to_ask:
+      - "用户考虑医学、护理、心理咨询、法学、教育、建筑、工程认证等方向。"
+    examples_of_when_not_to_ask:
+      - "用户明确只想本科阶段探索，不以受监管职业为目标。"
+
+china_mainland_admissions:
+  - id: china_region_001
+    question: "如果你查的是中国大陆高校招生信息，你所在或关注的省份/考试地区是哪里？不同省份的专业组、选科要求和分省计划可能不同。"
+    target_profile_field: exam_region_or_province
+    applicable_intents: [admissions_lookup, university_program_lookup, change_comparison, recommend_majors]
+    decision_impact: high
+    burden_level: low
+    examples_of_when_to_ask:
+      - "用户查询中国大陆高校专业组、选科要求或分省招生计划，但没有省份。"
+    examples_of_when_not_to_ask:
+      - "用户只问全国教育部专业目录概念。"
+  - id: china_entry_year_002
+    question: "你关注的是哪一届入学或哪一年招生？例如 2026 入学、2027 入学，或想比较 2025 和 2026。"
+    target_profile_field: intended_entry_year
+    applicable_intents: [admissions_lookup, university_program_lookup, change_comparison]
+    decision_impact: high
+    burden_level: low
+    examples_of_when_to_ask:
+      - "用户使用‘现在、今年、最新’但没有明确招生周期。"
+    examples_of_when_not_to_ask:
+      - "用户已经明确要求 2025 vs 2026。"
+  - id: china_subject_combination_003
+    question: "你的选科组合是什么？例如物理+化学+生物，或历史+政治+地理。"
+    target_profile_field: subject_combination
+    applicable_intents: [admissions_lookup, recommend_majors, evaluate_fit]
+    decision_impact: high
+    burden_level: low
+    examples_of_when_to_ask:
+      - "用户要判断能否报某专业或某专业组。"
+    examples_of_when_not_to_ask:
+      - "用户只做专业概念了解，不涉及报考资格。"
+  - id: china_route_004
+    question: "你关注普通本科批、提前批、强基计划、综合评价、专项计划、中外合作，还是其他申请路径？"
+    target_profile_field: preferred_batch_or_application_route
+    applicable_intents: [admissions_lookup, change_comparison]
+    decision_impact: medium
+    burden_level: low
+    examples_of_when_to_ask:
+      - "同一高校不同路径的招生专业或要求可能不同。"
+    examples_of_when_not_to_ask:
+      - "用户只问院校培养方案或课程结构。"
+  - id: china_constraints_005
+    question: "有没有与中国大陆报考相关的限制？例如只看某省计划、不能接受中外合作学费、只看某城市、或有体检/单科成绩顾虑。"
+    target_profile_field: china_application_constraints
+    applicable_intents: [recommend_majors, admissions_lookup, evaluate_fit]
+    decision_impact: medium
+    burden_level: medium
+    examples_of_when_to_ask:
+      - "推荐或核查会受到省份、费用、体检、城市或招生路径影响。"
+    examples_of_when_not_to_ask:
+      - "用户已明确只是做专业知识介绍。"

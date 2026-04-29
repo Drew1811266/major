@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://major.skill/schemas/knowledge_graph_edge.schema.json",
+  "type": "object",
+  "title": "KnowledgeGraphEdge",
+  "description": "major 专业知识图谱关系边。",
+  "properties": {
+    "edge_id": { "type": "string" },
+    "edge_type": {
+      "type": "string",
+      "enum": [
+        "studies",
+        "develops",
+        "leads_to",
+        "similar_to",
+        "differs_from",
+        "offered_in",
+        "requires",
+        "accredited_by",
+        "has_pathway",
+        "supported_by_source",
+        "suitable_for",
+        "risky_for",
+        "equivalent_to",
+        "partially_equivalent_to",
+        "changed_from",
+        "changed_to"
+      ]
+    },
+    "from_node_id": { "type": "string" },
+    "to_node_id": { "type": "string" },
+    "description": { "type": "string" },
+    "evidence_source_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "引用 source_record.source_id，证明该关系边的来源。"
+    },
+    "evidence_claim_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "引用 claim_verification.claim_id，证明该关系边对应的已验证声明。"
+    },
+    "certainty_level": {
+      "type": "string",
+      "enum": ["high", "medium", "low", "unknown"]
+    },
+    "limitations": { "type": "string" },
+    "attributes": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["edge_id", "edge_type", "from_node_id", "to_node_id", "evidence_source_ids"],
+  "additionalProperties": false
+}

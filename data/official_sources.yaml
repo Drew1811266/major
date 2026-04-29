@@ -1,0 +1,196 @@
+description: >
+  Official and high-reliability starting points for undergraduate major research.
+  Use these to find direct sources, but cite the specific page that supports the
+  claim rather than citing a portal home page by default.
+
+usage_rules:
+  - Prefer direct university, department, admissions, catalog, regulator, or statistics pages for specific claims.
+  - Treat portals below as starting points for discovery and verification.
+  - Record source freshness with schemas/source_record.schema.json.
+  - Do not use a marketing, agency, or forum page as the sole source for current program, admissions, accreditation, visa, or employment claims.
+
+countries:
+  China:
+    display_name_zh: 中国
+    official_entry_points:
+      - name: Ministry of Education of the PRC
+        url: https://www.moe.gov.cn/
+        source_type: government
+        use_for:
+          - national undergraduate major policy
+          - professional catalog background
+          - education policy notices
+      - name: Sunshine College Entrance Examination Platform
+        url: https://gaokao.chsi.com.cn/
+        source_type: admissions_official
+        use_for:
+          - mainland undergraduate admissions information
+          - university admissions links
+          - subject selection and admissions notices
+      - name: Provincial education examination authorities
+        url: varies_by_province
+        source_type: admissions_official
+        use_for:
+          - provincial enrollment plans
+          - subject group requirements
+          - province-specific admissions rules
+      - name: University undergraduate admissions offices
+        url: varies_by_university
+        source_type: university_official
+        use_for:
+          - admissions regulations
+          - major catalogs
+          - enrollment plans
+          - current admissions notices
+    reference_entry_points:
+      - name: ShanghaiRanking 2025 China University Major Ranking
+        url: https://www.shanghairanking.cn/rankings/bcmr/2025
+        source_type: ranking_reference
+        use_for:
+          - major strength reference
+          - candidate university discovery
+        not_use_for:
+          - current admissions
+          - provincial enrollment plans
+          - subject selection requirements
+          - major groups
+          - training programmes
+
+  South Korea:
+    display_name_zh: 韩国
+    official_entry_points:
+      - name: Ministry of Education, Republic of Korea
+        url: https://www.moe.go.kr/
+        source_type: government
+        use_for:
+          - higher education policy
+          - university system background
+      - name: Study in Korea
+        url: https://www.studyinkorea.go.kr/
+        source_type: government
+        use_for:
+          - international applicant guidance
+          - Korean university discovery
+      - name: University official admissions and department pages
+        url: varies_by_university
+        source_type: university_official
+        use_for:
+          - 모집단위
+          - 학과
+          - 전공
+          - curriculum and admissions requirements
+
+  Japan:
+    display_name_zh: 日本
+    official_entry_points:
+      - name: Ministry of Education, Culture, Sports, Science and Technology
+        url: https://www.mext.go.jp/
+        source_type: government
+        use_for:
+          - higher education policy
+          - official system background
+      - name: Japan Student Services Organization Study in Japan
+        url: https://www.studyinjapan.go.jp/
+        source_type: government
+        use_for:
+          - international applicant guidance
+          - university discovery
+      - name: University official admissions, faculty, and department pages
+        url: varies_by_university
+        source_type: university_official
+        use_for:
+          - 学部
+          - 学科
+          - 専攻
+          - コース
+          - admissions and curriculum
+
+  United Kingdom:
+    display_name_zh: 英国
+    official_entry_points:
+      - name: UCAS
+        url: https://www.ucas.com/
+        source_type: admissions_official
+        use_for:
+          - undergraduate course discovery
+          - application routes
+          - entry-cycle terminology
+      - name: Discover Uni
+        url: https://discoveruni.gov.uk/
+        source_type: government
+        use_for:
+          - official course-level information
+          - student outcomes and satisfaction indicators
+      - name: Higher Education Statistics Agency
+        url: https://www.hesa.ac.uk/
+        source_type: labor_statistics
+        use_for:
+          - higher education statistics
+      - name: University official course pages
+        url: varies_by_university
+        source_type: university_official
+        use_for:
+          - current course structure
+          - modules
+          - fees
+          - entry requirements
+
+  United States:
+    display_name_zh: 美国
+    official_entry_points:
+      - name: National Center for Education Statistics College Navigator
+        url: https://nces.ed.gov/collegenavigator/
+        source_type: government
+        use_for:
+          - institutional data
+          - program discovery
+      - name: Bureau of Labor Statistics Occupational Outlook Handbook
+        url: https://www.bls.gov/ooh/
+        source_type: labor_statistics
+        use_for:
+          - occupational outlook
+          - labor market statistics
+      - name: University official undergraduate catalog and department pages
+        url: varies_by_university
+        source_type: university_official
+        use_for:
+          - major requirements
+          - concentrations
+          - curriculum
+          - admissions policies
+
+  Australia:
+    display_name_zh: 澳大利亚
+    official_entry_points:
+      - name: CRICOS
+        url: https://cricos.education.gov.au/
+        source_type: government
+        use_for:
+          - registered courses for international students
+          - provider verification
+      - name: Course Seeker
+        url: https://www.courseseeker.edu.au/
+        source_type: admissions_official
+        use_for:
+          - undergraduate course discovery
+          - admissions and course search
+      - name: Tertiary Education Quality and Standards Agency
+        url: https://www.teqsa.gov.au/
+        source_type: government
+        use_for:
+          - provider registration
+          - higher education quality assurance
+      - name: Quality Indicators for Learning and Teaching
+        url: https://www.qilt.edu.au/
+        source_type: government
+        use_for:
+          - student experience and graduate outcomes indicators
+      - name: University official handbooks and course pages
+        url: varies_by_university
+        source_type: university_official
+        use_for:
+          - current course structure
+          - majors
+          - specialisations
+          - fees
+          - admission requirements

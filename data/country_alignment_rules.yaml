@@ -1,0 +1,69 @@
+metadata:
+  purpose: 支持 major 对齐中国、韩国、日本、英国、美国、澳大利亚的本科专业术语和体系。
+  freshness_rule: "具体大学、课程、招生、认证或政策事实必须优先使用当前/下一招生周期或当前/下一 academic year 官方来源核查；2025-01-01 只是最低时效底线。"
+
+equivalence_levels:
+  exact: "高度等价，层级、课程核心、申请单位和职业路径基本一致。"
+  close: "大体相近，但课程灵活度、模块或培养方式存在差异。"
+  partial: "部分重合，名称或部分课程相似，但层级或路径不同。"
+  pathway_related: "职业路径相关，但本科专业不是同一类。"
+  not_equivalent: "不等价，不能直接类比。"
+  unknown: "信息不足，不能判断。"
+
+alignment_dimensions:
+  - local_name
+  - application_unit
+  - academic_level
+  - curriculum_structure
+  - core_courses
+  - duration
+  - practical_training
+  - portfolio_lab_clinical_internship
+  - career_path
+  - professional_accreditation
+  - graduate_or_extra_qualification
+  - terminology_translatability
+
+country_term_level_rules:
+  China:
+    cannot_directly_equal:
+      - "本科专业 != 院系"
+      - "招生专业 != 培养方案名称"
+      - "专业组 != 专业"
+    current_source_priority:
+      - "2025+ 本科招生章程"
+      - "2025+ 招生专业目录"
+      - "2025+ 分省招生计划"
+      - "2025+ 选考科目要求"
+      - "2025+ 培养方案"
+  South Korea:
+    cannot_directly_equal:
+      - "모집단위 != 졸업 전공"
+      - "학부 != 학과"
+      - "전공 may be inside 학부"
+  Japan:
+    cannot_directly_equal:
+      - "学部 != major"
+      - "学科 != 専攻"
+      - "コース may be a track inside 学科"
+  United Kingdom:
+    cannot_directly_equal:
+      - "course != one class"
+      - "module != major"
+      - "subject may be broader than programme"
+  United States:
+    cannot_directly_equal:
+      - "major != department"
+      - "minor != major"
+      - "concentration != standalone major"
+  Australia:
+    cannot_directly_equal:
+      - "degree/course != major"
+      - "specialisation may be inside a degree"
+      - "stream may not be the award title"
+
+comparison_cautions:
+  - "不要把某所大学的课程结构概括为全国规则。"
+  - "不要把翻译名称当作官方项目名称。"
+  - "受监管职业路径必须按国家和认证机构分别核查。"
+  - "如果只有历史来源，必须标注为 historical。"

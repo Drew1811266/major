@@ -1,0 +1,86 @@
+metadata:
+  purpose: >
+    Field mapping for importing authorized China mainland university-major CSV/JSON
+    files into china_major_repository_dataset.schema.json.
+  authorization_required: true
+  full_third_party_rankings_not_bundled: true
+
+canonical_fields:
+  record_id:
+    aliases: [record_id, id, major_record_id]
+    required: false
+    generation: cnmaj_<university_slug>_<major_slug>_<year>_<hash>
+  university_name_zh:
+    aliases: [院校名称, 学校名称, 大学名称, university, university_name_zh]
+    required: true
+  university_name_en:
+    aliases: [英文校名, university_name_en, university_en]
+    required: false
+  province_or_region:
+    aliases: [省份, 所在地, 所在省市, province, province_or_region]
+    required: false
+  university_code:
+    aliases: [院校代码, 学校代码, university_code]
+    required: false
+  major_name_zh:
+    aliases: [专业名称, 本科专业, major, major_name_zh]
+    required: true
+  major_name_en:
+    aliases: [专业英文名, major_name_en, major_en]
+    required: false
+  major_code:
+    aliases: [专业代码, major_code]
+    required: false
+    preserve_as_string: true
+  discipline_category:
+    aliases: [学科门类, 门类, discipline_category]
+    required: false
+  major_category:
+    aliases: [专业类, major_category]
+    required: false
+  data_year:
+    aliases: [年份, 数据年份, ranking_year, data_year, 招生年份]
+    required: true
+  repository_source_type:
+    aliases: [来源口径, source_scope_type, repository_source_type]
+    required: false
+    default: authorized_local_dataset
+  currently_admitting:
+    aliases: [当前招生, 是否招生, currently_admitting]
+    required: false
+    default: false
+  source_id:
+    aliases: [source_id, 来源ID]
+    required: false
+  ranking_name:
+    aliases: [排名名称, ranking_name]
+    required: false
+  ranking_publisher:
+    aliases: [排名机构, publisher, ranking_publisher]
+    required: false
+  ranking_url:
+    aliases: [排名链接, ranking_url]
+    required: false
+  methodology_url:
+    aliases: [排名方法链接, methodology_url]
+    required: false
+  rank_position:
+    aliases: [排名, 位次, rank, rank_position]
+    required: false
+  rating:
+    aliases: [评级, rating, grade]
+    required: false
+
+defaults:
+  education_level: undergraduate
+  record_usage: candidate_only
+  authorization_status_if_missing: unknown
+  not_admissions_evidence_for_rankings: true
+
+rejection_rules:
+  - missing_university_name_zh
+  - missing_major_name_zh
+  - missing_data_year
+  - missing_source_or_authorization
+  - ranking_reference_without_methodology_url
+  - currently_admitting_without_official_current_source

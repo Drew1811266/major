@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://major.skill/schemas/source_record.schema.json",
+  "type": "object",
+  "title": "SourceRecord",
+  "description": "major 的来源记录结构，用于记录来源权威性、时效性、相关性、评分和支持的 claims。",
+  "properties": {
+    "source_id": {
+      "type": "string",
+      "pattern": "^src_[a-z0-9_]+_[0-9]{4}_[a-f0-9]{8,12}$",
+      "description": "来源稳定 ID，格式建议 src_<country>_<publisher_slug>_<year>_<hash>。"
+    },
+    "title": { "type": "string", "description": "来源标题。" },
+    "url": { "type": "string", "description": "来源链接。" },
+    "publisher": { "type": "string", "description": "发布机构，例如大学、院系、教育部门、招生平台、认证机构等。" },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "university_official",
+        "department_official",
+        "course_catalog",
+        "admissions_official",
+        "government",
+        "exam_authority",
+        "official_application_platform",
+        "accreditation_body",
+        "labor_statistics",
+        "industry_association",
+        "education_platform",
+        "ranking_reference",
+        "local_repository_record",
+        "media",
+        "forum",
+        "blog",
+        "other"
+      ],
+      "description": "来源类型。"
+    },
+    "country": { "type": "string", "description": "来源适用国家。" },
+    "university": { "type": "string", "description": "来源对应大学，若适用。" },
+    "department": { "type": "string", "description": "来源对应院系，若适用。" },
+    "major": { "type": "string", "description": "来源对应专业，若适用。" },
+    "published_date": { "type": "string", "description": "发布日期，若可获得。" },
+    "updated_date": { "type": "string", "description": "更新日期，若可获得。" },
+    "accessed_date": { "type": "string", "description": "访问日期。" },
+    "applicable_year": { "type": "string", "description": "适用年份，例如 2025、2026、2025-2026。" },
+    "admissions_cycle": { "type": "string", "description": "适用招生周期，例如 2025 undergraduate admissions、2026 entry。" },
+    "entry_year": { "type": "string", "description": "适用入学年份，例如 2025 entry、2026 entry。" },
+    "academic_year": { "type": "string", "description": "适用学年，例如 2025-2026、2026-2027。" },
+    "is_2025_or_later": { "type": "boolean", "description": "该来源是否满足 2025-01-01 及以后时效要求。" },
+    "freshness_basis": {
+      "type": "string",
+      "enum": [
+        "published_date",
+        "updated_date",
+        "applicable_year",
+        "admissions_cycle",
+        "entry_year",
+        "academic_year",
+        "current_official_page",
+        "historical_user_requested",
+        "unknown"
+      ],
+      "description": "判断来源时效性的依据。"
+    },
+    "currentness_basis": {
+      "type": "string",
+      "enum": [
+        "current_admissions_cycle",
+        "next_admissions_cycle",
+        "current_academic_year",
+        "next_academic_year",
+        "current_calendar_year",
+        "active_current_official_page",
+        "minimum_2025_floor_only",
+        "historical_user_requested",
+        "unknown"
+      ],
+      "description": "判断来源是否适用于当前/下一周期的依据。"
+    },
+    "authority_score": { "type": "number", "minimum": 0, "maximum": 1, "description": "权威性评分。" },
+    "freshness_score": { "type": "number", "minimum": 0, "maximum": 1, "description": "时效性评分。" },
+    "relevance_score": { "type": "number", "minimum": 0, "maximum": 1, "description": "相关性评分。" },
+    "specificity_score": { "type": "number", "minimum": 0, "maximum": 1, "description": "具体性评分。" },
+    "corroboration_score": { "type": "number", "minimum": 0, "maximum": 1, "description": "交叉验证评分。" },
+    "country_match_score": { "type": "number", "minimum": 0, "maximum": 1, "description": "国家匹配评分。" },
+    "source_score": { "type": "number", "minimum": 0, "maximum": 1, "description": "综合来源评分。" },
+    "reliability_level": {
+      "type": "string",
+      "enum": ["high", "medium", "low", "unknown"],
+      "description": "来源可靠性等级。"
+    },
+    "supports_claims": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^clm_[a-z0-9_]+_[a-f0-9]{8,12}$"
+      },
+      "description": "该来源支持的 claim_id 列表，不得写入自然语言结论。"
+    },
+    "limitations": { "type": "string", "description": "来源局限，例如无发布日期、只适用于某校、只适用于某招生年份等。" },
+    "archive_or_current_status": {
+      "type": "string",
+      "enum": ["current", "active", "archived", "outdated", "historical", "unknown"],
+      "description": "页面是否当前有效、归档或过期。"
+    }
+  },
+  "required": [
+    "source_id",
+    "title",
+    "url",
+    "publisher",
+    "source_type",
+    "country",
+    "accessed_date",
+    "is_2025_or_later",
+    "freshness_basis",
+    "currentness_basis",
+    "source_score",
+    "reliability_level",
+    "archive_or_current_status"
+  ],
+  "additionalProperties": false
+}

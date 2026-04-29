@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://major.skill/schemas/admissions_scope.schema.json",
+  "type": "object",
+  "title": "AdmissionsScope",
+  "description": "用于限定招生、专业组、选科、分省计划、课程目录或认证结论适用范围的结构。中国大陆招生相关结论必须尽量填写省份、入学年份、选科、批次/路径和专业组等字段。",
+  "properties": {
+    "country": { "type": "string", "description": "适用国家。" },
+    "province": { "type": "string", "description": "省份、州、考试地区或司法辖区，若适用。" },
+    "intended_entry_year": { "type": "string", "description": "目标入学年份，例如 2026。" },
+    "admissions_cycle": { "type": "string", "description": "招生周期，例如 2026 undergraduate admissions。" },
+    "entry_year": { "type": "string", "description": "入学年份，例如 2026 entry。" },
+    "academic_year": { "type": "string", "description": "学年，例如 2026-2027。" },
+    "subject_combination": { "type": "string", "description": "选科或科目组合，例如 物理+化学+生物。" },
+    "gaokao_track": { "type": "string", "description": "高考或申请轨道，例如 普通类、综合评价、强基计划、艺术类、国际学生。" },
+    "admissions_batch": { "type": "string", "description": "招生批次，例如 本科批、提前批。" },
+    "application_route": { "type": "string", "description": "申请路径，例如 UCAS、Common App、省级志愿系统、EJU、재외국민전형。" },
+    "major_group": { "type": "string", "description": "院校专业组、专业组或招生单位，若适用。" },
+    "enrollment_plan_scope": { "type": "string", "description": "招生计划口径，例如 全国、上海本科批、广东物理类、国际学生。" },
+    "major_code": { "type": "string", "description": "专业代码，若来源提供。" },
+    "programme_code": { "type": "string", "description": "项目、课程或招生单位代码，若来源提供。" },
+    "source_scope_type": {
+      "type": "string",
+      "enum": [
+        "national_catalog",
+        "provincial_exam_authority",
+        "university_admissions_catalog",
+        "provincial_enrollment_plan",
+        "major_group",
+        "training_programme",
+        "course_catalog",
+        "department_page",
+        "accreditation_record",
+        "labor_statistics",
+        "policy_or_regulation",
+        "other",
+        "unknown"
+      ],
+      "description": "来源口径类型。不得把不同口径混用为同一当前结论。"
+    }
+  },
+  "required": ["country", "source_scope_type"],
+  "additionalProperties": false
+}

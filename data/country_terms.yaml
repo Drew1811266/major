@@ -1,0 +1,105 @@
+China:
+  display_name_zh: 中国
+  common_terms:
+    - 本科专业
+    - 学科门类
+    - 专业类
+    - 专业目录
+    - 培养方案
+    - 招生专业
+    - 院系
+    - 方向
+  english_terms:
+    - Undergraduate major
+    - Discipline category
+    - Program
+  notes:
+    - 中国本科专业通常与教育部专业目录、院校招生专业和高校培养方案相关。
+    - 同一专业在不同高校可能有不同方向或培养重点。
+    - 招生专业名称、培养方案名称和院系名称不一定完全一致。
+    - 专业组、选考科目和分省招生计划可能每年变化，当前申请判断必须优先核查当前/下一招生周期官方来源；2025-01-01 只是最低时效底线。
+
+South Korea:
+  display_name_zh: 韩国
+  common_terms:
+    - 학과
+    - 전공
+    - 학부
+    - 단과대학
+    - 모집단위
+  english_terms:
+    - Department
+    - Major
+    - Division
+    - College
+    - Undergraduate program
+  notes:
+    - 韩国高校常见表达包括学科、专攻、学部、学院等。
+    - 需要结合学校官网判断具体项目层级。
+    - 不同大学对 department、major、division 的翻译和使用可能不同。
+    - 모집단위 可能是招生单位，不一定等同于毕业专业或英文 major。
+
+Japan:
+  display_name_zh: 日本
+  common_terms:
+    - 学部
+    - 学科
+    - 専攻
+    - コース
+    - 課程
+  english_terms:
+    - Faculty
+    - Department
+    - Major
+    - Course
+    - Program
+  notes:
+    - 日本本科常按学部、学科、专攻、课程组织。
+    - 学部不宜简单等同于英文 major。
+    - 申请和培养单位需要结合大学官网确认。
+    - コース 或 専攻 可能是学科内方向，不宜直接当作独立本科专业。
+
+United Kingdom:
+  display_name_zh: 英国
+  common_terms:
+    - course
+    - programme
+    - subject
+    - degree
+    - module
+  notes:
+    - 英国本科通常以具体 course 或 programme 申请。
+    - 课程模块 module 对理解专业内容很重要。
+    - 同一专业名称在不同大学可能课程重点差异很大。
+    - course 在英国语境通常不是“单门课”，而是完整本科项目。
+
+United States:
+  display_name_zh: 美国
+  common_terms:
+    - major
+    - minor
+    - concentration
+    - department
+    - undergraduate program
+    - college
+    - school
+  notes:
+    - 美国本科常见 major、minor、concentration 等层级。
+    - 学生可能入学后再确定专业。
+    - 通识教育、专业课和选修课结构需要分开理解。
+    - concentration 通常是 major 内部方向，不宜直接等同为独立本科专业。
+
+Australia:
+  display_name_zh: 澳大利亚
+  common_terms:
+    - course
+    - degree
+    - major
+    - stream
+    - specialisation
+    - undergraduate program
+  notes:
+    - 澳大利亚大学常区分 degree、course、major、stream、specialisation。
+    - 同一个 degree 内可能包含多个 major 或 specialisation。
+    - 需要查具体学校对术语的定义。
+    - course 或 degree 是项目层级，major 或 specialisation 可能是项目内方向。

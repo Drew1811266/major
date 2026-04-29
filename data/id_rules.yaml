@@ -1,0 +1,111 @@
+metadata:
+  purpose: 为 major 的来源、声明、知识图谱和变化记录提供稳定 ID 规则，保证可追踪性。
+  format_version: "1.0"
+
+id_patterns:
+  source_id:
+    pattern: "src_<country_slug>_<publisher_slug>_<year>_<hash8>"
+    example: "src_china_fudan_admissions_2026_a1b2c3d4"
+    required_in:
+      - schemas/source_record.schema.json
+  claim_id:
+    pattern: "clm_<claim_type>_<entity_slug>_<year>_<hash8>"
+    example: "clm_programme_availability_fudan_cs_2026_b2c3d4e5"
+    required_in:
+      - schemas/claim_verification.schema.json
+  node_id:
+    pattern: "node_<node_type>_<entity_slug>_<hash8>"
+    example: "node_Major_computer_science_c3d4e5f6"
+    required_in:
+      - schemas/knowledge_graph_node.schema.json
+  edge_id:
+    pattern: "edge_<edge_type>_<from_slug>_<to_slug>_<hash8>"
+    example: "edge_studies_cs_algorithms_d4e5f6a7"
+    required_in:
+      - schemas/knowledge_graph_edge.schema.json
+  change_id:
+    pattern: "chg_<country_slug>_<entity_slug>_<old_year>_<new_year>_<hash8>"
+    example: "chg_china_tongji_major_catalog_2025_2026_e5f6a7b8"
+    required_in:
+      - schemas/change_record.schema.json
+  china_major_record_id:
+    pattern: "cnmaj_<university_slug>_<major_slug>_<year>_<hash8>"
+    example: "cnmaj_fudan_computer_science_2026_f6a7b8c9"
+    required_in:
+      - schemas/china_university_major_record.schema.json
+  china_repository_dataset_id:
+    pattern: "cnrepo_<dataset_slug>_<year>_<hash8>"
+    example: "cnrepo_authorized_import_2026_a7b8c9d0"
+    required_in:
+      - schemas/china_major_repository_dataset.schema.json
+  china_ranking_reference_id:
+    pattern: "rank_china_<publisher_slug>_<major_slug>_<year>_<hash8>"
+    example: "rank_china_shanghairanking_ai_2025_b8c9d0e1"
+    required_in:
+      - schemas/china_ranking_reference.schema.json
+
+normalization:
+  country_slug:
+    China: china
+    South Korea: south_korea
+    Japan: japan
+    United Kingdom: united_kingdom
+    United States: united_states
+    Australia: australia
+  slug_rules:
+    - "lowercase ASCII where possible"
+    - "replace spaces and punctuation with underscores"
+    - "strip repeated underscores"
+    - "use pinyin, romanization, or short English slug for non-ASCII publishers"
+  hash_input_fields:
+    source_id:
+      - url
+      - title
+      - publisher
+      - applicable_year
+    claim_id:
+      - claim_text
+      - claim_type
+      - country
+      - year
+    node_id:
+      - node_type
+      - label
+      - country
+    edge_id:
+      - edge_type
+      - from_node_id
+      - to_node_id
+    change_id:
+      - target_entity
+      - country
+      - university
+      - major
+      - old_year
+      - new_year
+    china_major_record_id:
+      - university_name_zh
+      - major_name_zh
+      - data_year
+      - repository_source_type
+    china_repository_dataset_id:
+      - name
+      - version
+      - data_year
+      - authorization_status
+    china_ranking_reference_id:
+      - publisher
+      - ranking_name
+      - university_name_zh
+      - major_name_zh
+      - ranking_year
+
+traceability_rules:
+  - "source_record.source_id is the canonical source reference."
+  - "claim_verification.supporting_source_ids and conflicting_source_ids must refer to source_record.source_id."
+  - "knowledge_graph_node.source_ids and knowledge_graph_edge.evidence_source_ids must refer to source_record.source_id."
+  - "change_record.old_source_ids and new_source_ids must refer to source_record.source_id."
+  - "china_university_major_record.source_ids must refer to source_record.source_id in the same dataset or registered source table."
+  - "china_ranking_reference.source_id must refer to a ranking_reference source_record."
+  - "china repository and ranking IDs do not make a record official admissions evidence."
+  - "Do not cite source ids that are absent from the source table."

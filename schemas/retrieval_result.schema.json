@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://major.skill/schemas/retrieval_result.schema.json",
+  "type": "object",
+  "title": "RetrievalResult",
+  "description": "major 的检索结果结构，用于记录 current/next-cycle 检索、2025-01-01 最低时效底线、来源排序、拒绝来源和局限。",
+  "properties": {
+    "query": { "type": "string", "description": "用户原始查询。" },
+    "expanded_queries": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "经过多语言、国家术语、current/next-cycle 和 2025-01-01 最低时效扩展后的查询。"
+    },
+    "target_country": { "type": "string", "description": "目标国家。" },
+    "target_university": { "type": "string", "description": "目标大学，若适用。" },
+    "target_major": { "type": "string", "description": "目标专业，若适用。" },
+    "admissions_scope": {
+      "$ref": "admissions_scope.schema.json",
+      "description": "招生、选科、专业组、分省计划、课程目录或认证结论的适用范围。"
+    },
+    "minimum_freshness_date": { "type": "string", "description": "最低时效日期，默认 2025-01-01。" },
+    "retrieved_sources": {
+      "type": "array",
+      "items": { "$ref": "source_record.schema.json" },
+      "description": "原始检索返回并初步记录的来源。"
+    },
+    "ranked_sources": {
+      "type": "array",
+      "items": { "$ref": "source_record.schema.json" },
+      "description": "经过 RRF/MMR、current/next-cycle 过滤、2025-01-01 最低底线检查和 source_scoring 后排序的来源。"
+    },
+    "rejected_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": { "$ref": "source_record.schema.json" },
+          "rejection_reason": {
+            "type": "string",
+            "enum": [
+              "pre_2025_without_2025_applicability",
+              "archived_page",
+              "outdated_page",
+              "old_admissions_page",
+              "no_publication_or_update_date_and_not_current",
+              "unofficial_without_cross_validation",
+              "not_relevant_to_target_country",
+              "not_relevant_to_target_university",
+              "not_relevant_to_target_major",
+              "ranking_reference_used_as_admissions_evidence",
+              "local_repository_record_without_official_verification",
+              "duplicate_or_low_diversity",
+              "other"
+            ]
+          }
+        },
+        "required": ["source", "rejection_reason"],
+        "additionalProperties": false
+      },
+      "description": "被拒绝或降级的来源及原因。"
+    },
+    "source_scores": {
+      "type": "object",
+      "additionalProperties": { "type": "number", "minimum": 0, "maximum": 1 },
+      "description": "以 source_id 为优先键的来源综合评分。"
+    },
+    "freshness_summary": { "type": "string", "description": "来源整体时效性摘要。" },
+    "verification_required": { "type": "boolean", "description": "是否需要 claim_verification。" },
+    "limitations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "检索局限。"
+    }
+  },
+  "required": [
+    "query",
+    "expanded_queries",
+    "target_country",
+    "target_university",
+    "target_major",
+    "admissions_scope",
+    "minimum_freshness_date",
+    "retrieved_sources",
+    "ranked_sources",
+    "rejected_sources",
+    "source_scores",
+    "freshness_summary",
+    "verification_required",
+    "limitations"
+  ],
+  "additionalProperties": false
+}

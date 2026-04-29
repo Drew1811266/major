@@ -1,0 +1,93 @@
+sources:
+  - source_id: src_china_shanghairanking_2025_9f4a2b1c
+    title: "2025中国大学专业排名"
+    url: "https://www.shanghairanking.cn/rankings/bcmr/2025"
+    publisher: "上海软科教育信息咨询有限公司"
+    source_type: ranking_reference
+    country: China
+    accessed_date: "2026-04-29"
+    applicable_year: "2025"
+    is_2025_or_later: true
+    freshness_basis: applicable_year
+    currentness_basis: minimum_2025_floor_only
+    source_score: 0.72
+    reliability_level: medium
+    supports_claims: []
+    limitations: "第三方专业排名参考，不是官方招生、录取、选科、专业组或分省计划来源。"
+    archive_or_current_status: current
+
+  - source_id: src_china_shanghairanking_methodology_2025_7b6e2d4a
+    title: "排名方法-2025软科中国大学专业排名"
+    url: "https://www.shanghairanking.cn/methodology/bcmr/2025?event="
+    publisher: "上海软科教育信息咨询有限公司"
+    source_type: ranking_reference
+    country: China
+    accessed_date: "2026-04-29"
+    applicable_year: "2025"
+    is_2025_or_later: true
+    freshness_basis: applicable_year
+    currentness_basis: minimum_2025_floor_only
+    source_score: 0.74
+    reliability_level: medium
+    supports_claims: []
+    limitations: "用于解释排名对象、方法和局限，不可作为招生事实依据。"
+    archive_or_current_status: current
+
+  - source_id: src_china_moe_major_catalog_2025_3d8e6a1b
+    title: "普通高等学校本科专业目录相关官方信息"
+    url: "https://www.moe.gov.cn/"
+    publisher: "中华人民共和国教育部"
+    source_type: government
+    country: China
+    accessed_date: "2026-04-29"
+    applicable_year: "2025"
+    is_2025_or_later: true
+    freshness_basis: applicable_year
+    currentness_basis: minimum_2025_floor_only
+    source_score: 0.82
+    reliability_level: medium
+    supports_claims: []
+    limitations: "教育部入口用于检索官方专业目录和政策；具体文件仍需按问题检索并引用。"
+    archive_or_current_status: current
+
+  - source_id: src_china_sunshine_gaokao_2026_5c7d2e9a
+    title: "阳光高考平台"
+    url: "https://gaokao.chsi.com.cn/"
+    publisher: "教育部阳光高考信息平台"
+    source_type: admissions_official
+    country: China
+    accessed_date: "2026-04-29"
+    applicable_year: "2026"
+    admissions_cycle: "2026 mainland undergraduate admissions"
+    is_2025_or_later: true
+    freshness_basis: admissions_cycle
+    currentness_basis: current_admissions_cycle
+    source_score: 0.90
+    reliability_level: high
+    supports_claims: []
+    limitations: "平台入口用于发现和核验官方招生信息；具体结论需引用对应招生章程、招生目录、分省计划或选科要求页面。"
+    archive_or_current_status: current
+
+source_usage_rules:
+  ranking_reference:
+    allowed_for:
+      - 专业实力参考
+      - 候选院校初筛
+      - 第三方排名背景说明
+    forbidden_for:
+      - 当前招生结论
+      - 录取要求
+      - 专业组
+      - 分省招生计划
+      - 选科要求
+      - 培养方案
+      - 学费和截止日期
+  official_sources_required_for:
+    - currently_admitting
+    - admissions_requirement
+    - enrollment_plan
+    - major_group
+    - subject_selection_requirement
+    - training_programme
+    - tuition_fee
+    - deadline

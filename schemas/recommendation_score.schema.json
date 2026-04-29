@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://major.skill/schemas/recommendation_score.schema.json",
+  "type": "object",
+  "title": "MajorRecommendationScore",
+  "description": "major 的本科专业适配度、风险和推荐分组评分结构。",
+  "properties": {
+    "major": {
+      "type": "string",
+      "description": "专业或专业方向名称。"
+    },
+    "country_scope": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["China", "South Korea", "Japan", "United Kingdom", "United States", "Australia", "Multiple", "Undecided"]
+      },
+      "description": "该评分适用的国家或体系范围。"
+    },
+    "fit_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "综合专业适配度评分。"
+    },
+    "fit_level": {
+      "type": "string",
+      "enum": ["high", "medium", "cautious", "low", "insufficient_information"],
+      "description": "适配等级。"
+    },
+    "risk_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "综合风险评分，越高表示风险越高。"
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "unknown"],
+      "description": "风险等级。"
+    },
+    "interest_match": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "ability_match": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "study_process_match": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "career_goal_match": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "country_system_match": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "constraint_match": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "hard_constraint_flags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "触发的硬约束或排除项。"
+    },
+    "soft_constraint_notes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "影响排序的软约束说明。"
+    },
+    "strongest_fit_reasons": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "最强适配理由。"
+    },
+    "weakest_fit_reasons": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "最弱适配点或不确定点。"
+    },
+    "top_risks": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "主要风险。"
+    },
+    "mitigation_strategies": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "降低风险的行动建议。"
+    },
+    "source_certainty": {
+      "type": "string",
+      "enum": ["high", "medium", "low", "unknown", "not_applicable"],
+      "description": "该推荐中涉及具体事实时的来源确定性。"
+    },
+    "recommendation_group": {
+      "type": "string",
+      "enum": [
+        "core_recommendations",
+        "adjacent_alternatives",
+        "cautious_options",
+        "not_recommended",
+        "needs_more_information"
+      ],
+      "description": "最终推荐分组。"
+    },
+    "assumptions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "评分基于的暂定假设。"
+    },
+    "missing_profile_fields": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "会影响该专业评分的缺失画像字段。"
+    },
+    "what_could_change_the_score": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "哪些新信息会显著改变评分。"
+    },
+    "explanation": {
+      "type": "string",
+      "description": "面向用户的简短解释。"
+    },
+    "next_steps": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "下一步行动建议。"
+    }
+  },
+  "required": [
+    "major",
+    "country_scope",
+    "fit_score",
+    "fit_level",
+    "risk_score",
+    "risk_level",
+    "interest_match",
+    "ability_match",
+    "study_process_match",
+    "career_goal_match",
+    "country_system_match",
+    "constraint_match",
+    "hard_constraint_flags",
+    "soft_constraint_notes",
+    "strongest_fit_reasons",
+    "top_risks",
+    "mitigation_strategies",
+    "source_certainty",
+    "recommendation_group",
+    "explanation",
+    "next_steps"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,138 @@
+metadata:
+  purpose: 这个文件不是最终专业数据库，而是帮助 major 做归类、检索扩展和初步推荐的专业分类种子。
+  usage:
+    - 根据用户兴趣或背景快速定位可能相关的专业大类。
+    - 为检索生成英文专业关键词。
+    - 在用户信息不足时给出初步专业方向。
+    - 后续必须结合国家术语、大学官网和课程目录继续核验。
+  caution:
+    - 同一 major 在不同国家、大学或院系下可能名称、课程结构和职业路径不同。
+    - 不能仅凭本文件做最终推荐、排名或录取判断。
+
+STEM:
+  display_name_zh: 理工与技术
+  majors:
+    - Computer Science
+    - Software Engineering
+    - Data Science
+    - Artificial Intelligence
+    - Cybersecurity
+    - Information Systems
+    - Mathematics
+    - Statistics
+    - Physics
+    - Chemistry
+    - Engineering
+    - Electrical Engineering
+    - Mechanical Engineering
+    - Civil Engineering
+    - Chemical Engineering
+    - Aerospace Engineering
+    - Robotics
+    - Human-Computer Interaction
+    - Cognitive Science
+
+Life_and_Health:
+  display_name_zh: 生命科学与健康
+  majors:
+    - Biology
+    - Biomedical Science
+    - Biotechnology
+    - Neuroscience
+    - Medicine-related Studies
+    - Nursing
+    - Public Health
+    - Pharmacy
+    - Nutrition
+    - Psychology
+    - Sports Science
+    - Veterinary Science
+
+Business_and_Economics:
+  display_name_zh: 商科与经济
+  majors:
+    - Economics
+    - Finance
+    - Accounting
+    - Business Administration
+    - Management
+    - Marketing
+    - International Business
+    - Actuarial Science
+    - Business Analytics
+    - Entrepreneurship
+    - Supply Chain Management
+    - Hospitality Management
+
+Social_Sciences:
+  display_name_zh: 社会科学
+  majors:
+    - Sociology
+    - Political Science
+    - International Relations
+    - Public Policy
+    - Anthropology
+    - Criminology
+    - Education
+    - Social Work
+    - Human Geography
+    - Development Studies
+
+Humanities:
+  display_name_zh: 人文
+  majors:
+    - History
+    - Philosophy
+    - Literature
+    - Linguistics
+    - Classics
+    - Cultural Studies
+    - Area Studies
+    - Religious Studies
+    - Languages
+    - Translation and Interpreting
+
+Law_and_Public_Affairs:
+  display_name_zh: 法律与公共事务
+  majors:
+    - Law
+    - Legal Studies
+    - Public Administration
+    - Policy Studies
+    - Government
+    - Criminal Justice
+
+Arts_Design_and_Media:
+  display_name_zh: 艺术、设计与传媒
+  majors:
+    - Fine Arts
+    - Design
+    - Graphic Design
+    - Industrial Design
+    - Architecture
+    - Landscape Architecture
+    - Game Design
+    - Film
+    - Media Studies
+    - Journalism
+    - Communication
+    - Public Relations
+    - Music
+    - Theatre
+    - Animation
+    - Fashion Design
+    - Digital Media
+
+Environment_and_Agriculture:
+  display_name_zh: 环境、地理与农业
+  majors:
+    - Environmental Science
+    - Environmental Engineering
+    - Geography
+    - Urban Planning
+    - Agriculture
+    - Food Science
+    - Marine Science
+    - Sustainability Studies
+    - Forestry
+    - Earth Science

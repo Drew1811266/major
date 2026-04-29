@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://major.skill/schemas/uncertainty_record.schema.json",
+  "type": "object",
+  "title": "UncertaintyRecord",
+  "description": "major 的关键结论不确定性记录。",
+  "properties": {
+    "claim_id": { "type": "string", "description": "关联 claim_id，若适用。" },
+    "subject": { "type": "string", "description": "不确定性主题或结论。" },
+    "certainty_level": {
+      "type": "string",
+      "enum": ["high", "medium", "low", "unknown"],
+      "description": "确定性等级。"
+    },
+    "certainty_definition": { "type": "string", "description": "该等级的定义。" },
+    "output_rule": {
+      "type": "string",
+      "enum": [
+        "can_state_as_current_conclusion",
+        "can_state_with_limitations",
+        "reference_only_not_strong_conclusion",
+        "must_state_unable_to_confirm"
+      ],
+      "description": "输出规则。"
+    },
+    "reasons": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "确定性原因。"
+    },
+    "missing_information": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "缺失信息。"
+    },
+    "source_limitations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "来源局限。"
+    },
+    "user_visible_note": { "type": "string", "description": "面向用户展示的不确定性说明。" },
+    "next_verification_step": { "type": "string", "description": "下一步核验建议。" }
+  },
+  "required": [
+    "subject",
+    "certainty_level",
+    "certainty_definition",
+    "output_rule",
+    "reasons",
+    "missing_information",
+    "source_limitations",
+    "user_visible_note",
+    "next_verification_step"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Major"
+  short_description: "本科专业检索、比较与推荐咨询"
+  default_prompt: "使用 $major 比较本科专业，并根据我的背景推荐适合方向。"
+
+policy:
+  allow_implicit_invocation: true

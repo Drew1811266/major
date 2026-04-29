@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://major.skill/schemas/china_ranking_reference.schema.json",
+  "type": "object",
+  "title": "ChinaRankingReference",
+  "description": "中国大陆大学专业第三方排名参考记录。该结构用于专业实力参考，不得作为招生、录取、选科、专业组或分省计划事实依据。",
+  "properties": {
+    "ranking_reference_id": {
+      "type": "string",
+      "pattern": "^rank_china_[a-z0-9_]+_[0-9]{4}_[a-f0-9]{8,12}$",
+      "description": "排名参考稳定 ID。"
+    },
+    "ranking_name": { "type": "string", "description": "排名名称，例如 软科中国大学专业排名。" },
+    "ranking_year": { "type": "string", "description": "排名年份，例如 2025。" },
+    "publisher": { "type": "string", "description": "排名发布机构。" },
+    "methodology_url": { "type": "string", "description": "排名方法链接。" },
+    "ranking_url": { "type": "string", "description": "排名页面链接。" },
+    "university_name_zh": { "type": "string", "description": "院校中文名称。" },
+    "university_name_en": { "type": "string", "description": "院校英文名称，若可得。" },
+    "major_name_zh": { "type": "string", "description": "专业中文名称。" },
+    "major_code": { "type": "string", "description": "专业代码，若可得。" },
+    "discipline_category": { "type": "string", "description": "学科门类。" },
+    "major_category": { "type": "string", "description": "专业类。" },
+    "rank_position": { "type": "string", "description": "排名位次或区间，若授权数据提供。" },
+    "rating": { "type": "string", "description": "评级，例如 A+、A、B+、B、特色专业等。" },
+    "ranking_scope": { "type": "string", "description": "排名适用范围，例如 全国本科专业点。" },
+    "source_id": {
+      "type": "string",
+      "pattern": "^src_[a-z0-9_]+_[0-9]{4}_[a-f0-9]{8,12}$",
+      "description": "对应来源 ID。"
+    },
+    "not_admissions_evidence": {
+      "type": "boolean",
+      "description": "必须为 true，表示该排名不得作为招生事实依据。"
+    },
+    "limitations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "排名局限和使用边界。"
+    }
+  },
+  "required": [
+    "ranking_reference_id",
+    "ranking_name",
+    "ranking_year",
+    "publisher",
+    "methodology_url",
+    "university_name_zh",
+    "major_name_zh",
+    "source_id",
+    "not_admissions_evidence",
+    "limitations"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,199 @@
+description: >
+  Regulated-field verification guide for undergraduate major advising. Use this
+  to identify when academic study is not enough for professional practice.
+
+usage_rules:
+  - Always verify current requirements with the relevant regulator, professional body, university, and government source.
+  - Do not tell users that completing a major guarantees licensure, registration, visa, migration, or employment.
+  - Distinguish academic major choice from professional qualification route.
+  - For country-specific claims, cite current or next-cycle official sources.
+
+fields:
+  medicine:
+    risk_note: Medical practice is highly regulated and may require accredited degrees, exams, internship, registration, language requirements, and immigration eligibility.
+    verify:
+      - accredited programme status
+      - entry route and degree level
+      - clinical placement requirements
+      - internship or residency pathway
+      - registration body requirements
+      - visa or work eligibility limits
+    source_types:
+      - university_official
+      - accreditation_body
+      - government
+
+  nursing:
+    risk_note: Nursing registration depends on accredited education, clinical hours, registration standards, and jurisdiction-specific rules.
+    verify:
+      - accreditation status
+      - clinical placement hours
+      - registration board requirements
+      - language requirements
+      - international student eligibility
+    source_types:
+      - university_official
+      - accreditation_body
+      - government
+
+  psychology:
+    risk_note: Undergraduate psychology usually does not by itself qualify a user for clinical practice or counseling licensure.
+    verify:
+      - accredited sequence or major status
+      - postgraduate requirements
+      - supervised practice requirements
+      - protected professional titles
+      - local licensing board rules
+    source_types:
+      - university_official
+      - accreditation_body
+      - government
+
+  law:
+    risk_note: Legal education, bar admission, qualifying examinations, clerkship, and training contracts differ sharply by country.
+    verify:
+      - qualifying law degree status
+      - bar or solicitor route
+      - local practice requirements
+      - foreign graduate limits
+      - language or citizenship requirements
+    source_types:
+      - university_official
+      - accreditation_body
+      - government
+
+  architecture:
+    risk_note: Architecture practice usually requires accredited study, supervised experience, exams, and registration beyond undergraduate study.
+    verify:
+      - accredited degree pathway
+      - portfolio or studio requirements
+      - postgraduate requirements
+      - supervised practice
+      - registration exams
+    source_types:
+      - university_official
+      - accreditation_body
+      - government
+
+  engineering:
+    risk_note: Professional engineer recognition may depend on programme accreditation, supervised experience, and country-specific registration.
+    verify:
+      - programme accreditation
+      - Washington Accord or local equivalence
+      - supervised practice requirements
+      - protected title rules
+      - registration pathway
+    source_types:
+      - university_official
+      - accreditation_body
+      - government
+
+  accounting:
+    risk_note: Accounting careers may require professional-body subjects, exams, supervised experience, and country-specific membership routes.
+    verify:
+      - professional-body accreditation
+      - required subject coverage
+      - exams and practical experience
+      - local recognition of overseas degrees
+    source_types:
+      - university_official
+      - accreditation_body
+      - industry_association
+
+  social_work:
+    risk_note: Social work practice and protected titles may require accredited programmes, placements, registration, and safeguarding checks.
+    verify:
+      - programme accreditation
+      - placement requirements
+      - registration requirements
+      - background check requirements
+      - local language or citizenship constraints
+    source_types:
+      - university_official
+      - accreditation_body
+      - government
+
+country_source_examples:
+  United Kingdom:
+    - name: General Medical Council
+      field: medicine
+      url: https://www.gmc-uk.org/
+      source_type: accreditation_body
+    - name: Nursing and Midwifery Council
+      field: nursing
+      url: https://www.nmc.org.uk/
+      source_type: accreditation_body
+    - name: Architects Registration Board
+      field: architecture
+      url: https://arb.org.uk/
+      source_type: accreditation_body
+    - name: Solicitors Regulation Authority
+      field: law
+      url: https://www.sra.org.uk/
+      source_type: accreditation_body
+
+  United States:
+    - name: ABET
+      field: engineering
+      url: https://www.abet.org/
+      source_type: accreditation_body
+    - name: Bureau of Labor Statistics Occupational Outlook Handbook
+      field: careers
+      url: https://www.bls.gov/ooh/
+      source_type: labor_statistics
+    - name: National Architectural Accrediting Board
+      field: architecture
+      url: https://www.naab.org/
+      source_type: accreditation_body
+    - name: Association to Advance Collegiate Schools of Business
+      field: business_accounting
+      url: https://www.aacsb.edu/
+      source_type: accreditation_body
+
+  Australia:
+    - name: Australian Health Practitioner Regulation Agency
+      field: health
+      url: https://www.ahpra.gov.au/
+      source_type: government
+    - name: Australian Nursing and Midwifery Accreditation Council
+      field: nursing
+      url: https://www.anmac.org.au/
+      source_type: accreditation_body
+    - name: Australian Psychology Accreditation Council
+      field: psychology
+      url: https://apac.au/
+      source_type: accreditation_body
+    - name: Engineers Australia
+      field: engineering
+      url: https://www.engineersaustralia.org.au/
+      source_type: accreditation_body
+
+  China:
+    - name: Ministry of Education of the PRC
+      field: education_policy
+      url: https://www.moe.gov.cn/
+      source_type: government
+    - name: National Health Commission of the PRC
+      field: medicine_health
+      url: https://www.nhc.gov.cn/
+      source_type: government
+
+  South Korea:
+    - name: Ministry of Education, Republic of Korea
+      field: education_policy
+      url: https://www.moe.go.kr/
+      source_type: government
+    - name: Ministry of Health and Welfare, Republic of Korea
+      field: medicine_health
+      url: https://www.mohw.go.kr/
+      source_type: government
+
+  Japan:
+    - name: Ministry of Education, Culture, Sports, Science and Technology
+      field: education_policy
+      url: https://www.mext.go.jp/
+      source_type: government
+    - name: Ministry of Health, Labour and Welfare
+      field: medicine_health_labor
+      url: https://www.mhlw.go.jp/
+      source_type: government

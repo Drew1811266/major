@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://major.skill/schemas/china_major_repository_lookup_result.schema.json",
+  "type": "object",
+  "title": "ChinaMajorRepositoryLookupResult",
+  "description": "中国大陆大学专业数据存储库查询结果。该结果用于候选初筛和排名参考，不替代官方 current/next-cycle 核验。",
+  "properties": {
+    "query": { "type": "string", "description": "原始查询。" },
+    "normalized_query": { "type": "string", "description": "标准化查询。" },
+    "admissions_scope": {
+      "$ref": "admissions_scope.schema.json",
+      "description": "查询适用范围。"
+    },
+    "candidate_records": {
+      "type": "array",
+      "items": { "$ref": "china_university_major_record.schema.json" },
+      "description": "候选专业记录。"
+    },
+    "ranking_references": {
+      "type": "array",
+      "items": { "$ref": "china_ranking_reference.schema.json" },
+      "description": "第三方排名参考。"
+    },
+    "requires_official_verification": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "仍需官方核验的结论或字段。"
+    },
+    "rejected_records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "record_id": { "type": "string" },
+          "reason": { "type": "string" }
+        },
+        "required": ["record_id", "reason"],
+        "additionalProperties": false
+      },
+      "description": "被拒绝或降级的记录。"
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^src_[a-z0-9_]+_[0-9]{4}_[a-f0-9]{8,12}$"
+      }
+    },
+    "claim_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^clm_[a-z0-9_]+_[a-f0-9]{8,12}$"
+      }
+    },
+    "user_visible_note": {
+      "type": "string",
+      "description": "面向用户说明本地库与官方核验的关系。"
+    },
+    "limitations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "查询局限。"
+    }
+  },
+  "required": [
+    "query",
+    "normalized_query",
+    "admissions_scope",
+    "candidate_records",
+    "ranking_references",
+    "requires_official_verification",
+    "rejected_records",
+    "source_ids",
+    "claim_ids",
+    "user_visible_note",
+    "limitations"
+  ],
+  "additionalProperties": false
+}

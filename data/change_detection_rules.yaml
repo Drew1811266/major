@@ -1,0 +1,91 @@
+metadata:
+  purpose: 支持 major 检测本科专业、招生、课程、学费、认证和政策变化。
+  freshness_rule: "当前侧 new_source_set 必须优先满足当前/下一招生周期或当前/下一 academic year 官方来源要求；2025+ 只是最低底线。"
+
+change_types:
+  added: "新增专业、项目、方向或招生单位。"
+  removed: "停招、撤销或不再出现在当前招生目录。"
+  renamed: "专业、项目、方向或课程名称变化。"
+  merged: "多个专业或方向合并。"
+  split: "一个专业或方向拆分为多个。"
+  moved_department: "专业归属学院或院系变化。"
+  requirement_changed: "录取要求、先修要求、语言要求、作品集或其他申请条件变化。"
+  enrollment_plan_changed: "招生计划、分省计划、招生人数或招生类别变化。"
+  subject_selection_changed: "选考科目、专业组、科目组合要求变化。"
+  curriculum_changed: "培养方案、课程模块、核心课或实践训练变化。"
+  tuition_changed: "学费或费用变化。"
+  accreditation_changed: "认证状态、认证机构或资格路径变化。"
+  unclear: "来源不足、口径不同或变化无法确认。"
+
+china_fields_to_compare:
+  - province
+  - admissions_batch
+  - major_name
+  - major_code
+  - college_or_department
+  - major_category
+  - enrollment_category
+  - major_group
+  - subject_selection_requirement
+  - enrollment_plan_scope
+  - provincial_enrollment_plan
+  - training_programme
+  - core_courses
+  - tuition
+  - joint_programme
+  - experimental_class
+  - honors_or_top_programme
+  - strong_base_or_special_plan
+  - accreditation_status
+
+china_priority_sources:
+  - "2025+ 本科招生章程"
+  - "2025+ 本科招生简章"
+  - "2025+ 招生专业目录"
+  - "2025+ 分省招生计划"
+  - "2025+ 选考科目要求"
+  - "2025+ 专业组"
+  - "2025+ 培养方案"
+  - "高校本科招生网"
+  - "教育部"
+  - "阳光高考"
+  - "省级考试院"
+  - "高校教务处"
+  - "院系官网"
+
+international_fields_to_compare:
+  - programme_name
+  - degree_title
+  - major_or_specialisation
+  - department_or_school
+  - duration
+  - course_structure
+  - core_modules
+  - entry_requirements
+  - tuition_fees
+  - deadlines
+  - accreditation_status
+  - internship_or_placement
+
+source_rules:
+  old_sources:
+    allow_historical: true
+    label_required: historical
+  new_sources:
+    require_2025_or_later: true
+    prefer_current_or_next_cycle: true
+    reject_archived_as_current: true
+
+china_scope_rules:
+  - "全国本科专业目录、省级考试院选科要求、高校招生专业目录、分省招生计划、专业组、培养方案是不同口径。"
+  - "不得把全国目录直接当作某省可报专业。"
+  - "不得把某省专业组变化概括为全国变化。"
+  - "不得把高校培养方案变化直接当作招生专业目录变化。"
+  - "混用不同口径时必须在 limitations 中说明。"
+  - "缺少省份、选科组合、入学年份或招生路径时，只能给初步判断并反问。"
+
+output_rules:
+  - "每条变化必须有 old_value、new_value、old_sources、new_sources、certainty_level。"
+  - "new_sources 不满足 2025+ 时，不得输出当前变化结论。"
+  - "口径不一致时标注 limitations。"
+  - "对申请影响要具体说明：选科、专业组、计划、费用、课程、认证或资格。"

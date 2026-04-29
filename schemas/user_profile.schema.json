@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://major.skill/schemas/user_profile.schema.json",
+  "type": "object",
+  "title": "MajorUserProfile",
+  "description": "用于 major Skill 的本科专业咨询用户画像，支持多轮补全、偏好学习、约束识别和推荐评分。",
+  "properties": {
+    "target_countries": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "China",
+          "South Korea",
+          "Japan",
+          "United Kingdom",
+          "United States",
+          "Australia",
+          "Undecided"
+        ]
+      },
+      "uniqueItems": true,
+      "description": "用户考虑申请或了解的国家。"
+    },
+    "education_stage": {
+      "type": "string",
+      "description": "用户当前阶段，例如高一、高二、高三、国内普高、IB、A-Level、AP、国际学校、韩国高中、日本高中、已高中毕业等。"
+    },
+    "academic_background": {
+      "type": "string",
+      "description": "用户的课程体系、选科、成绩概况、考试背景等。"
+    },
+    "intended_entry_year": {
+      "type": "string",
+      "description": "计划本科入学年份，例如 2026、2027。用于判断当前/下一招生周期。"
+    },
+    "exam_region_or_province": {
+      "type": "string",
+      "description": "中国大陆高考省份或考试地区，查询选科要求、专业组、分省招生计划时必须优先确认。"
+    },
+    "subject_combination": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "中国大陆新高考或其他体系的选科组合，例如物理、化学、生物、历史、政治、地理。"
+    },
+    "gaokao_track": {
+      "type": "string",
+      "description": "中国大陆考生类别或路径，例如普通类、艺术类、强基计划、综合评价、中外合作、专项计划等。"
+    },
+    "preferred_batch_or_application_route": {
+      "type": "string",
+      "description": "偏好的批次、申请路径或招生类型，例如本科批、提前批、综合评价、强基计划、国际申请等。"
+    },
+    "china_application_constraints": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "中国大陆申请限制，例如省份、专业组、选科、体检要求、学费、中外合作、单科成绩、家庭城市偏好等。"
+    },
+    "academic_strengths": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "用户擅长的科目或能力，例如数学、物理、生物、英语、写作、历史、艺术、编程、沟通等。"
+    },
+    "academic_weaknesses": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "用户不擅长或不喜欢的科目和能力。"
+    },
+    "interests": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "用户兴趣方向，例如 AI、心理学、金融、医学、法律、设计、游戏、传媒、环境、教育等。"
+    },
+    "preferred_tasks": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "用户喜欢的任务，例如解决问题、做实验、写作、设计、编程、分析数据、和人沟通、做研究、做项目等。"
+    },
+    "disliked_tasks": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "用户不喜欢或不能接受的任务，例如大量数学、长期编程、实验、背诵、论文阅读、公开表达、作品集、临床训练等。"
+    },
+    "career_preferences": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "职业偏好，例如高收入、稳定、创造性、科研、创业、国际化、公共服务、技术路线、管理路线等。"
+    },
+    "language_profile": {
+      "type": "object",
+      "properties": {
+        "chinese_level": { "type": "string" },
+        "english_level": { "type": "string" },
+        "korean_level": { "type": "string" },
+        "japanese_level": { "type": "string" },
+        "test_scores": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "可选语言成绩，例如 IELTS、TOEFL、TOPIK、JLPT 等。"
+        }
+      },
+      "additionalProperties": true,
+      "description": "语言能力画像。"
+    },
+    "budget_level": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "unknown"],
+      "description": "预算水平。"
+    },
+    "risk_tolerance": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "unknown"],
+      "description": "用户对申请难度、就业不确定性、跨专业风险等的接受程度。"
+    },
+    "constraints": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "限制条件，例如家庭意见、城市偏好、签证限制、身体条件、作品集要求、考试科目、预算、就业地点等。"
+    },
+    "priority_factors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "interest",
+          "employment",
+          "income",
+          "stability",
+          "research",
+          "immigration",
+          "prestige",
+          "application_difficulty",
+          "study_pressure",
+          "family_preference",
+          "location",
+          "creativity",
+          "social_impact",
+          "international_exposure",
+          "undergraduate_employability"
+        ]
+      },
+      "description": "用户在专业选择中最看重的因素。"
+    },
+    "preference_history": {
+      "type": "array",
+      "items": {
+        "$ref": "user_preference_update.schema.json"
+      },
+      "description": "多轮对话中根据用户反馈记录的偏好更新。"
+    },
+    "inferred_hard_constraints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "constraint": { "type": "string" },
+          "evidence": { "type": "string" },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+        },
+        "required": ["constraint"],
+        "additionalProperties": false
+      },
+      "description": "从用户表述中推断出的硬约束，例如完全不能接受作品集、大量编程或预算无法支持某国家。"
+    },
+    "inferred_soft_constraints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "constraint": { "type": "string" },
+          "evidence": { "type": "string" },
+          "weight_delta": { "type": "number" },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+        },
+        "required": ["constraint"],
+        "additionalProperties": false
+      },
+      "description": "从用户表述中推断出的软约束，例如希望高收入、稳定、少写论文或少做实验。"
+    },
+    "profile_completeness_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "画像完整度评分，0 表示几乎无信息，1 表示足以做严肃推荐。"
+    },
+    "missing_fields": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "当前推荐任务中仍缺失的关键画像字段。"
+    }
+  },
+  "required": [],
+  "additionalProperties": false
+}

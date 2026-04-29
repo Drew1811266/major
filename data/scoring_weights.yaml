@@ -1,0 +1,141 @@
+source_scoring:
+  formula: >
+    source_score = 0.30 * authority_score
+    + 0.25 * freshness_score
+    + 0.20 * relevance_score
+    + 0.10 * specificity_score
+    + 0.10 * corroboration_score
+    + 0.05 * country_match_score
+    - outdated_penalty
+  weights:
+    authority_score: 0.30
+    freshness_score: 0.25
+    relevance_score: 0.20
+    specificity_score: 0.10
+    corroboration_score: 0.10
+    country_match_score: 0.05
+  penalties:
+    pre_2025_without_current_applicability: 0.50
+    unofficial_without_cross_validation: 0.25
+    no_publication_or_update_date: 0.10
+    archived_or_outdated_page: 0.40
+    old_admissions_page: 0.40
+    aggregator_with_stale_data: 0.30
+    unable_to_determine_current_status: 0.20
+    ranking_reference_used_as_admissions_evidence: 0.45
+    local_repository_without_official_verification: 0.35
+  reliability_thresholds:
+    high: 0.80
+    medium: 0.60
+    low: 0.30
+  source_type_caps:
+    ranking_reference:
+      admissions_claim_max_reliability: medium
+      admissions_claim_max_score: 0.60
+      allowed_claims:
+        - ranking_reference
+        - recommendation_claim
+        - country_system_rule
+    local_repository_record:
+      admissions_claim_max_reliability: low
+      admissions_claim_max_score: 0.45
+      allowed_claims:
+        - local_repository_candidate
+        - recommendation_claim
+
+freshness_scoring:
+  published_updated_or_applicable_2025_plus: 1.00
+  current_official_page_without_clear_date: 0.70
+  reliable_2025_plus_but_not_current_cycle: 0.65
+  pre_2025_historical_user_requested: 0.30
+  pre_2025_not_applicable: 0.00
+  archived_or_outdated: 0.00
+
+major_fit_scoring:
+  weights:
+    interest_match: 0.30
+    ability_match: 0.20
+    study_process_match: 0.15
+    career_goal_match: 0.15
+    country_system_match: 0.10
+    constraint_match: 0.10
+
+risk_scoring:
+  formula: >
+    risk_score = 0.25 * skill_gap_risk
+    + 0.20 * study_pressure_risk
+    + 0.20 * admission_risk
+    + 0.15 * employment_uncertainty_risk
+    + 0.10 * qualification_risk
+    + 0.10 * budget_or_language_risk
+  weights:
+    skill_gap_risk: 0.25
+    study_pressure_risk: 0.20
+    admission_risk: 0.20
+    employment_uncertainty_risk: 0.15
+    qualification_risk: 0.10
+    budget_or_language_risk: 0.10
+  thresholds:
+    low: 0.30
+    medium: 0.60
+    high: 0.80
+
+question_selection:
+  formula: >
+    question_score = 0.40 * decision_impact
+    + 0.30 * uncertainty_reduction
+    + 0.20 * field_importance
+    - 0.10 * user_burden_penalty
+  weights:
+    decision_impact: 0.40
+    uncertainty_reduction: 0.30
+    field_importance: 0.20
+    user_burden_penalty: -0.10
+
+recommendation_ranking:
+  weights:
+    fit_score: 0.45
+    inverse_risk_score: 0.20
+    constraint_status: 0.15
+    preference_alignment: 0.10
+    country_system_match: 0.05
+    source_certainty: 0.03
+    diversity_bonus: 0.02
+  group_thresholds:
+    core_recommendations:
+      minimum_fit_score: 0.70
+      maximum_risk_score: 0.55
+      allow_hard_constraints: false
+    adjacent_alternatives:
+      minimum_fit_score: 0.55
+      maximum_risk_score: 0.70
+      allow_hard_constraints: false
+    cautious_options:
+      minimum_fit_score: 0.45
+      maximum_risk_score: 1.00
+      allow_hard_constraints: false
+    not_recommended:
+      triggered_by:
+        - unresolved_hard_constraint
+        - fit_score_below_0_45
+        - risk_score_above_0_80
+    needs_more_information:
+      triggered_by:
+        - missing_target_country
+        - missing_academic_background
+        - missing_interest_detail
+        - missing_high_risk_acceptance
+
+certainty_levels:
+  high:
+    description: "当前/下一周期或当前/下一学年官方来源直接支持，并且信息与用户问题高度相关。"
+    output_rule: "可以作为当前结论输出，但必须引用来源。"
+  medium:
+    description: "来源较可靠，但缺少一个关键字段，例如明确更新日期、招生年份或交叉验证。"
+    output_rule: "可以输出，但必须提示限制。"
+  low:
+    description: "来源不够官方，或只能间接支持结论。"
+    output_rule: "只能作为参考，不得作为强结论。"
+  unknown:
+    description: "未找到可靠来源支持该结论。"
+    output_rule: "必须说明无法确认。"

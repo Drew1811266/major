@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://major.skill/schemas/recommendation.schema.json",
+  "title": "MajorRecommendation",
+  "type": "object",
+  "description": "major 的本科专业推荐结果结构，按核心推荐、相邻备选、谨慎项、不建议项和待补充信息分组。",
+  "properties": {
+    "profile_summary": {
+      "type": "string",
+      "description": "已知用户画像摘要。"
+    },
+    "profile_completeness": {
+      "type": "string",
+      "enum": ["sufficient", "partial", "insufficient"],
+      "description": "画像完整度等级。"
+    },
+    "profile_completeness_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "missing_information": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "仍需补充的信息。"
+    },
+    "clarifying_questions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "maxItems": 5,
+      "description": "需要继续询问用户的问题，初次最多 5 个。"
+    },
+    "core_recommendations": {
+      "type": "array",
+      "items": { "$ref": "recommendation_score.schema.json" }
+    },
+    "adjacent_alternatives": {
+      "type": "array",
+      "items": { "$ref": "recommendation_score.schema.json" }
+    },
+    "cautious_options": {
+      "type": "array",
+      "items": { "$ref": "recommendation_score.schema.json" }
+    },
+    "not_recommended": {
+      "type": "array",
+      "items": { "$ref": "recommendation_score.schema.json" }
+    },
+    "needs_more_information": {
+      "type": "array",
+      "items": { "$ref": "recommendation_score.schema.json" }
+    },
+    "preference_updates": {
+      "type": "array",
+      "items": { "$ref": "user_preference_update.schema.json" },
+      "description": "本轮对话中新识别的用户偏好。"
+    },
+    "verification_needed": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "推荐中仍需用 current/next-cycle 官方来源核查的具体事实；2025-01-01 只是最低时效底线。"
+    },
+    "cautions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "不确定性、资格认证、签证、就业或过度承诺风险提醒。"
+    },
+    "sources": {
+      "type": "array",
+      "items": { "$ref": "source_record.schema.json" },
+      "description": "涉及具体事实时使用的来源记录。"
+    }
+  },
+  "required": [
+    "profile_summary",
+    "profile_completeness",
+    "missing_information",
+    "core_recommendations",
+    "adjacent_alternatives",
+    "cautious_options",
+    "not_recommended",
+    "needs_more_information",
+    "cautions"
+  ],
+  "additionalProperties": false
+}

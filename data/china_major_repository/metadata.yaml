@@ -1,0 +1,26 @@
+dataset_id: cnrepo_major_authorized_seed_2025_4a7c1d2e
+name: China Mainland Undergraduate Major Repository
+version: 0.1.0
+language: zh-CN
+data_year: "2025"
+updated_date: "2026-04-29"
+authorization_status: sample_only
+source_statement: >
+  This repository ships only metadata, schemas, import mappings, source rules,
+  and sample-only records. It does not include a full ShanghaiRanking 2025 data
+  snapshot. Deployments may import authorized CSV/JSON files with
+  scripts/china_major_repository_import.py.
+usage_policy:
+  - 本地库用于候选专业和候选院校初筛，不等于当前招生事实。
+  - 软科排名等第三方排名只能作为专业实力参考，不得作为录取、选科、专业组或分省计划依据。
+  - 当前招生、招生专业、分省计划、选科要求、专业组和培养方案必须继续核验官方 current/next-cycle 来源。
+  - 未授权或授权状态不明的数据不得用于用户可见事实回答。
+  - sample_records.yaml 仅用于结构测试，不能作为真实院校专业结论。
+sources:
+  - src_china_shanghairanking_2025_9f4a2b1c
+  - src_china_moe_major_catalog_2025_3d8e6a1b
+  - src_china_sunshine_gaokao_2026_5c7d2e9a
+limitations:
+  - 不内置完整软科 2025 排名明细。
+  - 不替代高校本科招生网、阳光高考、省级考试院、教育部或高校教务处来源。
+  - 排名评价与招生计划、录取要求、专业组、选科要求和培养方案属于不同口径。

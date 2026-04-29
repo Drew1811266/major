@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://major.skill/schemas/change_record.schema.json",
+  "type": "object",
+  "title": "MajorChangeRecord",
+  "description": "major 的本科专业、招生、课程、认证或政策年份变化记录。",
+  "properties": {
+    "change_id": { "type": "string" },
+    "target_entity": {
+      "type": "string",
+      "description": "变化对象，例如 university_program、major_catalog、subject_selection_requirement、course_structure。"
+    },
+    "country": { "type": "string" },
+    "university": { "type": "string" },
+    "major": { "type": "string" },
+    "province": { "type": "string", "description": "适用省份或考试地区，若涉及中国大陆分省招生、专业组或选科要求。" },
+    "admissions_scope": {
+      "$ref": "admissions_scope.schema.json",
+      "description": "变化记录适用的招生、地区、年份、选科、批次、专业组或来源口径范围。"
+    },
+    "admissions_batch": { "type": "string", "description": "招生批次或申请路径，例如本科批、提前批、强基计划、综合评价。" },
+    "major_group": { "type": "string", "description": "中国大陆专业组或院校专业组，若适用。" },
+    "subject_selection_requirement": { "type": "string", "description": "选考科目要求或科目组合，若适用。" },
+    "enrollment_plan_scope": { "type": "string", "description": "招生计划口径，例如全国、某省、某批次、某招生类型。" },
+    "major_code": { "type": "string", "description": "专业代码，若来源提供。" },
+    "programme_code": { "type": "string", "description": "项目、课程或招生单位代码，若来源提供。" },
+    "old_year": { "type": "string" },
+    "new_year": { "type": "string" },
+    "change_type": {
+      "type": "string",
+      "enum": [
+        "added",
+        "removed",
+        "renamed",
+        "merged",
+        "split",
+        "moved_department",
+        "requirement_changed",
+        "enrollment_plan_changed",
+        "subject_selection_changed",
+        "curriculum_changed",
+        "tuition_changed",
+        "accreditation_changed",
+        "unclear"
+      ]
+    },
+    "old_value": { "type": ["string", "object", "array", "null"] },
+    "new_value": { "type": ["string", "object", "array", "null"] },
+    "old_sources": {
+      "type": "array",
+      "items": { "$ref": "source_record.schema.json" }
+    },
+    "old_source_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "旧来源 source_id 列表。"
+    },
+    "new_sources": {
+      "type": "array",
+      "items": { "$ref": "source_record.schema.json" }
+    },
+    "new_source_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "新来源 source_id 列表。"
+    },
+    "claim_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "与该变化记录相关的 claim_id。"
+    },
+    "certainty_level": {
+      "type": "string",
+      "enum": ["high", "medium", "low", "unknown"]
+    },
+    "user_impact": {
+      "type": "string",
+      "description": "该变化对申请、选科、志愿、课程、费用、认证或职业路径的影响。"
+    },
+    "action_recommended": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "建议用户下一步核查或行动。"
+    },
+    "limitations": { "type": "string" }
+  },
+  "required": [
+    "change_id",
+    "target_entity",
+    "country",
+    "admissions_scope",
+    "old_year",
+    "new_year",
+    "change_type",
+    "old_value",
+    "new_value",
+    "old_sources",
+    "old_source_ids",
+    "new_sources",
+    "new_source_ids",
+    "certainty_level",
+    "user_impact",
+    "action_recommended",
+    "limitations"
+  ],
+  "additionalProperties": false
+}

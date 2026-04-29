@@ -1,0 +1,325 @@
+"Computer Science":
+  typical_tasks: [programming, debugging, algorithms, systems_projects, mathematical_reasoning]
+  required_skills: [logic, programming, discrete_math, persistence, problem_solving]
+  math_intensity: high
+  programming_intensity: high
+  reading_writing_intensity: medium
+  lab_intensity: low
+  portfolio_requirement: low
+  communication_intensity: medium
+  qualification_dependency: low
+  common_misconceptions: ["只学写 App", "不需要数学", "只要喜欢 AI 就一定适合"]
+  suitable_user_patterns: ["喜欢抽象问题和调试", "能接受长期编程", "数学和逻辑较强"]
+  caution_user_patterns: ["完全排斥编程", "不能接受离散数学或算法", "只因热门而选择"]
+"Artificial Intelligence":
+  typical_tasks: [machine_learning, statistics, coding, model_evaluation, data_projects]
+  required_skills: [math, programming, statistics, experimentation, reading_papers]
+  math_intensity: high
+  programming_intensity: high
+  reading_writing_intensity: medium
+  lab_intensity: low
+  portfolio_requirement: low
+  communication_intensity: medium
+  qualification_dependency: low
+  common_misconceptions: ["只是在使用 AI 工具", "本科一定有纯 AI 专业路径", "不需要数学统计"]
+  suitable_user_patterns: ["喜欢算法和数据", "愿意补数学统计", "能接受不确定的技术迭代"]
+  caution_user_patterns: ["只觉得 AI 热门", "排斥编程和统计", "希望轻松高薪"]
+"Data Science":
+  typical_tasks: [statistics, programming, data_cleaning, modeling, visualization, reporting]
+  required_skills: [statistics, coding, analytical_thinking, communication]
+  math_intensity: high
+  programming_intensity: medium_high
+  reading_writing_intensity: medium
+  lab_intensity: low
+  portfolio_requirement: low
+  communication_intensity: medium
+  qualification_dependency: low
+  common_misconceptions: ["只做可视化", "不用处理脏数据", "比计算机轻松很多"]
+  suitable_user_patterns: ["喜欢用数据解释问题", "能接受统计和代码", "愿意做项目"]
+  caution_user_patterns: ["讨厌数学统计", "不喜欢细节清洗", "不愿写分析报告"]
+"Software Engineering":
+  typical_tasks: [software_design, coding, testing, team_projects, requirements_analysis]
+  required_skills: [programming, collaboration, system_thinking, debugging]
+  math_intensity: medium
+  programming_intensity: high
+  reading_writing_intensity: medium
+  lab_intensity: low
+  portfolio_requirement: low
+  communication_intensity: medium_high
+  qualification_dependency: low
+  common_misconceptions: ["只是写代码", "不需要团队沟通", "比计算机科学完全简单"]
+  suitable_user_patterns: ["喜欢做产品和工程实现", "能持续迭代", "愿意团队协作"]
+  caution_user_patterns: ["排斥长期编程", "不喜欢协作和测试", "只想学理论"]
+"Information Systems":
+  typical_tasks: [business_process_analysis, databases, systems_design, technology_management, light_coding]
+  required_skills: [communication, analysis, basic_programming, business_understanding]
+  math_intensity: medium
+  programming_intensity: medium
+  reading_writing_intensity: medium
+  lab_intensity: low
+  portfolio_requirement: low
+  communication_intensity: high
+  qualification_dependency: low
+  common_misconceptions: ["等同于计算机科学", "完全不用技术", "只是管理课"]
+  suitable_user_patterns: ["喜欢技术应用和业务连接", "不想纯写代码", "沟通和分析能力较好"]
+  caution_user_patterns: ["想做深度算法", "完全排斥技术", "不喜欢组织流程"]
+"Business Analytics":
+  typical_tasks: [data_analysis, business_cases, dashboards, statistics, presentations]
+  required_skills: [statistics, business_sense, tools, communication]
+  math_intensity: medium_high
+  programming_intensity: medium
+  reading_writing_intensity: medium
+  lab_intensity: low
+  portfolio_requirement: low
+  communication_intensity: high
+  qualification_dependency: low
+  common_misconceptions: ["是不用数学的商科", "只学商业常识", "不需要展示和沟通"]
+  suitable_user_patterns: ["喜欢数据和商业问题", "能接受统计工具", "愿意做案例展示"]
+  caution_user_patterns: ["排斥数据分析", "不喜欢展示", "只想学传统管理"]
+"Economics":
+  typical_tasks: [microeconomics, macroeconomics, econometrics, modeling, policy_analysis]
+  required_skills: [math, statistics, abstract_reasoning, reading_writing]
+  math_intensity: high
+  programming_intensity: medium
+  reading_writing_intensity: medium_high
+  lab_intensity: low
+  portfolio_requirement: low
+  communication_intensity: medium
+  qualification_dependency: low
+  common_misconceptions: ["等同于金融赚钱", "只背概念", "不需要数学"]
+  suitable_user_patterns: ["喜欢社会经济问题和模型", "数学统计较强", "愿意读理论"]
+  caution_user_patterns: ["只想学投资", "数学弱且排斥补足", "不喜欢抽象模型"]
+"Finance":
+  typical_tasks: [financial_analysis, valuation, statistics, markets, accounting_basics]
+  required_skills: [quantitative_analysis, detail_orientation, business_sense, communication]
+  math_intensity: medium_high
+  programming_intensity: medium
+  reading_writing_intensity: medium
+  lab_intensity: low
+  portfolio_requirement: low
+  communication_intensity: high
+  qualification_dependency: medium
+  common_misconceptions: ["一定高薪", "只学炒股", "不需要竞争性实习"]
+  suitable_user_patterns: ["关注市场和企业", "能接受竞争和数据分析", "愿意实习"]
+  caution_user_patterns: ["只因高薪选择", "排斥量化和压力", "不喜欢商业环境"]
+"Accounting":
+  typical_tasks: [financial_reporting, auditing, taxation, controls, professional_cases]
+  required_skills: [detail_orientation, numeracy, ethics, consistency]
+  math_intensity: medium
+  programming_intensity: low_medium
+  reading_writing_intensity: medium
+  lab_intensity: low
+  portfolio_requirement: low
+  communication_intensity: medium
+  qualification_dependency: high
+  common_misconceptions: ["只是算账", "不需要资格认证", "完全没有沟通"]
+  suitable_user_patterns: ["细致稳定", "接受规则和认证路径", "重视就业清晰度"]
+  caution_user_patterns: ["讨厌规则细节", "不想考证", "只想创意工作"]
+"Marketing":
+  typical_tasks: [consumer_research, branding, campaigns, analytics, presentations]
+  required_skills: [communication, creativity, data_literacy, empathy]
+  math_intensity: medium
+  programming_intensity: low
+  reading_writing_intensity: medium
+  lab_intensity: low
+  portfolio_requirement: low_medium
+  communication_intensity: high
+  qualification_dependency: low
+  common_misconceptions: ["只靠创意", "不用数据", "等同于销售"]
+  suitable_user_patterns: ["喜欢人和市场", "能做表达和数据分析", "愿意项目制学习"]
+  caution_user_patterns: ["不喜欢公开表达", "排斥数据", "只想稳定低沟通"]
+"Psychology":
+  typical_tasks: [statistics, experiments, reading_papers, research_methods, human_behavior_analysis]
+  required_skills: [statistics, reading_writing, empathy, scientific_thinking]
+  math_intensity: medium_high
+  programming_intensity: low_medium
+  reading_writing_intensity: high
+  lab_intensity: medium
+  portfolio_requirement: low
+  communication_intensity: medium_high
+  qualification_dependency: high
+  common_misconceptions: ["本科毕业就能做心理咨询师", "只学聊天和读心", "不用统计"]
+  suitable_user_patterns: ["喜欢科学研究人类行为", "能接受统计和论文", "对助人路径有耐心"]
+  caution_user_patterns: ["排斥统计和英文论文", "只想快速做咨询", "不接受读研或资格路径"]
+"Neuroscience":
+  typical_tasks: [biology, psychology, lab_work, statistics, reading_papers]
+  required_skills: [biology, chemistry, statistics, research_methods]
+  math_intensity: medium_high
+  programming_intensity: medium
+  reading_writing_intensity: high
+  lab_intensity: high
+  portfolio_requirement: low
+  communication_intensity: medium
+  qualification_dependency: medium_high
+  common_misconceptions: ["等同于心理咨询", "不需要实验", "本科就业路径很直接"]
+  suitable_user_patterns: ["喜欢大脑和生命科学", "能接受实验和论文", "愿意研究生深造"]
+  caution_user_patterns: ["不喜欢实验", "只想做人际咨询", "希望本科直接就业"]
+"Education":
+  typical_tasks: [learning_theory, classroom_observation, lesson_design, research, practicum]
+  required_skills: [communication, empathy, writing, organization]
+  math_intensity: low_medium
+  programming_intensity: low
+  reading_writing_intensity: high
+  lab_intensity: low
+  portfolio_requirement: low
+  communication_intensity: high
+  qualification_dependency: high
+  common_misconceptions: ["读教育就自动有教师资格", "只是带孩子", "不用研究"]
+  suitable_user_patterns: ["喜欢教学和成长议题", "愿意沟通和反思", "接受资格路径"]
+  caution_user_patterns: ["不喜欢人际沟通", "不想实习实践", "不了解教师资格要求"]
+"Biomedical Science":
+  typical_tasks: [biology, chemistry, lab_work, anatomy, research_methods]
+  required_skills: [biology, chemistry, lab_skills, memorization, scientific_reading]
+  math_intensity: medium
+  programming_intensity: low_medium
+  reading_writing_intensity: medium_high
+  lab_intensity: high
+  portfolio_requirement: low
+  communication_intensity: medium
+  qualification_dependency: medium_high
+  common_misconceptions: ["等同于医学", "本科毕业就能当医生", "没有实验压力"]
+  suitable_user_patterns: ["喜欢生命科学实验", "愿意深造", "能接受记忆和实验"]
+  caution_user_patterns: ["不喜欢实验", "想直接做临床医生", "不接受长周期学习"]
+"Public Health":
+  typical_tasks: [epidemiology, statistics, policy_analysis, community_health, reports]
+  required_skills: [statistics, writing, systems_thinking, communication]
+  math_intensity: medium
+  programming_intensity: low_medium
+  reading_writing_intensity: high
+  lab_intensity: low_medium
+  portfolio_requirement: low
+  communication_intensity: high
+  qualification_dependency: medium
+  common_misconceptions: ["只学医学", "不用统计", "职业路径只有医院"]
+  suitable_user_patterns: ["关注群体健康和政策", "能做数据和写作", "喜欢公共议题"]
+  caution_user_patterns: ["只想临床看病", "讨厌统计写作", "不了解公共部门路径"]
+"Architecture":
+  typical_tasks: [design_studio, drawing, modeling, critiques, portfolio, building_systems]
+  required_skills: [spatial_thinking, design_iteration, stamina, visual_communication]
+  math_intensity: medium
+  programming_intensity: low_medium
+  reading_writing_intensity: medium
+  lab_intensity: low
+  portfolio_requirement: high
+  communication_intensity: high
+  qualification_dependency: high
+  common_misconceptions: ["只是画画", "不需要作品集", "本科后自动成为建筑师"]
+  suitable_user_patterns: ["喜欢空间和长期项目", "能接受反复改稿", "愿意准备作品集"]
+  caution_user_patterns: ["不能接受作品集", "不喜欢熬项目", "不接受资格路径"]
+"Design":
+  typical_tasks: [visual_research, sketching, prototyping, critique, portfolio, user_research]
+  required_skills: [creativity, visual_expression, iteration, empathy]
+  math_intensity: low
+  programming_intensity: low_medium
+  reading_writing_intensity: medium
+  lab_intensity: low
+  portfolio_requirement: high
+  communication_intensity: high
+  qualification_dependency: low
+  common_misconceptions: ["只要会画画", "没有研究和沟通", "作品集可有可无"]
+  suitable_user_patterns: ["喜欢创作和用户问题", "接受项目制学习", "能长期迭代作品"]
+  caution_user_patterns: ["拒绝作品集", "不喜欢反馈修改", "只想稳定低竞争"]
+"Media Studies":
+  typical_tasks: [media_theory, content_analysis, research, writing, digital_projects]
+  required_skills: [reading_writing, critical_thinking, communication, media_literacy]
+  math_intensity: low_medium
+  programming_intensity: low
+  reading_writing_intensity: high
+  lab_intensity: low
+  portfolio_requirement: low_medium
+  communication_intensity: high
+  qualification_dependency: low
+  common_misconceptions: ["就是拍视频", "不用写作阅读", "就业自动进媒体"]
+  suitable_user_patterns: ["喜欢文化和传播议题", "能阅读写作", "愿意做项目和实习"]
+  caution_user_patterns: ["不喜欢写作", "只想轻松做内容", "不能接受就业路径分散"]
+"Journalism":
+  typical_tasks: [reporting, interviewing, writing, editing, media_law_ethics]
+  required_skills: [writing, curiosity, communication, deadline_pressure]
+  math_intensity: low
+  programming_intensity: low
+  reading_writing_intensity: high
+  lab_intensity: low
+  portfolio_requirement: medium
+  communication_intensity: high
+  qualification_dependency: low
+  common_misconceptions: ["只要会表达", "没有截止日期压力", "不需要采访和事实核查"]
+  suitable_user_patterns: ["喜欢写作采访", "能承受截止日期", "重视事实和公共议题"]
+  caution_user_patterns: ["讨厌写作", "不愿采访陌生人", "希望路径非常稳定"]
+"Communication":
+  typical_tasks: [public_relations, strategic_communication, audience_research, presentations]
+  required_skills: [communication, writing, strategy, audience_analysis]
+  math_intensity: low_medium
+  programming_intensity: low
+  reading_writing_intensity: medium_high
+  lab_intensity: low
+  portfolio_requirement: low_medium
+  communication_intensity: high
+  qualification_dependency: low
+  common_misconceptions: ["等同于新闻", "只靠口才", "没有研究和数据"]
+  suitable_user_patterns: ["喜欢人与组织沟通", "愿意表达和策划", "接受项目和实习"]
+  caution_user_patterns: ["不喜欢沟通展示", "只想学纯理论", "不愿积累实践作品"]
+"Law":
+  typical_tasks: [case_reading, legal_writing, argumentation, research, jurisdiction_comparison]
+  required_skills: [reading, writing, logic, persistence, ethics]
+  math_intensity: low
+  programming_intensity: low
+  reading_writing_intensity: high
+  lab_intensity: low
+  portfolio_requirement: low
+  communication_intensity: high
+  qualification_dependency: high
+  common_misconceptions: ["任何国家读本科法学都能直接当律师", "只背法条", "不需要大量阅读"]
+  suitable_user_patterns: ["喜欢阅读论证", "关注规则和公共议题", "接受资格路径差异"]
+  caution_user_patterns: ["讨厌阅读写作", "想快速取得律师资格", "不愿核查国家制度"]
+"International Relations":
+  typical_tasks: [policy_analysis, history_reading, writing, debate, regional_studies]
+  required_skills: [reading_writing, languages, critical_thinking, communication]
+  math_intensity: low
+  programming_intensity: low
+  reading_writing_intensity: high
+  lab_intensity: low
+  portfolio_requirement: low
+  communication_intensity: high
+  qualification_dependency: medium
+  common_misconceptions: ["直接当外交官", "只学时事", "不用语言和写作"]
+  suitable_user_patterns: ["关注国际议题", "语言和写作较强", "接受路径竞争"]
+  caution_user_patterns: ["不喜欢阅读写作", "只想就业确定", "缺少语言规划"]
+"Engineering":
+  typical_tasks: [math_modeling, physics, design_projects, labs, problem_solving]
+  required_skills: [math, physics, systems_thinking, teamwork]
+  math_intensity: high
+  programming_intensity: medium
+  reading_writing_intensity: medium
+  lab_intensity: medium_high
+  portfolio_requirement: low
+  communication_intensity: medium
+  qualification_dependency: medium_high
+  common_misconceptions: ["工程都一样", "只要动手不用数学", "本科后资格路径自动完成"]
+  suitable_user_patterns: ["数学物理较强", "喜欢解决实际系统问题", "接受实验和项目"]
+  caution_user_patterns: ["数学物理弱且不想补", "不喜欢实验项目", "不了解认证要求"]
+"Environmental Science":
+  typical_tasks: [fieldwork, lab_or_data_analysis, policy_reading, ecology, sustainability_projects]
+  required_skills: [science_literacy, data_analysis, writing, systems_thinking]
+  math_intensity: medium
+  programming_intensity: low_medium
+  reading_writing_intensity: medium_high
+  lab_intensity: medium
+  portfolio_requirement: low
+  communication_intensity: medium_high
+  qualification_dependency: medium
+  common_misconceptions: ["只是环保热情", "不用科学和数据", "就业路径完全明确"]
+  suitable_user_patterns: ["关注环境和可持续", "能接受科学数据和外业", "愿意跨学科学习"]
+  caution_user_patterns: ["讨厌实验或外业", "只想稳定高薪", "不接受跨学科不确定性"]
+"Humanities":
+  typical_tasks: [reading, writing, textual_analysis, cultural_research, presentations]
+  required_skills: [reading_writing, language, critical_thinking, independent_research]
+  math_intensity: low
+  programming_intensity: low
+  reading_writing_intensity: high
+  lab_intensity: low
+  portfolio_requirement: low
+  communication_intensity: medium_high
+  qualification_dependency: medium
+  common_misconceptions: ["只靠兴趣不用训练", "就业只能一条路", "不用方法论"]
+  suitable_user_patterns: ["强阅读写作", "喜欢文化语言历史哲学", "接受跨领域能力建设"]
+  caution_user_patterns: ["不喜欢大量阅读写作", "要求本科就业路径非常直接", "只因避开数学选择"]

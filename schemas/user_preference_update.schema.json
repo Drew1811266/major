@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://major.skill/schemas/user_preference_update.schema.json",
+  "type": "object",
+  "title": "UserPreferenceUpdate",
+  "description": "major 在多轮推荐咨询中根据用户反馈生成的轻量偏好更新记录。",
+  "properties": {
+    "user_statement": {
+      "type": "string",
+      "description": "用户原始表述或摘要。"
+    },
+    "inferred_preference": {
+      "type": "string",
+      "description": "从用户表述中推断出的偏好或排斥项。"
+    },
+    "affected_weights": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      },
+      "description": "受影响的排序或评分权重及其调整方向。"
+    },
+    "affected_major_categories": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "受影响的专业类别或专业方向。"
+    },
+    "hard_or_soft_constraint": {
+      "type": "string",
+      "enum": ["hard", "soft", "preference", "unknown"],
+      "description": "该偏好是否应作为硬约束、软约束、一般偏好或待确认信息处理。"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "偏好推断置信度。"
+    },
+    "update_reason": {
+      "type": "string",
+      "description": "为什么做出该偏好更新。"
+    }
+  },
+  "required": [
+    "user_statement",
+    "inferred_preference",
+    "affected_weights",
+    "affected_major_categories",
+    "hard_or_soft_constraint",
+    "confidence",
+    "update_reason"
+  ],
+  "additionalProperties": false
+}

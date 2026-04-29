@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://major.skill/schemas/major_profile.schema.json",
+  "type": "object",
+  "title": "MajorProfile",
+  "description": "用于 major Skill 的本科专业信息结构，可连接课程、技能、职业、国家术语、资格路径、来源和知识图谱。",
+  "properties": {
+    "major_name_zh": {
+      "type": "string",
+      "description": "专业中文名称。"
+    },
+    "major_name_en": {
+      "type": "string",
+      "description": "专业英文名称或常见英文名称。"
+    },
+    "local_names": {
+      "type": "object",
+      "additionalProperties": {
+        "type": ["string", "array", "object"]
+      },
+      "description": "不同国家或语言中的专业名称、近似名称或项目名称。"
+    },
+    "countries_applicable": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["China", "South Korea", "Japan", "United Kingdom", "United States", "Australia", "Multiple", "Unknown"]
+      },
+      "description": "适用国家。"
+    },
+    "short_definition": {
+      "type": "string",
+      "description": "3-5 句话解释这个本科专业是什么。"
+    },
+    "what_students_study": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "本科阶段主要学习内容。"
+    },
+    "typical_courses": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "典型课程或模块。"
+    },
+    "study_methods": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "学习方式，例如讲座、研讨、实验、项目、论文、实习、作品集、studio、临床训练等。"
+    },
+    "skills_developed": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "专业训练出的能力。"
+    },
+    "suitable_for": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "适合的人群。"
+    },
+    "not_suitable_for": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "不太适合的人群或需要谨慎选择的情况。"
+    },
+    "similar_majors": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "相近专业。"
+    },
+    "differences_from_similar_majors": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "与相近专业的区别。"
+    },
+    "career_paths": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "常见职业方向。"
+    },
+    "graduate_study_paths": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "常见研究生方向。"
+    },
+    "country_specific_notes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": ["string", "array", "object"]
+      },
+      "description": "不同国家的专业体系、命名、课程、申请方式和注意事项。"
+    },
+    "professional_accreditation_notes": {
+      "type": "string",
+      "description": "专业资格、执照、认证、临床训练等提醒。"
+    },
+    "common_misconceptions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "常见误解。"
+    },
+    "risks_and_cautions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "选择该专业前需要注意的风险。"
+    },
+    "knowledge_graph_links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "node_id": { "type": "string" },
+          "edge_id": { "type": "string" },
+          "source_id": { "type": "string" },
+          "claim_id": { "type": "string" },
+          "relationship": { "type": "string" },
+          "note": { "type": "string" }
+        },
+        "additionalProperties": false
+      },
+      "description": "与知识图谱节点或边的连接。"
+    },
+    "sources": {
+      "type": "array",
+      "items": { "$ref": "source_record.schema.json" },
+      "description": "信息来源。"
+    },
+    "freshness_summary": {
+      "type": "object",
+      "properties": {
+        "minimum_freshness_date": { "type": "string" },
+        "currentness_basis": { "type": "string" },
+        "has_2025_or_later_sources": { "type": "boolean" },
+        "has_current_or_next_cycle_sources": { "type": "boolean" },
+        "current_or_next_cycle_sources": { "type": "array", "items": { "type": "string" } },
+        "historical_sources_used": { "type": "array", "items": { "type": "string" } },
+        "limitations": { "type": "string" }
+      },
+      "additionalProperties": false,
+      "description": "来源时效摘要。"
+    },
+    "certainty_level": {
+      "type": "string",
+      "enum": ["high", "medium", "low", "unknown"],
+      "description": "整体专业信息确定性。"
+    }
+  },
+  "required": ["major_name_zh", "short_definition"],
+  "additionalProperties": false
+}

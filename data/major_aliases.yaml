@@ -1,0 +1,285 @@
+description: >
+  Multilingual alias seed for undergraduate major normalization and search
+  expansion. This is not a complete database. Use it to expand user wording into
+  likely official programme, department, course, 학과, 전공, 学部, 学科, 専攻, or コース
+  search terms, then verify with current official sources.
+
+usage_rules:
+  - Do not assume aliases are exact equivalents across countries.
+  - Use aliases to generate search terms and clarify ambiguity.
+  - Preserve official programme titles in the source language when citing them.
+  - When a user gives a broad label, show the likely subfields before recommending.
+
+aliases:
+  computer_science:
+    zh:
+      - 计算机科学
+      - 计算机科学与技术
+      - 软件工程
+      - 信息与计算科学
+    en:
+      - Computer Science
+      - Computing
+      - Software Engineering
+      - Computer Engineering
+      - Informatics
+    ko:
+      - 컴퓨터공학
+      - 컴퓨터과학
+      - 소프트웨어학
+      - 정보컴퓨터공학
+    ja:
+      - 情報科学
+      - 情報工学
+      - コンピュータサイエンス
+      - ソフトウェア工学
+    ambiguity_notes:
+      - Computer Science, Software Engineering, Computer Engineering, and Information Systems may sit in different faculties and have different math, hardware, and business requirements.
+
+  artificial_intelligence:
+    zh:
+      - 人工智能
+      - 智能科学与技术
+      - 数据科学与大数据技术
+      - 机器人工程
+    en:
+      - Artificial Intelligence
+      - AI
+      - Machine Learning
+      - Data Science
+      - Robotics
+      - Intelligent Systems
+    ko:
+      - 인공지능
+      - AI
+      - 인공지능학과
+      - 데이터사이언스
+      - 로봇공학
+    ja:
+      - 人工知能
+      - AI
+      - 機械学習
+      - データサイエンス
+      - 知能情報
+      - ロボティクス
+    ambiguity_notes:
+      - AI may appear as a standalone major, a track within computer science, a data science programme, or an engineering specialization.
+
+  data_science:
+    zh:
+      - 数据科学
+      - 数据科学与大数据技术
+      - 统计学
+      - 商业分析
+    en:
+      - Data Science
+      - Statistics
+      - Business Analytics
+      - Data Analytics
+      - Applied Statistics
+    ko:
+      - 데이터사이언스
+      - 데이터분석
+      - 통계학
+      - 비즈니스애널리틱스
+    ja:
+      - データサイエンス
+      - 統計学
+      - データ分析
+      - 応用統計
+    ambiguity_notes:
+      - Some universities place data science in statistics, computer science, business, engineering, or interdisciplinary colleges.
+
+  psychology:
+    zh:
+      - 心理学
+      - 应用心理学
+      - 临床心理学
+      - 认知科学
+    en:
+      - Psychology
+      - Psychological Science
+      - Applied Psychology
+      - Cognitive Science
+      - Behavioural Science
+    ko:
+      - 심리학
+      - 상담심리
+      - 응용심리학
+      - 인지과학
+    ja:
+      - 心理学
+      - 臨床心理学
+      - 認知科学
+      - 行動科学
+    ambiguity_notes:
+      - Undergraduate psychology is usually not enough by itself for regulated clinical practice.
+
+  media_communication:
+    zh:
+      - 传媒
+      - 传播学
+      - 新闻学
+      - 广告学
+      - 数字媒体
+      - 影视
+    en:
+      - Communication
+      - Media Studies
+      - Journalism
+      - Digital Media
+      - Mass Communication
+      - Public Relations
+      - Film and Television
+      - Strategic Communication
+    ko:
+      - 언론정보학
+      - 미디어커뮤니케이션
+      - 신문방송학
+      - 광고홍보학
+      - 디지털미디어
+    ja:
+      - メディア学
+      - コミュニケーション学
+      - ジャーナリズム
+      - 情報メディア
+      - 映像
+      - 広報
+    ambiguity_notes:
+      - Media may mean journalism, communication studies, public relations, digital media production, film/TV, or media technology.
+
+  economics_finance_accounting:
+    zh:
+      - 经济学
+      - 金融学
+      - 金融工程
+      - 会计学
+      - 财务管理
+    en:
+      - Economics
+      - Finance
+      - Financial Economics
+      - Accounting
+      - Accounting and Finance
+      - Actuarial Science
+    ko:
+      - 경제학
+      - 금융학
+      - 회계학
+      - 경영학
+      - 재무
+    ja:
+      - 経済学
+      - 金融
+      - 会計学
+      - 経営学
+      - 商学
+    ambiguity_notes:
+      - Economics, finance, accounting, business, commerce, and management have different math, regulation, and career preparation.
+
+  law:
+    zh:
+      - 法学
+      - 法律
+      - 法律研究
+      - 政法
+    en:
+      - Law
+      - Legal Studies
+      - Jurisprudence
+      - LLB
+      - Pre-Law
+    ko:
+      - 법학
+      - 법학과
+      - 법률
+    ja:
+      - 法学
+      - 法律学
+      - 法学部
+    ambiguity_notes:
+      - Legal education and professional qualification routes differ sharply by country; undergraduate law may not equal lawyer qualification.
+
+  medicine_health:
+    zh:
+      - 医学
+      - 临床医学
+      - 护理学
+      - 药学
+      - 公共卫生
+      - 生物医学
+    en:
+      - Medicine
+      - Nursing
+      - Pharmacy
+      - Public Health
+      - Biomedical Science
+      - Health Sciences
+    ko:
+      - 의학
+      - 간호학
+      - 약학
+      - 보건학
+      - 생명과학
+    ja:
+      - 医学
+      - 看護学
+      - 薬学
+      - 公衆衛生
+      - 生命科学
+    ambiguity_notes:
+      - Medicine, nursing, pharmacy, biomedical science, and public health lead to very different licensing and practice routes.
+
+  architecture_design:
+    zh:
+      - 建筑学
+      - 建筑设计
+      - 城市规划
+      - 景观建筑
+      - 设计
+    en:
+      - Architecture
+      - Architectural Studies
+      - Urban Planning
+      - Landscape Architecture
+      - Design
+      - Built Environment
+    ko:
+      - 건축학
+      - 건축공학
+      - 도시계획
+      - 조경학
+      - 디자인
+    ja:
+      - 建築学
+      - 建築設計
+      - 都市計画
+      - ランドスケープ
+      - デザイン
+    ambiguity_notes:
+      - Architecture may be design-studio based, engineering-oriented, or pre-professional depending on country and accreditation.
+
+  education:
+    zh:
+      - 教育学
+      - 师范
+      - 学前教育
+      - 特殊教育
+    en:
+      - Education
+      - Teacher Education
+      - Early Childhood Education
+      - Special Education
+      - TESOL
+    ko:
+      - 교육학
+      - 사범대학
+      - 유아교육
+      - 특수교육
+    ja:
+      - 教育学
+      - 教員養成
+      - 幼児教育
+      - 特別支援教育
+    ambiguity_notes:
+      - Teacher qualification depends on jurisdiction, placement, accreditation, and language requirements.
